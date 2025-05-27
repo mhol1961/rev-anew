@@ -1,9 +1,9 @@
 'use client';
 
-import PageLayout from "@/components/layout/PageLayout";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import AnimatedSection from "@/components/ui/AnimatedSection";
+import PageLayout from '@/components/layout/PageLayout';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import AnimatedSection from '@/components/ui/AnimatedSection';
 import { FaLightbulb, FaHandshake, FaChartLine, FaUsers } from 'react-icons/fa';
 
 export default function AboutPage() {

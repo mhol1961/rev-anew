@@ -55,7 +55,6 @@ export default function Navbar() {
   const navRef = useRef<HTMLElement>(null); // Ref for the main nav element
   const mobileMenuRef = useRef<HTMLDivElement>(null); // Ref for the mobile menu div
   const timeoutRef = useRef<NodeJS.Timeout | null>(null); // Ref to store the timeout ID
-  const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   // Check for dark mode on mount and watch for changes
   useEffect(() => {
@@ -116,27 +115,6 @@ export default function Navbar() {
     }
   }, [isMobileMenuOpen, isDarkMode, mounted]);
 
-  // Effect to position dropdown menus correctly
-  useEffect(() => {
-    if (activeDropdown && dropdownRefs.current[activeDropdown]) {
-      const menuItemId = `menu-item-${activeDropdown.replace(/\s+/g, '-').toLowerCase()}`;
-      const menuItemElement = document.getElementById(menuItemId);
-      
-      if (menuItemElement && dropdownRefs.current[activeDropdown]) {
-        // Position the dropdown directly under its parent menu item
-        const menuItemRect = menuItemElement.getBoundingClientRect();
-        const dropdown = dropdownRefs.current[activeDropdown];
-        
-        if (dropdown) {
-          dropdown.style.position = 'fixed';
-          dropdown.style.top = `${menuItemRect.bottom}px`;
-          dropdown.style.left = `${menuItemRect.left}px`;
-          dropdown.style.zIndex = '50';
-        }
-      }
-    }
-  }, [activeDropdown]);
-
   return (
     <nav 
       ref={navRef} // Assign ref to nav element
@@ -145,13 +123,13 @@ export default function Navbar() {
     >
       {/* Gradient background for light mode only */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary-light/30 to-primary-blue/10 dark:hidden"></div> {/* Hide gradient in dark mode */}
-      <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main container: Use justify-between to push left and right groups apart */}
         <div className="flex justify-between items-center h-20">
-          {/* Left Group: Logo Only - Reduced width for more nav space */}
+          {/* Left Group: Logo Only */}
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0 py-2 pl-0">
-              <div className="relative h-14 w-32"> {/* Further reduced logo size to prevent wrapping */}
+            <Link href="/" className="flex-shrink-0 py-2">
+              <div className="relative h-14 w-40"> {/* Reduced logo size to prevent wrapping */}
                 {/* Conditionally render logo based on dark mode state, only after mounting */}
                 {mounted && (
                   <Image
@@ -180,14 +158,13 @@ export default function Navbar() {
           </div>
 
           {/* Right Group: Nav Links Dark Mode Toggle and CTA Button */}
-          <div className="hidden md:flex items-center space-x-3">
-            {/* Desktop Menu Links - Reduced spacing */}
-            <div className="flex items-center space-x-1 flex-nowrap overflow-x-auto max-w-5xl">
+          <div className="hidden md:flex items-center space-x-4">
+            {/* Desktop Menu Links */}
+            <div className="flex items-center space-x-1 flex-nowrap">
               {navigation.map((item) => (
                 <div
                   key={item.name}
                   className="relative group"
-                  id={`menu-item-${item.name.replace(/\s+/g, '-').toLowerCase()}`}
                   onMouseEnter={() => {
                     if (item.submenu) {
                       if (timeoutRef.current) {
@@ -208,14 +185,14 @@ export default function Navbar() {
                 >
                   {item.submenu ? (
                     <div className="flex items-center">
-                      <Link href={item.href} className="text-primary-navy dark:text-white hover:text-primary-blue dark:hover:text-primary-red px-1.5 py-2 text-sm font-bold rounded-full transition-all duration-150 hover:bg-primary-light/50 hover:scale-105">
+                      <Link href={item.href} className="text-primary-navy dark:text-white hover:text-primary-blue dark:hover:text-primary-red px-3 py-2 text-sm font-bold rounded-full transition-all duration-150 hover:bg-primary-light/50 hover:scale-105">
                         {item.name}
                       </Link>
                     </div>
                   ) : (
                     <Link
                       href={item.href}
-                      className="text-primary-navy dark:text-white hover:text-primary-blue dark:hover:text-primary-red px-1.5 py-2 text-sm font-bold rounded-full transition-all duration-150 hover:bg-primary-light/50 hover:scale-105" // Updated dark text/hover
+                      className="text-primary-navy dark:text-white hover:text-primary-blue dark:hover:text-primary-red px-3 py-2 text-sm font-bold rounded-full transition-all duration-150 hover:bg-primary-light/50 hover:scale-105" // Updated dark text/hover
                     >
                       {item.name}
                     </Link>
@@ -223,15 +200,10 @@ export default function Navbar() {
 
                   {item.submenu && activeDropdown === item.name && (
                     <motion.div
-                      ref={(el) => {
-                        dropdownRefs.current[item.name] = el;
-                        return undefined;
-                      }}
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="absolute z-10 w-48 rounded-md shadow-lg bg-white dark:bg-primary-slate ring-1 ring-black ring-opacity-5"
-                      style={{ position: 'absolute', left: '0', top: '100%', marginTop: '4px' }}
+                      className="absolute z-10 -ml-4 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-primary-slate ring-1 ring-black ring-opacity-5"
                       // Add mouse enter/leave to the dropdown itself to cancel/restart the close timer
                       onMouseEnter={() => {
                         if (timeoutRef.current) {

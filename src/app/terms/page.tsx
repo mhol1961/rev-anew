@@ -63,7 +63,7 @@ const TermsOfService = () => {
             <ul className="list-disc pl-8 mb-4">
               <li className="mb-2">Use the Site in any way that violates applicable laws or regulations.</li>
               <li className="mb-2">Attempt to interfere with the proper functioning of the Site.</li>
-              <li className="mb-2">Engage in any conduct that restricts or inhibits anyone's use or enjoyment of the Site.</li>
+              <li className="mb-2">Engage in any conduct that restricts or inhibits anyone&apos;s use or enjoyment of the Site.</li>
               <li className="mb-2">Use the Site to transmit or send unsolicited advertisements or promotions.</li>
               <li className="mb-2">Attempt to gain unauthorized access to any portion of the Site or any systems or networks connected to the Site.</li>
               <li className="mb-2">Collect or store personal data about other users without their express consent.</li>
@@ -118,7 +118,7 @@ const TermsOfService = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4 text-primary-navy dark:text-white">9. Indemnification</h2>
             <p className="mb-4">
-              You agree to defend, indemnify, and hold harmless Technology Alliance Solutions, its affiliates, licensors, and service providers, and its and their respective officers, directors, employees, contractors, agents, licensors, suppliers, successors, and assigns from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of the Site.
+              You agree to defend, indemnify, and hold harmless Technology Alliance Solutions, its affiliates, licensors, and service providers, and its and their respective officers, directors, employees, contractors, agents, licensors, suppliers, successors, and assigns from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys&apos; fees) arising out of or relating to your violation of these Terms or your use of the Site.
             </p>
           </section>
 

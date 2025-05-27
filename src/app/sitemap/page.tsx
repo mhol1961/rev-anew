@@ -226,7 +226,7 @@ const Sitemap = () => {
           className="mt-12 text-center"
         >
           <p className="text-primary-slate dark:text-white/80 mb-6">
-            Can't find what you're looking for? Feel free to contact us directly.
+            Can&apos;t find what you&apos;re looking for? Feel free to contact us directly.
           </p>
           <Link href="/contact" className="inline-block px-6 py-3 bg-primary-blue text-white font-medium rounded-lg hover:bg-primary-blue/90 transition-colors">
             Contact Us

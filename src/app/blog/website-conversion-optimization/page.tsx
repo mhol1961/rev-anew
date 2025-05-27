@@ -40,18 +40,18 @@ export default function BlogPost() {
       <p class="mb-4">The core of conversion optimization is clearly communicating your value proposition to visitors. Key elements include:</p>
       
       <ul class="list-disc pl-6 mb-6 space-y-2">
-        <li>Benefit-focused headlines that immediately communicate what's in it for the user</li>
+        <li>Benefit-focused headlines that immediately communicate what&apos;s in it for the user</li>
         <li>Social proof elements (testimonials, case studies, reviews) strategically placed near conversion points</li>
         <li>Trust indicators including security badges, industry certifications, and client logos</li>
         <li>Clear differentiation from competitors with unique selling propositions</li>
-        <li>Problem-solution framing that resonates with the visitor's pain points</li>
+        <li>Problem-solution framing that resonates with the visitor&apos;s pain points</li>
       </ul>
       
-      <p class="mb-4">The most effective websites focus relentlessly on answering the visitor's primary question: "Why should I choose you instead of your competitors or doing nothing at all?"</p>
+      <p class="mb-4">The most effective websites focus relentlessly on answering the visitor&apos;s primary question: "Why should I choose you instead of your competitors or doing nothing at all?"</p>
       
       <h2 class="text-2xl font-bold text-primary-navy dark:text-white mt-8 mb-4">Friction Reduction</h2>
       
-      <p class="mb-4">Friction represents anything that impedes a visitor's progress toward conversion. Successful friction reduction strategies include:</p>
+      <p class="mb-4">Friction represents anything that impedes a visitor&apos;s progress toward conversion. Successful friction reduction strategies include:</p>
       
       <ul class="list-disc pl-6 mb-6 space-y-2">
         <li>Streamlining forms to collect only essential information</li>
@@ -121,7 +121,7 @@ export default function BlogPost() {
       
       <h2 class="text-2xl font-bold text-primary-navy dark:text-white mt-8 mb-4">Conclusion</h2>
       
-      <p class="mb-4">Website conversion optimization is both an art and a science. By blending data-driven analysis with user-centered design and strategic testing, businesses can dramatically improve their website's effectiveness as a sales and lead generation tool.</p>
+      <p class="mb-4">Website conversion optimization is both an art and a science. By blending data-driven analysis with user-centered design and strategic testing, businesses can dramatically improve their website&apos;s effectiveness as a sales and lead generation tool.</p>
       
       <p class="mb-4">The key to success lies in viewing optimization not as a one-time project but as an ongoing process of continuous improvement. Each incremental gain compounds over time to deliver significant competitive advantage and return on investment.</p>
       

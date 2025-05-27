@@ -284,7 +284,7 @@ export default function ContactPage() {
             ></iframe>
           </div>
           <p className="text-center mt-4 text-primary-slate dark:text-gray-300">
-            We're conveniently located in Buckhead, Atlanta, easily accessible from GA-400 and I-85.
+            We&apos;re conveniently located in Buckhead, Atlanta, easily accessible from GA-400 and I-85.
           </p>
         </div>
       </AnimatedSection>
@@ -315,7 +315,7 @@ export default function ContactPage() {
             <div>
               <h3 className="text-xl font-semibold mb-2 text-primary-navy dark:text-white">How do I get started with your services?</h3>
               <p className="text-primary-slate dark:text-gray-300">
-                Simply fill out our contact form or give us a call. We'll schedule an initial consultation to understand your needs and discuss how we can help.  
+                Simply fill out our contact form or give us a call. We&apos;ll schedule an initial consultation to understand your needs and discuss how we can help.  
               </p>
             </div>
           </div>

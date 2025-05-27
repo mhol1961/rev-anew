@@ -19,7 +19,7 @@ export default function BlogPost() {
     tags: ['Reputation Management', 'Online Reviews', 'Brand Image'],
     image: '/images/photos/StandOutFRomCompetition.png',
     content: `
-      <p class="mb-4">In today's hyperconnected world, a company's reputation can be made or broken in a matter of hours. With consumers increasingly turning to online reviews, social media, and search engines to inform their purchasing decisions, effective reputation management has become a critical component of business success. This article explores how businesses can leverage automation and strategic approaches to protect and enhance their online reputation in the digital age.</p>
+      <p class="mb-4">In today&apos;s hyperconnected world, a company&apos;s reputation can be made or broken in a matter of hours. With consumers increasingly turning to online reviews, social media, and search engines to inform their purchasing decisions, effective reputation management has become a critical component of business success. This article explores how businesses can leverage automation and strategic approaches to protect and enhance their online reputation in the digital age.</p>
       
       <h2 class="text-2xl font-bold text-primary-navy dark:text-white mt-8 mb-4">The Evolution of Reputation Management</h2>
       
@@ -65,13 +65,13 @@ export default function BlogPost() {
       
       <h2 class="text-2xl font-bold text-primary-navy dark:text-white mt-8 mb-4">Proactive Review Generation</h2>
       
-      <p class="mb-4">The most effective reputation management strategies don't just respond to existing reviews—they actively generate positive reviews through automated systems that:</p>
+      <p class="mb-4">The most effective reputation management strategies don&apos;t just respond to existing reviews—they actively generate positive reviews through automated systems that:</p>
       
       <ul class="list-disc pl-6 mb-6 space-y-2">
         <li>Identify satisfied customers through transaction data or NPS surveys</li>
         <li>Send timely, personalized review requests through email or SMS</li>
         <li>Make the review process as frictionless as possible with direct links</li>
-        <li>Follow up with customers who haven't left reviews after initial requests</li>
+        <li>Follow up with customers who haven&apos;t left reviews after initial requests</li>
         <li>Thank customers who provide feedback, regardless of sentiment</li>
       </ul>
       
@@ -107,7 +107,7 @@ export default function BlogPost() {
       
       <h2 class="text-2xl font-bold text-primary-navy dark:text-white mt-8 mb-4">Employee Advocacy Programs</h2>
       
-      <p class="mb-4">Employees can be powerful advocates for your brand's reputation. Modern reputation management includes employee advocacy platforms that:</p>
+      <p class="mb-4">Employees can be powerful advocates for your brand&apos;s reputation. Modern reputation management includes employee advocacy platforms that:</p>
       
       <ul class="list-disc pl-6 mb-6 space-y-2">
         <li>Make it easy for employees to share approved brand content</li>
@@ -135,9 +135,9 @@ export default function BlogPost() {
       
       <h2 class="text-2xl font-bold text-primary-navy dark:text-white mt-8 mb-4">Conclusion</h2>
       
-      <p class="mb-4">In the digital age, reputation management has evolved from a reactive necessity to a proactive strategic advantage. By implementing automated monitoring, response systems, and strategic content creation, businesses can not only protect their reputation but actively shape how they're perceived online.</p>
+      <p class="mb-4">In the digital age, reputation management has evolved from a reactive necessity to a proactive strategic advantage. By implementing automated monitoring, response systems, and strategic content creation, businesses can not only protect their reputation but actively shape how they&apos;re perceived online.</p>
       
-      <p class="mb-4">The most successful organizations recognize that reputation is not just about damage control—it's about consistently delivering on brand promises and effectively communicating those successes. With the right tools and strategies, businesses can turn their online reputation into a powerful competitive differentiator that drives customer trust and business growth.</p>
+      <p class="mb-4">The most successful organizations recognize that reputation is not just about damage control—it&apos;s about consistently delivering on brand promises and effectively communicating those successes. With the right tools and strategies, businesses can turn their online reputation into a powerful competitive differentiator that drives customer trust and business growth.</p>
       
       <p class="mb-4">At Technology Alliance Solutions, we help businesses implement comprehensive reputation management systems that protect and enhance their brand image. Contact us to learn how we can help you take control of your online reputation.</p>
     `
@@ -243,7 +243,7 @@ export default function BlogPost() {
             <div className="mt-12 bg-gradient-to-r from-primary-blue/10 to-blue-400/10 dark:from-primary-blue/20 dark:to-blue-500/20 rounded-xl p-8">
               <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-4">Take control of your online reputation</h3>
               <p className="text-primary-slate dark:text-white/80 mb-6">
-                Our reputation management experts can help you implement automated monitoring systems and develop strategies to protect and enhance your brand's online presence.
+                Our reputation management experts can help you implement automated monitoring systems and develop strategies to protect and enhance your brand&apos;s online presence.
               </p>
               <Link href="/contact">
                 <AnimatedButton className="bg-primary-blue text-white hover:bg-primary-blue/90 border-none">

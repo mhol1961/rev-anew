@@ -8,7 +8,6 @@ import PageLayout from '@/components/layout/PageLayout';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { useState } from 'react';
-import BlogList from '@/components/blog/BlogList';
 
 // Define blog posts data
 const blogPosts = [
@@ -135,12 +134,12 @@ const blogPosts = [
   },
   {
     id: 'gohighlevel-white-label-solutions',
-    title: 'Maximizing Business Growth with CRM Solutions',
-    excerpt: 'Discover how CRM solutions can drive business growth by streamlining operations, enhancing customer relationships, and providing actionable insights.',
+    title: 'Maximizing Business Growth with White-Labeled GoHighLevel Solutions',
+    excerpt: 'Explore how white-labeled GoHighLevel instances can help agencies scale their offerings and provide comprehensive marketing solutions to clients.',
     date: 'January 25, 2025',
     author: 'Jacquelin Johnson',
     category: 'CRM',
-    tags: ['CRM', 'Business Growth', 'Customer Relationship Management'],
+    tags: ['GoHighLevel', 'White Label', 'Agency Growth'],
     image: '/images/photos/ClientSuccessStories.png',
     featured: false
   }
@@ -159,8 +158,18 @@ export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Note: We're now using the BlogList component to fetch posts from Supabase
-  // instead of filtering the hardcoded posts
+  // Filter blog posts based on selected category and search query
+  const filteredPosts = blogPosts.filter(post => {
+    const matchesCategory = selectedCategory === 'all' || 
+                            post.category.toLowerCase() === selectedCategory.toLowerCase();
+    
+    const matchesSearch = searchQuery === '' || 
+                         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+    
+    return matchesCategory && matchesSearch;
+  });
 
   // Get featured posts
   const featuredPosts = blogPosts.filter(post => post.featured);
@@ -340,76 +349,85 @@ export default function Blog() {
               ))}
             </div>
 
-            {/* Article Grid - Using hardcoded blogPosts array */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <div className="grid md:grid-cols-3 gap-8">
-                {blogPosts
-                  .filter(post =>
-                    (selectedCategory === 'all' || post.category.toLowerCase() === selectedCategory) &&
-                    (post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()))
-                  )
-                  .map((post) => (
-                    <div
-                      key={post.id}
-                      className="bg-white dark:bg-primary-slate/40 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col"
-                    >
-                      {/* Image */}
-                      <div className="relative h-48 w-full">
-                        <Image
-                          src={post.image}
-                          alt={post.title}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                        />
-                        {/* Overlay with category */}
-                        <div className="absolute top-4 left-4">
-                          <span className="bg-primary-blue/90 text-white text-sm px-3 py-1 rounded-full">
-                            {post.category}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="p-6 flex-1 flex flex-col">
-                        <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-3 line-clamp-2">
-                          {post.title}
-                        </h3>
-                        <p className="text-primary-slate dark:text-white/80 mb-4 flex-grow line-clamp-3">
-                          {post.excerpt}
-                        </p>
-
-                        {/* Meta information */}
-                        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
-                          <div className="flex items-center mr-4">
-                            <FaCalendarAlt className="mr-1" />
-                            <span>{post.date}</span>
-                          </div>
-                          <div className="flex items-center">
-                            <FaUser className="mr-1" />
-                            <span>{post.author}</span>
-                          </div>
-                        </div>
-
-                        <Link href={`/blog/${post.id}`}>
-                          <span className="text-primary-blue hover:text-primary-blue/80 font-medium inline-flex items-center">
-                            Read full article
-                            <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </span>
-                        </Link>
+            {/* Article Grid */}
+            {filteredPosts.length > 0 ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredPosts.map((post, index) => (
+                  <motion.div
+                    key={post.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 * (index % 3) }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5 }}
+                    className="bg-white dark:bg-primary-navy/50 rounded-xl overflow-hidden shadow-md border border-gray-200 dark:border-gray-700 flex flex-col h-full"
+                  >
+                    {/* Image */}
+                    <div className="relative h-48 w-full">
+                      <Image 
+                        src={post.image} 
+                        alt={post.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                      {/* Overlay with category */}
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-primary-blue/90 text-white text-xs px-2 py-1 rounded-full">
+                          {post.category}
+                        </span>
                       </div>
                     </div>
-                  ))}
+                    
+                    {/* Content */}
+                    <div className="p-6 flex-1 flex flex-col">
+                      <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-2 line-clamp-2">
+                        {post.title}
+                      </h3>
+                      <p className="text-sm text-primary-slate dark:text-white/80 mb-4 flex-grow line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                      
+                      {/* Meta information */}
+                      <div className="flex flex-wrap text-xs text-gray-500 dark:text-gray-400 mt-auto">
+                        <div className="flex items-center mr-3 mb-2">
+                          <FaCalendarAlt className="mr-1 text-xs" />
+                          <span>{post.date}</span>
+                        </div>
+                        <div className="flex items-center mb-2">
+                          <FaUser className="mr-1 text-xs" />
+                          <span>{post.author}</span>
+                        </div>
+                      </div>
+                      
+                      <Link href={`/blog/${post.id}`} className="mt-3">
+                        <span className="text-primary-blue hover:text-primary-blue/80 text-sm font-medium inline-flex items-center">
+                          Read more
+                          <svg className="ml-1 w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </span>
+                      </Link>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-            </motion.div>
+            ) : (
+              // No results message
+              <div className="text-center py-12">
+                <div className="text-5xl mb-4">🔍</div>
+                <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-2">No Articles Found</h3>
+                <p className="text-primary-slate dark:text-white/80">
+                  Try adjusting your search criteria or browse a different category.
+                </p>
+                <button 
+                  onClick={() => {setSearchQuery(''); setSelectedCategory('all');}}
+                  className="mt-4 text-primary-blue hover:underline"
+                >
+                  Clear filters
+                </button>
+              </div>
+            )}
           </div>
         </AnimatedSection>
 

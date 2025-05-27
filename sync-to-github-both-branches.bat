@@ -7,11 +7,7 @@ echo 1. Adding all changed files to Git...
 git add .
 
 echo 2. Committing changes...
-<<<<<<< HEAD
-git commit -m "Complete Intelligrow website implementation"
-=======
-git commit -m "Update Intelligrow website with latest features and improvements"
->>>>>>> main
+git commit -m "Fix navbar alignment issue while maintaining dark mode functionality"
 
 echo 3. Pushing to dev branch...
 git checkout dev

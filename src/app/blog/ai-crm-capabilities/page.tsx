@@ -1,12 +1,12 @@
 'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { FaCalendarAlt, FaUser, FaTag, FaChevronLeft } from "react-icons/fa";
-import PageLayout from "@/components/layout/PageLayout";
-import AnimatedSection from "@/components/ui/AnimatedSection";
-import AnimatedButton from "@/components/ui/AnimatedButton";
+import Image from 'next/image';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { FaCalendarAlt, FaUser, FaTag, FaChevronLeft } from 'react-icons/fa';
+import PageLayout from '@/components/layout/PageLayout';
+import AnimatedSection from '@/components/ui/AnimatedSection';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 
 export default function BlogPost() {
   // Blog post data

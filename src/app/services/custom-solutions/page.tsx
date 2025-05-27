@@ -17,7 +17,7 @@ export default function CustomSolutionsPage() {
     },
     {
       title: 'Custom API Integrations',
-      description: 'Seamlessly connect your disparate systems with tailored API solutions, enabling data flow between platforms that were not designed to work together.',
+      description: 'Seamlessly connect your disparate systems with tailored API solutions, enabling data flow between platforms that weren&apos;t designed to work together.',
       icon: FaExchangeAlt
     },
     {
@@ -27,7 +27,7 @@ export default function CustomSolutionsPage() {
     },
     {
       title: 'Industry-Specific Solutions',
-      description: 'Software tools designed for your industry\'s unique requirements, compliance needs, and specialized processes.',
+      description: 'Software tools designed for your industry&apos;s unique requirements, compliance needs, and specialized processes.',
       icon: FaTools
     },
     {
@@ -92,7 +92,7 @@ export default function CustomSolutionsPage() {
             <div className="md:w-1/2">
               <h2 className="text-3xl font-bold mb-6 text-primary-navy dark:text-white">Strategic Custom Solutions</h2>
               <p className="text-lg text-primary-slate dark:text-gray-300 mb-4">
-                In today's complex business landscape, off-the-shelf software often fails to address the unique challenges and workflows of your organization. Our custom software solutions are designed from the ground up to fit your exact requirements.
+                In today&apos;s complex business landscape, off-the-shelf software often fails to address the unique challenges and workflows of your organization. Our custom software solutions are designed from the ground up to fit your exact requirements.
               </p>
               <p className="text-lg text-primary-slate dark:text-gray-300 mb-4">
                 We take a collaborative approach to development, working closely with your team to understand your business processes, pain points, and growth objectives before crafting a solution that seamlessly integrates with your existing systems.
@@ -273,7 +273,7 @@ export default function CustomSolutionsPage() {
                   </li>
                 </ul>
                 <p className="text-primary-slate dark:text-gray-300 italic">
-                  "The custom solution Technology Alliance Solutions developed has transformed our operations. Tasks that used to take days now happen automatically, and we have visibility into our business we never thought possible. This has been a game-changer for our efficiency and profitability." - Director of Operations
+                  &quot;The custom solution Technology Alliance Solutions developed has transformed our operations. Tasks that used to take days now happen automatically, and we have visibility into our business we never thought possible. This has been a game-changer for our efficiency and profitability.&quot; - Director of Operations
                 </p>
               </div>
             </div>
@@ -334,7 +334,7 @@ export default function CustomSolutionsPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready for a Custom Solution?</h2>
           <p className="text-xl max-w-3xl mx-auto mb-8">
-            Let's discuss your unique challenges and create a tailored solution that drives efficiency, automation, and growth for your business.
+            Let&apos;s discuss your unique challenges and create a tailored solution that drives efficiency, automation, and growth for your business.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <AnimatedButton className="bg-white text-primary-blue hover:bg-primary-light border-none shadow-md">

@@ -96,7 +96,7 @@ const CircularServices: React.FC = () => {
         {/* Left Column: Heading & Paragraph */}
         <div className="md:w-1/3 text-center md:text-left mb-12 md:mb-0">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-navy dark:text-white mb-4">
-            Unlock Your Business's Full{' '}
+            Unlock Your Business&apos;s Full{' '}
             <span className="text-primary-blue">Potential</span>
           </h2>
           <p className="text-base md:text-lg text-primary-slate dark:text-gray-300">

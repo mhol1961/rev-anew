@@ -23,7 +23,7 @@ export default function BlogPost() {
       
       <h2 class="text-2xl font-bold text-primary-navy dark:text-white mt-8 mb-4">The Evolution of Sales Enablement</h2>
       
-      <p class="mb-4">Traditional sales processes relied heavily on manual efforts, intuition, and relationship-building skills. While these fundamentals remain important, today's competitive landscape requires sales teams to leverage technology to gain advantages in:</p>
+      <p class="mb-4">Traditional sales processes relied heavily on manual efforts, intuition, and relationship-building skills. While these fundamentals remain important, today&apos;s competitive landscape requires sales teams to leverage technology to gain advantages in:</p>
       
       <ul class="list-disc pl-6 mb-6 space-y-2">
         <li>Identifying and prioritizing high-potential prospects</li>
@@ -33,7 +33,7 @@ export default function BlogPost() {
         <li>Analyzing customer behavior and sales performance to continuously improve</li>
       </ul>
       
-      <p class="mb-4">Let's explore the technologies that are making the biggest impact in these areas in 2025.</p>
+      <p class="mb-4">Let&apos;s explore the technologies that are making the biggest impact in these areas in 2025.</p>
       
       <h2 class="text-2xl font-bold text-primary-navy dark:text-white mt-8 mb-4">1. AI-Powered Sales Intelligence Platforms</h2>
       
@@ -67,7 +67,7 @@ export default function BlogPost() {
       
       <h2 class="text-2xl font-bold text-primary-navy dark:text-white mt-8 mb-4">3. Integrated Sales Engagement Platforms</h2>
       
-      <p class="mb-4">Sales engagement platforms have evolved from simple email automation tools to comprehensive systems that orchestrate multi-channel communications throughout the buyer's journey.</p>
+      <p class="mb-4">Sales engagement platforms have evolved from simple email automation tools to comprehensive systems that orchestrate multi-channel communications throughout the buyer&apos;s journey.</p>
       
       <p class="mb-4"><strong>Key Capabilities:</strong></p>
       
@@ -260,7 +260,7 @@ export default function BlogPost() {
             <div className="mt-12 bg-gradient-to-r from-primary-blue/10 to-blue-400/10 dark:from-primary-blue/20 dark:to-blue-500/20 rounded-xl p-8">
               <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-4">Need help optimizing your sales technology stack?</h3>
               <p className="text-primary-slate dark:text-white/80 mb-6">
-                Our sales enablement experts can help you select, implement, and optimize the right technologies to improve your team's performance and close more deals.
+                Our sales enablement experts can help you select, implement, and optimize the right technologies to improve your team&apos;s performance and close more deals.
               </p>
               <Link href="/contact">
                 <AnimatedButton className="bg-primary-blue text-white hover:bg-primary-blue/90 border-none">
