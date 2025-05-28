@@ -15,15 +15,58 @@ export default function CareersPage() {
   return (
     <PageLayout>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
-        {/* Hero Section */}
-        <AnimatedSection className="pt-32 pb-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-primary-navy dark:text-white mb-6">
-              Join Our Team
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-              Be part of a dynamic team that's transforming businesses through innovative technology solutions. 
-              We're looking for passionate professionals to help shape the future of business automation.
+        {/* Hero Section with Background Image */}
+        <AnimatedSection className="relative pt-32 pb-20 min-h-[80vh] flex items-center">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: 'url(/images/hero/join-our-team.png)'
+            }}
+          ></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/30"></div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl">
+              {/* Main H1 Heading */}
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-tight tracking-tight">
+                <span className="block bg-gradient-to-r from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">
+                  JOIN OUR
+                </span>
+                <span className="block bg-gradient-to-r from-blue-400 via-blue-300 to-white bg-clip-text text-transparent">
+                  TEAM
+                </span>
+              </h1>
+              
+              {/* Professional H2 Subheading */}
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white/95 mb-8 leading-relaxed max-w-3xl">
+                Shape the Future of Business Automation with Industry-Leading Technology Solutions
+              </h2>
+              
+              {/* Supporting text */}
+              <p className="text-lg md:text-xl text-white/90 font-medium leading-relaxed max-w-2xl mb-10">
+                Join our elite team of technology experts and help transform businesses through cutting-edge CRM implementations, marketing automation, and system integrations.
+              </p>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <AnimatedButton className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-lg px-8 py-4 font-semibold shadow-xl">
+                  View Open Positions
+                </AnimatedButton>
+                <AnimatedButton className="bg-white/10 backdrop-blur-sm border-2 border-white/30 hover:bg-white/20 text-white text-lg px-8 py-4 font-semibold">
+                  Learn About Our Culture
+                </AnimatedButton>
+              </div>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        {/* Professional Subtitle Section */}
+        <AnimatedSection className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-navy dark:text-white mb-8 leading-tight">
+              Where Innovation Meets Excellence
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium max-w-4xl mx-auto">
+              We're building the next generation of business automation solutions. Join us in creating technology that doesn't just solve problems—it transforms entire industries.
             </p>
           </div>
         </AnimatedSection>
