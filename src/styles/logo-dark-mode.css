@@ -1,0 +1,13 @@
+/* Subtle logo enhancements for dark mode - no visible boxes */
+.dark .logo-enhance {
+  /* Subtle brightness and contrast boost */
+  filter: brightness(1.1) contrast(1.15) saturate(1.05);
+  /* Very subtle drop shadow for depth */
+  drop-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Very subtle glow effect on hover - no background shapes */
+.dark .logo-container:hover .logo-enhance {
+  filter: brightness(1.15) contrast(1.2) saturate(1.1);
+  transition: filter 0.3s ease;
+}

@@ -1,0 +1,49 @@
+/* Article content styling for both light and dark modes */
+.article-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #1a202c;
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+  color: #4b5563;
+}
+
+.article-content ul, .article-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.article-content li {
+  margin-bottom: 0.5rem;
+  color: #4b5563;
+}
+
+.article-content ul li {
+  list-style-type: disc;
+}
+
+.article-content ol li {
+  list-style-type: decimal;
+}
+
+/* Dark mode - make ALL text white */
+.dark .article-content h2 {
+  color: white !important;
+}
+
+.dark .article-content p {
+  color: white !important;
+}
+
+.dark .article-content li {
+  color: white !important;
+}
+
+.dark .article-content * {
+  color: white !important;
+}

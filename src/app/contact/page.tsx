@@ -278,9 +278,9 @@ export default function ContactPage() {
               allowFullScreen={false} 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
-              title="Intelligrow Office Location"
+              title="Office Location"
               className="w-full h-full"
-              aria-label="Map showing Intelligrow's office location in Atlanta"
+              aria-label="Map showing office location in Atlanta"
             ></iframe>
           </div>
           <p className="text-center mt-4 text-primary-slate dark:text-gray-300">

@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import article content styling */
+@import '../styles/article-content.css';
+
+/* Import logo dark mode enhancements */
+@import '../styles/logo-dark-mode.css';
+
 /* Add @font-face rules for Roobert */
 @font-face {
   font-family: 'Roobert';
@@ -31,21 +37,272 @@
 }
 
 :root {
-  --primary-navy: #2C3E50;
-  --primary-blue: #3498DB;
-  --primary-slate: #34495E;
+  --primary-navy: #1a202c;
+  --primary-blue: #2563eb;
+  --primary-slate: #475569;
+  
+  /* Typography scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  
+  /* Line heights */
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+}
+
+/* Dark mode variables */
+:root.dark {
+  --primary-navy: #0f172a;
+  --primary-blue: #3b82f6;
+  --primary-slate: #64748b;
 }
 
 .bg-gradient-primary {
-  background: linear-gradient(to right, #3498DB, #2C3E50);
+  background: linear-gradient(to right, #2563eb, #1a202c);
 }
 
 .text-gradient-primary {
-  background: linear-gradient(to right, #3498DB, #34495E);
+  background: linear-gradient(to right, #2563eb, #475569);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Enhanced typography utilities for accessibility */
+.text-accessible {
+  color: var(--primary-navy);
+  line-height: var(--leading-relaxed);
+}
+
+.text-accessible-muted {
+  color: #6b7280;
+  line-height: var(--leading-relaxed);
+}
+
+.text-accessible-inverse {
+  color: #f9fafb;
+  line-height: var(--leading-relaxed);
+}
+
+/* Heading hierarchy with proper contrast and spacing */
+.heading-1 {
+  @apply text-4xl md:text-5xl lg:text-6xl font-bold text-primary-navy dark:text-white leading-tight tracking-tight;
+}
+
+.heading-2 {
+  @apply text-3xl md:text-4xl font-bold text-primary-navy dark:text-white leading-tight tracking-tight;
+}
+
+.heading-3 {
+  @apply text-2xl md:text-3xl font-semibold text-primary-navy dark:text-white leading-snug;
+}
+
+.heading-4 {
+  @apply text-xl md:text-2xl font-semibold text-primary-navy dark:text-white leading-snug;
+}
+
+.heading-5 {
+  @apply text-lg md:text-xl font-medium text-primary-navy dark:text-white leading-normal;
+}
+
+.heading-6 {
+  @apply text-base md:text-lg font-medium text-primary-navy dark:text-white leading-normal;
+}
+
+/* Body text with improved readability */
+.body-large {
+  @apply text-lg leading-relaxed text-primary-slate dark:text-gray-300;
+}
+
+.body-base {
+  @apply text-base leading-relaxed text-primary-slate dark:text-gray-300;
+}
+
+.body-small {
+  @apply text-sm leading-relaxed text-gray-600 dark:text-gray-400;
+}
+
+/* Link styles with proper focus states for accessibility */
+.link-primary {
+  @apply text-primary-blue hover:text-blue-700 focus:text-blue-700 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2 transition-colors duration-200;
+}
+
+.link-secondary {
+  @apply text-primary-slate hover:text-primary-navy dark:text-gray-400 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2 transition-colors duration-200;
+}
+
+/* Brand Design System Components */
+
+/* Card System */
+.card-base {
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-all duration-300;
+}
+
+.card-elevated {
+  @apply card-base shadow-lg hover:shadow-xl;
+}
+
+.card-interactive {
+  @apply card-elevated hover:-translate-y-1 cursor-pointer;
+}
+
+/* Button System */
+.btn-primary {
+  @apply bg-primary-blue hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2;
+}
+
+.btn-secondary {
+  @apply bg-white hover:bg-primary-light text-primary-blue border-2 border-primary-blue font-medium px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2;
+}
+
+.btn-outline {
+  @apply bg-transparent hover:bg-primary-blue text-primary-blue hover:text-white border-2 border-primary-blue font-medium px-6 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2;
+}
+
+.btn-ghost {
+  @apply bg-transparent hover:bg-primary-light text-primary-blue font-medium px-6 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2;
+}
+
+/* Brand-specific spacing utilities */
+.section-padding {
+  @apply py-12 sm:py-16 md:py-20 lg:py-24;
+}
+
+.section-padding-sm {
+  @apply py-8 sm:py-12 md:py-16;
+}
+
+.container-padding {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+/* Brand gradients */
+.gradient-brand {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+}
+
+.gradient-brand-subtle {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(30, 64, 175, 0.05) 100%);
+}
+
+.gradient-overlay {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(26, 32, 44, 0.8) 100%);
+}
+
+/* Interactive states */
+.hover-lift {
+  @apply hover:-translate-y-1 hover:shadow-xl transition-all duration-300;
+}
+
+.hover-scale {
+  @apply hover:scale-105 transition-transform duration-200;
+}
+
+.focus-brand {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2;
+}
+
+/* Loading states */
+.animate-skeleton {
+  @apply animate-pulse bg-gray-200 dark:bg-gray-700;
+}
+
+/* Brand-specific border styles */
+.border-brand {
+  @apply border-gray-200 dark:border-gray-700;
+}
+
+.border-brand-focus {
+  @apply border-primary-blue focus:border-blue-700;
+}
+
+/* Grid Layout System */
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.grid-services {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8;
+}
+
+.grid-features {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8;
+}
+
+.grid-testimonials {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8;
+}
+
+.grid-stats {
+  @apply grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8;
+}
+
+.grid-integration {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center;
+}
+
+/* Enhanced Card Layouts */
+.card-service {
+  @apply card-interactive p-6 lg:p-8 text-center relative overflow-hidden;
+}
+
+.card-feature {
+  @apply card-interactive p-6 h-full flex flex-col relative;
+}
+
+.card-testimonial {
+  @apply card-elevated p-6 lg:p-8 backdrop-blur-sm relative overflow-hidden;
+}
+
+.card-stat {
+  @apply card-elevated p-6 text-center backdrop-blur-sm;
+}
+
+/* Content spacing utilities */
+.content-section {
+  @apply mb-8 sm:mb-12 md:mb-16 lg:mb-20;
+}
+
+.content-header {
+  @apply text-center mb-8 sm:mb-12 md:mb-16;
+}
+
+.content-grid {
+  @apply mt-8 sm:mt-12 md:mt-16;
+}
+
+/* Brand spacing scale */
+.space-xs { @apply space-y-2; }
+.space-sm { @apply space-y-4; }
+.space-md { @apply space-y-6; }
+.space-lg { @apply space-y-8; }
+.space-xl { @apply space-y-12; }
+.space-2xl { @apply space-y-16; }
+
+/* Consistent padding system */
+.p-section { @apply p-6 sm:p-8 lg:p-12; }
+.p-card { @apply p-4 sm:p-6 lg:p-8; }
+.p-content { @apply p-3 sm:p-4 lg:p-6; }
+
+/* Enhanced visual hierarchy */
+.visual-depth-1 { @apply shadow-sm; }
+.visual-depth-2 { @apply shadow-md; }
+.visual-depth-3 { @apply shadow-lg; }
+.visual-depth-4 { @apply shadow-xl; }
+.visual-depth-5 { @apply shadow-2xl; }
 
 /* Animations */
 @keyframes fadeIn {

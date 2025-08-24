@@ -51,44 +51,74 @@ export default function CareersPage() {
           </div>
         </AnimatedSection>
 
-        {/* Why Work With Us Section */}
-        <AnimatedSection className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary-navy dark:text-white mb-6">
-                Why Work With Us?
+        {/* Why Work at TAS Section - Enhanced */}
+        <AnimatedSection className="section-padding bg-primary-light/50 dark:bg-dark-card">
+          <div className="max-w-7xl mx-auto container-padding">
+            <div className="content-header">
+              <h2 className="heading-2 text-center mb-4">
+                Why Work at Technology Alliance Solutions?
               </h2>
+              <p className="body-large text-center max-w-3xl mx-auto">
+                Join a team of technology experts who are passionate about transforming businesses through innovative solutions. We offer more than just a job - we offer a career path that grows with you.
+              </p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
-                <div className="text-primary-blue text-4xl mb-4">🚀</div>
-                <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-4">
+            <div className="grid-services mb-12">
+              <div className="card-feature hover:border-primary-blue/40 group">
+                <div className="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-6 mx-auto group-hover:bg-blue-200 dark:group-hover:bg-blue-800/50 transition-colors">
+                  <span className="text-3xl">🚀</span>
+                </div>
+                <h3 className="heading-5 text-center mb-4 group-hover:text-primary-blue transition-colors">
                   Innovation First
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Work with cutting-edge technologies and be at the forefront of business automation innovation.
+                <p className="body-base text-center">
+                  Work with cutting-edge Microsoft technologies, AI solutions, and next-generation automation platforms. Shape the future of business technology.
                 </p>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
-                <div className="text-primary-blue text-4xl mb-4">🌱</div>
-                <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-4">
+              <div className="card-feature hover:border-primary-blue/40 group">
+                <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-6 mx-auto group-hover:bg-green-200 dark:group-hover:bg-green-800/50 transition-colors">
+                  <span className="text-3xl">🌱</span>
+                </div>
+                <h3 className="heading-5 text-center mb-4 group-hover:text-primary-blue transition-colors">
                   Growth Opportunities
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Continuous learning, professional development, and clear career advancement paths.
+                <p className="body-base text-center">
+                  $5,000 annual learning budget, Microsoft certification paths, mentorship programs, and clear career advancement opportunities.
                 </p>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
-                <div className="text-primary-blue text-4xl mb-4">🤝</div>
-                <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-4">
+              <div className="card-feature hover:border-primary-blue/40 group">
+                <div className="w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-6 mx-auto group-hover:bg-purple-200 dark:group-hover:bg-purple-800/50 transition-colors">
+                  <span className="text-3xl">🤝</span>
+                </div>
+                <h3 className="heading-5 text-center mb-4 group-hover:text-primary-blue transition-colors">
                   Collaborative Culture
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Join a supportive team environment where your ideas matter and collaboration drives success.
+                <p className="body-base text-center">
+                  Join a supportive team environment where your ideas matter, collaboration drives success, and work-life balance is prioritized.
                 </p>
+              </div>
+            </div>
+
+            {/* Company Culture Highlights */}
+            <div className="bg-white dark:bg-dark-bg rounded-card p-8 lg:p-12 shadow-card">
+              <h3 className="heading-3 text-center mb-8">What Our Team Says</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="text-center">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400/40 to-primary-blue/40 mx-auto mb-4 flex items-center justify-center border-2 border-primary-gray-200 dark:border-dark-border">
+                    <span className="text-white font-bold text-lg">SA</span>
+                  </div>
+                  <p className="body-base italic mb-4">"The learning opportunities here are incredible. I've earned 3 Microsoft certifications in my first year, and the company supported me every step of the way."</p>
+                  <p className="body-small font-medium">Sarah Anderson, Solutions Architect</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-400/40 to-green-600/40 mx-auto mb-4 flex items-center justify-center border-2 border-primary-gray-200 dark:border-dark-border">
+                    <span className="text-white font-bold text-lg">MR</span>
+                  </div>
+                  <p className="body-base italic mb-4">"Best decision I ever made. The projects are challenging, the team is supportive, and the work truly makes a difference for our clients."</p>
+                  <p className="body-small font-medium">Marcus Rodriguez, CRM Implementation Lead</p>
+                </div>
               </div>
             </div>
           </div>
@@ -147,54 +177,92 @@ export default function CareersPage() {
           </div>
         </AnimatedSection>
 
-        {/* Benefits Section */}
-        <AnimatedSection className="py-16 bg-white dark:bg-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary-navy dark:text-white mb-6">
-                Benefits & Perks
+        {/* Benefits Section - Enhanced */}
+        <AnimatedSection className="section-padding bg-white dark:bg-dark-bg">
+          <div className="max-w-7xl mx-auto container-padding">
+            <div className="content-header">
+              <h2 className="heading-2 text-center mb-4">
+                Comprehensive Benefits & Perks
               </h2>
+              <p className="body-large text-center max-w-2xl mx-auto">
+                We invest in our team's success and well-being with competitive benefits and meaningful perks.
+              </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-primary-blue text-4xl mb-4">💼</div>
-                <h3 className="text-lg font-bold text-primary-navy dark:text-white mb-2">
+            <div className="grid-features">
+              <div className="card-feature text-center hover:border-primary-blue/40 group">
+                <div className="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-6 mx-auto group-hover:bg-blue-200 dark:group-hover:bg-blue-800/50 transition-colors">
+                  <span className="text-3xl">💼</span>
+                </div>
+                <h3 className="heading-6 mb-3 group-hover:text-primary-blue transition-colors">
                   Competitive Salary
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Market-competitive compensation packages
+                <p className="body-base">
+                  Market-competitive compensation with annual reviews and performance bonuses
                 </p>
               </div>
               
-              <div className="text-center">
-                <div className="text-primary-blue text-4xl mb-4">🏥</div>
-                <h3 className="text-lg font-bold text-primary-navy dark:text-white mb-2">
+              <div className="card-feature text-center hover:border-primary-blue/40 group">
+                <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-6 mx-auto group-hover:bg-green-200 dark:group-hover:bg-green-800/50 transition-colors">
+                  <span className="text-3xl">🏥</span>
+                </div>
+                <h3 className="heading-6 mb-3 group-hover:text-primary-blue transition-colors">
                   Health Benefits
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Comprehensive health, dental, and vision coverage
+                <p className="body-base">
+                  100% company-paid health, dental, vision, and life insurance coverage
                 </p>
               </div>
               
-              <div className="text-center">
-                <div className="text-primary-blue text-4xl mb-4">🏠</div>
-                <h3 className="text-lg font-bold text-primary-navy dark:text-white mb-2">
-                  Remote Work
+              <div className="card-feature text-center hover:border-primary-blue/40 group">
+                <div className="w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-6 mx-auto group-hover:bg-purple-200 dark:group-hover:bg-purple-800/50 transition-colors">
+                  <span className="text-3xl">🏠</span>
+                </div>
+                <h3 className="heading-6 mb-3 group-hover:text-primary-blue transition-colors">
+                  Remote Flexibility
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Flexible remote and hybrid work options
+                <p className="body-base">
+                  Work from home, hybrid office options, and flexible scheduling
                 </p>
               </div>
               
-              <div className="text-center">
-                <div className="text-primary-blue text-4xl mb-4">📚</div>
-                <h3 className="text-lg font-bold text-primary-navy dark:text-white mb-2">
+              <div className="card-feature text-center hover:border-primary-blue/40 group">
+                <div className="w-16 h-16 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center mb-6 mx-auto group-hover:bg-yellow-200 dark:group-hover:bg-yellow-800/50 transition-colors">
+                  <span className="text-3xl">📚</span>
+                </div>
+                <h3 className="heading-6 mb-3 group-hover:text-primary-blue transition-colors">
                   Learning Budget
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Annual budget for courses and certifications
+                <p className="body-base">
+                  $5,000 annual budget for training, certifications, and conferences
                 </p>
+              </div>
+            </div>
+
+            {/* Additional Benefits Grid */}
+            <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="flex items-start space-x-3 p-4 rounded-lg bg-primary-light/20 dark:bg-dark-card">
+                <span className="text-2xl">🏖️</span>
+                <div>
+                  <h4 className="heading-6 mb-1">Unlimited PTO</h4>
+                  <p className="body-small">Take time when you need it</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3 p-4 rounded-lg bg-primary-light/20 dark:bg-dark-card">
+                <span className="text-2xl">🎯</span>
+                <div>
+                  <h4 className="heading-6 mb-1">Stock Options</h4>
+                  <p className="body-small">Share in our company's success</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3 p-4 rounded-lg bg-primary-light/20 dark:bg-dark-card">
+                <span className="text-2xl">🚀</span>
+                <div>
+                  <h4 className="heading-6 mb-1">Latest Equipment</h4>
+                  <p className="body-small">MacBook Pro, monitors, and tools</p>
+                </div>
               </div>
             </div>
           </div>
