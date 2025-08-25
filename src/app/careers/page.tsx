@@ -3,7 +3,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import Link from 'next/link';
-import { jobListings } from '@/data/jobListings';
+import { getJobPostings } from '@/lib/supabase';
 
 export const metadata: Metadata = {
   title: 'Careers - Join Our Team | Technology Alliance Solutions',
@@ -11,7 +11,21 @@ export const metadata: Metadata = {
   keywords: 'careers, jobs, technology careers, CRM jobs, marketing automation careers, system integration jobs',
 };
 
-export default function CareersPage() {
+export const revalidate = 3600; // Revalidate every hour
+
+export default async function CareersPage() {
+  // Get active job postings from database
+  const allJobPostings = await getJobPostings();
+  const activeJobPostings = allJobPostings.filter(job => job.status === 'active');
+
+  const formatDate = (dateString: string | null) => {
+    if (!dateString) return null;
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
   return (
     <PageLayout>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
@@ -136,44 +150,72 @@ export default function CareersPage() {
               </p>
             </div>
             
-            <div className="grid gap-8">
-              {jobListings.map((job) => (
-                <div key={job.id} className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-primary-navy dark:text-white mb-2">
-                        {job.title}
-                      </h3>
-                      <div className="flex flex-wrap gap-4 mb-4">
-                        <span className="text-primary-blue font-medium">{job.department}</span>
-                        <span className="text-gray-500">•</span>
-                        <span className="text-gray-600 dark:text-gray-300">{job.location}</span>
-                        <span className="text-gray-500">•</span>
-                        <span className="text-gray-600 dark:text-gray-300">{job.type}</span>
+            {activeJobPostings.length > 0 ? (
+              <div className="grid gap-8">
+                {activeJobPostings.map((job) => (
+                  <div key={job.id} className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold text-primary-navy dark:text-white mb-2">
+                          {job.title}
+                        </h3>
+                        <div className="flex flex-wrap gap-4 mb-4">
+                          <span className="text-primary-blue font-medium">{job.department}</span>
+                          <span className="text-gray-500">•</span>
+                          <span className="text-gray-600 dark:text-gray-300">{job.location}</span>
+                          <span className="text-gray-500">•</span>
+                          <span className="text-gray-600 dark:text-gray-300">{job.type}</span>
+                          {job.posted_date && (
+                            <>
+                              <span className="text-gray-500">•</span>
+                              <span className="text-gray-500 dark:text-gray-400 text-sm">Posted {formatDate(job.posted_date)}</span>
+                            </>
+                          )}
+                        </div>
+                        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                          {job.description.replace(/<[^>]*>/g, '').substring(0, 200)}...
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {job.experience_level && (
+                            <span className="px-3 py-1 bg-primary-light/20 text-primary-blue text-sm rounded-full">
+                              {job.experience_level}
+                            </span>
+                          )}
+                          <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm rounded-full">
+                            {job.salary_range || 'Competitive Salary'}
+                          </span>
+                          {job.closing_date && (
+                            <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-sm rounded-full">
+                              Closes {formatDate(job.closing_date)}
+                            </span>
+                          )}
+                        </div>
                       </div>
-                      <p className="text-gray-600 dark:text-gray-300 mb-4">
-                        {job.summary}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-primary-light/20 text-primary-blue text-sm rounded-full">
-                          {job.experience}
-                        </span>
-                        <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm rounded-full">
-                          {job.salary || 'Competitive Salary'}
-                        </span>
+                      <div className="mt-6 md:mt-0 md:ml-8">
+                        <Link href={`/careers/${job.slug}`}>
+                          <AnimatedButton className="bg-primary-blue hover:bg-primary-navy text-white">
+                            View Details
+                          </AnimatedButton>
+                        </Link>
                       </div>
-                    </div>
-                    <div className="mt-6 md:mt-0 md:ml-8">
-                      <Link href={`/careers/${job.id}`}>
-                        <AnimatedButton className="bg-primary-blue hover:bg-primary-navy text-white">
-                          View Details
-                        </AnimatedButton>
-                      </Link>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <div className="text-5xl mb-4">💼</div>
+                <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-2">No Open Positions Currently</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  We're always looking for talented individuals. Check back soon for new opportunities or send us your resume.
+                </p>
+                <Link href="/contact">
+                  <AnimatedButton className="bg-primary-blue hover:bg-primary-navy text-white">
+                    Contact Us About Future Opportunities
+                  </AnimatedButton>
+                </Link>
+              </div>
+            )}
           </div>
         </AnimatedSection>
 
@@ -277,6 +319,11 @@ export default function CareersPage() {
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               We're always looking for talented individuals. Send us your resume and let us know how you'd like to contribute to our mission.
             </p>
+            {activeJobPostings.length > 0 && (
+              <p className="text-lg text-gray-500 dark:text-gray-400 mb-8">
+                Currently showing {activeJobPostings.length} open position{activeJobPostings.length !== 1 ? 's' : ''}.
+              </p>
+            )}
             <Link href="/contact">
               <AnimatedButton className="bg-red-600 hover:bg-red-700 text-white text-lg px-8 py-4">
                 Get In Touch
