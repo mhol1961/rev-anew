@@ -5,9 +5,9 @@ import BlogEditor from '@/components/admin/BlogEditor'
 import { supabase, getCategories, BlogPost } from '@/lib/supabase'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 async function getBlogPostForEdit(id: string): Promise<BlogPost | null> {
@@ -30,7 +30,8 @@ async function getBlogPostForEdit(id: string): Promise<BlogPost | null> {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const post = await getBlogPostForEdit(params.id)
+  const resolvedParams = await params
+  const post = await getBlogPostForEdit(resolvedParams.id)
   
   return {
     title: post ? `Edit: ${post.title} | Technology Alliance Solutions Admin` : 'Edit Blog Post',
@@ -45,8 +46,9 @@ export default async function EditBlogPost({ params }: PageProps) {
     redirect('/admin/login')
   }
 
+  const resolvedParams = await params
   const [post, categories] = await Promise.all([
-    getBlogPostForEdit(params.id),
+    getBlogPostForEdit(resolvedParams.id),
     getCategories()
   ])
 

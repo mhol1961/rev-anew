@@ -64,7 +64,7 @@ export default function EditBlogPost({ params }: PageProps) {
     }
 
     loadData()
-  }, [params.id, router])
+  }, [params, router])
 
   if (loading) {
     return (
