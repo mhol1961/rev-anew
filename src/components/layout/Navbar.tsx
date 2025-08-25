@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX } from 'react-icons/hi';
 import FinalDarkModeToggle from '../FinalDarkModeToggle';
 import AnimatedButton from '../ui/AnimatedButton';
+import SearchButton from '@/components/search/SearchButton';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -397,6 +398,7 @@ export default function Navbar() {
                 </div>
               ))}
             </div>
+            <SearchButton />
             <FinalDarkModeToggle />
             {/* Contact Button */}
             <Link href="/contact" passHref>
@@ -418,6 +420,7 @@ export default function Navbar() {
 
           {/* Mobile menu button - Enhanced for better touch targets */}
           <div className="md:hidden flex items-center space-x-2">
+            <SearchButton />
             <FinalDarkModeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

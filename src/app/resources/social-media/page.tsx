@@ -75,11 +75,7 @@ export default function SocialMediaPage() {
     }
   ];
 
-  const [selectedPlatform, setSelectedPlatform] = useState<string>('all');
-
-  const filteredPlatforms = selectedPlatform === 'all' 
-    ? socialPlatforms 
-    : socialPlatforms.filter(platform => platform.id === selectedPlatform);
+  // Filter functionality removed for now - all platforms shown by default
 
   return (
     <PageLayout>

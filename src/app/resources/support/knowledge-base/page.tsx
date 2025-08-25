@@ -103,7 +103,7 @@ export default function KnowledgeBasePage() {
   const [selectedType, setSelectedType] = useState<string>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
 
-  const categories = [...new Set(knowledgeBaseItems.map(item => item.category))];
+  // Categories will be used in future implementation
   const types = ['all', 'guide', 'tutorial', 'faq', 'troubleshooting'];
   const difficulties = ['all', 'beginner', 'intermediate', 'advanced'];
 

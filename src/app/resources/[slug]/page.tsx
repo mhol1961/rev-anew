@@ -9,8 +9,14 @@ interface ResourcePageProps {
   };
 }
 
+interface ResourceData {
+  title: string;
+  description: string;
+  content: string;
+}
+
 // Static resource data (will be replaced with CMS eventually)
-const resourceData: Record<string, any> = {
+const resourceData: Record<string, ResourceData> = {
   'events': {
     title: 'Training & Events',
     description: 'Join our training sessions and industry events to enhance your team\'s technology skills.',
