@@ -4,9 +4,9 @@ import { notFound } from 'next/navigation';
 import PageLayout from '@/components/layout/PageLayout';
 
 interface ResourcePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 interface ResourceData {
@@ -70,7 +70,8 @@ const resourceData: Record<string, ResourceData> = {
 
 // Generate metadata for the page
 export async function generateMetadata({ params }: ResourcePageProps): Promise<Metadata> {
-  const { slug } = params;
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
   const resource = resourceData[slug];
   
   if (!resource) {
@@ -86,8 +87,9 @@ export async function generateMetadata({ params }: ResourcePageProps): Promise<M
   };
 }
 
-export default function ResourcePage({ params }: ResourcePageProps) {
-  const { slug } = params;
+export default async function ResourcePage({ params }: ResourcePageProps) {
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
   const resource = resourceData[slug];
   
   if (!resource) {

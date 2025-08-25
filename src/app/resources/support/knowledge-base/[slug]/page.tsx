@@ -1146,8 +1146,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const item = knowledgeBaseContent.find(a => a.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const item = knowledgeBaseContent.find(a => a.slug === resolvedParams.slug);
   
   if (!item) {
     return {
@@ -1163,8 +1164,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function KnowledgeBaseArticlePage({ params }: { params: { slug: string } }) {
-  const item = knowledgeBaseContent.find(a => a.slug === params.slug);
+export default async function KnowledgeBaseArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const item = knowledgeBaseContent.find(a => a.slug === resolvedParams.slug);
   
   if (!item) {
     notFound();
