@@ -4,13 +4,19 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 import AdminLayout from '@/components/admin/AdminLayout'
-import BlogEditor from '@/components/admin/BlogEditor'
-import { getCategories, Category } from '@/lib/supabase'
+import JobEditor from '@/components/admin/JobEditor'
 import type { AuthUser } from '@/lib/auth'
+import { getJobPostingById, JobPosting } from '@/lib/supabase'
 
-export default function NewBlogPost() {
+interface PageProps {
+  params: {
+    id: string
+  }
+}
+
+export default function EditJobPosting({ params }: PageProps) {
   const [user, setUser] = useState<AuthUser | null>(null)
-  const [categories, setCategories] = useState<Category[]>([])
+  const [job, setJob] = useState<JobPosting | null>(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
 
@@ -26,11 +32,11 @@ export default function NewBlogPost() {
         
         setUser(currentUser)
 
-        // Fetch categories
-        const cats = await getCategories()
-        setCategories(cats)
+        // Fetch job posting from database
+        const jobPosting = await getJobPostingById(params.id)
+        setJob(jobPosting)
       } catch (error) {
-        console.error('Error loading new blog page:', error)
+        console.error('Error loading job edit page:', error)
         router.push('/admin/login')
       } finally {
         setLoading(false)
@@ -38,7 +44,7 @@ export default function NewBlogPost() {
     }
 
     loadData()
-  }, [router])
+  }, [params.id, router])
 
   if (loading) {
     return (
@@ -52,17 +58,31 @@ export default function NewBlogPost() {
     return null
   }
 
+  if (!job) {
+    return (
+      <AdminLayout>
+        <div className="text-center py-12">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Job Not Found</h2>
+          <p className="mt-2 text-gray-500 dark:text-gray-400">The job posting you're looking for doesn't exist.</p>
+          <a href="/admin/jobs" className="mt-4 inline-block text-primary-blue hover:text-blue-700">
+            ← Back to Job Postings
+          </a>
+        </div>
+      </AdminLayout>
+    )
+  }
+
   return (
     <AdminLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Create New Blog Post</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Edit Job Posting</h1>
           <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Write and publish a new blog post
+            Editing: {job.title}
           </p>
         </div>
 
-        <BlogEditor categories={categories} />
+        <JobEditor job={job} isEditing={true} />
       </div>
     </AdminLayout>
   )

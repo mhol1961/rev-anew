@@ -4,13 +4,19 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 import AdminLayout from '@/components/admin/AdminLayout'
-import BlogEditor from '@/components/admin/BlogEditor'
-import { getCategories, Category } from '@/lib/supabase'
+import CaseStudyEditor from '@/components/admin/CaseStudyEditor'
 import type { AuthUser } from '@/lib/auth'
+import { getCaseStudyById, CaseStudy } from '@/lib/supabase'
 
-export default function NewBlogPost() {
+interface PageProps {
+  params: {
+    id: string
+  }
+}
+
+export default function EditCaseStudy({ params }: PageProps) {
   const [user, setUser] = useState<AuthUser | null>(null)
-  const [categories, setCategories] = useState<Category[]>([])
+  const [caseStudy, setCaseStudy] = useState<CaseStudy | null>(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
 
@@ -26,11 +32,11 @@ export default function NewBlogPost() {
         
         setUser(currentUser)
 
-        // Fetch categories
-        const cats = await getCategories()
-        setCategories(cats)
+        // Fetch case study from database
+        const study = await getCaseStudyById(params.id)
+        setCaseStudy(study)
       } catch (error) {
-        console.error('Error loading new blog page:', error)
+        console.error('Error loading case study edit page:', error)
         router.push('/admin/login')
       } finally {
         setLoading(false)
@@ -38,7 +44,7 @@ export default function NewBlogPost() {
     }
 
     loadData()
-  }, [router])
+  }, [params.id, router])
 
   if (loading) {
     return (
@@ -52,17 +58,31 @@ export default function NewBlogPost() {
     return null
   }
 
+  if (!caseStudy) {
+    return (
+      <AdminLayout>
+        <div className="text-center py-12">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Case Study Not Found</h2>
+          <p className="mt-2 text-gray-500 dark:text-gray-400">The case study you're looking for doesn't exist.</p>
+          <a href="/admin/case-studies" className="mt-4 inline-block text-primary-blue hover:text-blue-700">
+            ← Back to Case Studies
+          </a>
+        </div>
+      </AdminLayout>
+    )
+  }
+
   return (
     <AdminLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Create New Blog Post</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Edit Case Study</h1>
           <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Write and publish a new blog post
+            Editing: {caseStudy.title}
           </p>
         </div>
 
-        <BlogEditor categories={categories} />
+        <CaseStudyEditor caseStudy={caseStudy} isEditing={true} />
       </div>
     </AdminLayout>
   )

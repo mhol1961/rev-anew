@@ -279,7 +279,7 @@ export function searchContent(query: string, filters: SearchFilters = {}): Searc
   return scoredResults
     .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score)
-    .map(({ score, ...item }) => item);
+    .map(({ score: _, ...item }) => item);
 }
 
 export function getSearchSuggestions(query: string): string[] {

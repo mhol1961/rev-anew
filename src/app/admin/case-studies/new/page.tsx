@@ -4,18 +4,16 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 import AdminLayout from '@/components/admin/AdminLayout'
-import BlogEditor from '@/components/admin/BlogEditor'
-import { getCategories, Category } from '@/lib/supabase'
+import CaseStudyEditor from '@/components/admin/CaseStudyEditor'
 import type { AuthUser } from '@/lib/auth'
 
-export default function NewBlogPost() {
+export default function NewCaseStudy() {
   const [user, setUser] = useState<AuthUser | null>(null)
-  const [categories, setCategories] = useState<Category[]>([])
   const [loading, setLoading] = useState(true)
   const router = useRouter()
 
   useEffect(() => {
-    const loadData = async () => {
+    const checkAuth = async () => {
       try {
         const currentUser = await getCurrentUser()
         
@@ -25,19 +23,15 @@ export default function NewBlogPost() {
         }
         
         setUser(currentUser)
-
-        // Fetch categories
-        const cats = await getCategories()
-        setCategories(cats)
       } catch (error) {
-        console.error('Error loading new blog page:', error)
+        console.error('Error loading new case study page:', error)
         router.push('/admin/login')
       } finally {
         setLoading(false)
       }
     }
 
-    loadData()
+    checkAuth()
   }, [router])
 
   if (loading) {
@@ -56,13 +50,13 @@ export default function NewBlogPost() {
     <AdminLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Create New Blog Post</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Create New Case Study</h1>
           <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Write and publish a new blog post
+            Share a client success story
           </p>
         </div>
 
-        <BlogEditor categories={categories} />
+        <CaseStudyEditor />
       </div>
     </AdminLayout>
   )
