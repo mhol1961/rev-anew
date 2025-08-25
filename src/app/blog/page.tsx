@@ -67,7 +67,7 @@ export default async function BlogPage() {
             {/* Featured Posts Grid */}
             {featuredPosts.length > 0 ? (
               <div className="grid md:grid-cols-2 gap-8">
-                {featuredPosts.map((post, index) => (
+                {featuredPosts.map((post) => (
                   <div
                     key={post.id}
                     className="bg-white dark:bg-primary-slate/40 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col hover:-translate-y-1 transition-transform duration-200"
@@ -171,7 +171,7 @@ export default async function BlogPage() {
             {/* Article Grid */}
             {publishedPosts.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {publishedPosts.map((post, index) => (
+                {publishedPosts.map((post) => (
                   <div
                     key={post.id}
                     className="bg-white dark:bg-primary-navy/50 rounded-xl overflow-hidden shadow-md border border-gray-200 dark:border-gray-700 flex flex-col h-full hover:-translate-y-1 transition-transform duration-200"
