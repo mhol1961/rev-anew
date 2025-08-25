@@ -9,9 +9,9 @@ import type { AuthUser } from '@/lib/auth'
 import { getJobPostingById, JobPosting } from '@/lib/supabase'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export default function EditJobPosting({ params }: PageProps) {
@@ -23,6 +23,7 @@ export default function EditJobPosting({ params }: PageProps) {
   useEffect(() => {
     const loadData = async () => {
       try {
+        const resolvedParams = await params
         const currentUser = await getCurrentUser()
         
         if (!currentUser || currentUser.role !== 'admin') {
@@ -33,7 +34,7 @@ export default function EditJobPosting({ params }: PageProps) {
         setUser(currentUser)
 
         // Fetch job posting from database
-        const jobPosting = await getJobPostingById(params.id)
+        const jobPosting = await getJobPostingById(resolvedParams.id)
         setJob(jobPosting)
       } catch (error) {
         console.error('Error loading job edit page:', error)
@@ -44,7 +45,7 @@ export default function EditJobPosting({ params }: PageProps) {
     }
 
     loadData()
-  }, [params.id, router])
+  }, [params, router])
 
   if (loading) {
     return (

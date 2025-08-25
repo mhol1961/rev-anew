@@ -9,9 +9,9 @@ import { supabase, getCategories, BlogPost, Category } from '@/lib/supabase'
 import type { AuthUser } from '@/lib/auth'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export default function EditBlogPost({ params }: PageProps) {
@@ -24,6 +24,7 @@ export default function EditBlogPost({ params }: PageProps) {
   useEffect(() => {
     const loadData = async () => {
       try {
+        const resolvedParams = await params
         const currentUser = await getCurrentUser()
         
         if (!currentUser || currentUser.role !== 'admin') {
@@ -41,7 +42,7 @@ export default function EditBlogPost({ params }: PageProps) {
             category:categories!fk_blog_posts_category(*),
             author:users(*)
           `)
-          .eq('id', params.id)
+          .eq('id', resolvedParams.id)
           .single()
 
         if (postError || !postData) {

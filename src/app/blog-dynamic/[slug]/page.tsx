@@ -9,9 +9,9 @@ import AnimatedButton from '@/components/ui/AnimatedButton';
 import { getBlogPostBySlug, getBlogPosts } from '@/lib/supabase';
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export const revalidate = 3600; // Revalidate every hour
@@ -27,7 +27,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for each blog post
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = await getBlogPostBySlug(params.slug);
+  const resolvedParams = await params;
+  const post = await getBlogPostBySlug(resolvedParams.slug);
   
   if (!post) {
     return {
@@ -51,7 +52,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getBlogPostBySlug(params.slug);
+  const resolvedParams = await params;
+  const post = await getBlogPostBySlug(resolvedParams.slug);
   
   if (!post) {
     notFound();

@@ -9,9 +9,9 @@ import type { AuthUser } from '@/lib/auth'
 import { getCaseStudyById, CaseStudy } from '@/lib/supabase'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export default function EditCaseStudy({ params }: PageProps) {
@@ -23,6 +23,7 @@ export default function EditCaseStudy({ params }: PageProps) {
   useEffect(() => {
     const loadData = async () => {
       try {
+        const resolvedParams = await params
         const currentUser = await getCurrentUser()
         
         if (!currentUser || currentUser.role !== 'admin') {
@@ -33,7 +34,7 @@ export default function EditCaseStudy({ params }: PageProps) {
         setUser(currentUser)
 
         // Fetch case study from database
-        const study = await getCaseStudyById(params.id)
+        const study = await getCaseStudyById(resolvedParams.id)
         setCaseStudy(study)
       } catch (error) {
         console.error('Error loading case study edit page:', error)
@@ -44,7 +45,7 @@ export default function EditCaseStudy({ params }: PageProps) {
     }
 
     loadData()
-  }, [params.id, router])
+  }, [params, router])
 
   if (loading) {
     return (
