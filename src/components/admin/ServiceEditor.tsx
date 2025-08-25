@@ -75,8 +75,9 @@ export default function ServiceEditor({ service, isEditing = false }: ServiceEdi
       }
 
       router.push('/admin/services')
-    } catch (err: any) {
-      setError(err.message || 'Failed to save service')
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to save service'
+      setError(errorMessage)
     } finally {
       setLoading(false)
     }

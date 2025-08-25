@@ -92,8 +92,9 @@ export default function BlogEditor({ categories, post, isEditing = false }: Blog
       }
 
       router.push('/admin/blog')
-    } catch (err: any) {
-      setError(err.message || 'Failed to save blog post')
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to save blog post'
+      setError(errorMessage)
     } finally {
       setLoading(false)
     }

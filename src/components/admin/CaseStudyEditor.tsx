@@ -84,8 +84,9 @@ export default function CaseStudyEditor({ caseStudy, isEditing = false }: CaseSt
       }
 
       router.push('/admin/case-studies')
-    } catch (err: any) {
-      setError(err.message || 'Failed to save case study')
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to save case study'
+      setError(errorMessage)
     } finally {
       setLoading(false)
     }

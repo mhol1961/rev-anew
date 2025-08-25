@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { FaCalendarAlt, FaUser, FaTag } from 'react-icons/fa';
+import { FaCalendarAlt, FaUser } from 'react-icons/fa';
 import PageLayout from '@/components/layout/PageLayout';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import { getBlogPosts, getCategories } from '@/lib/supabase';
@@ -29,7 +28,7 @@ export default async function BlogPage() {
     });
   };
 
-  const getAuthorName = (post: any) => {
+  const getAuthorName = (post: { author?: { first_name?: string; last_name?: string } }) => {
     if (post.author?.first_name && post.author?.last_name) {
       return `${post.author.first_name} ${post.author.last_name}`;
     }

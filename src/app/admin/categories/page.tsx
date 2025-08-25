@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
 import { getCurrentUser } from '@/lib/auth'
 import AdminLayout from '@/components/admin/AdminLayout'
 import { supabase, Category } from '@/lib/supabase'

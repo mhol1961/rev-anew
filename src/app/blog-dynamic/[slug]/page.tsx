@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaCalendarAlt, FaUser, FaTag, FaChevronLeft } from 'react-icons/fa';
+import { FaCalendarAlt, FaUser, FaChevronLeft } from 'react-icons/fa';
 import PageLayout from '@/components/layout/PageLayout';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
@@ -69,7 +69,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     });
   };
 
-  const getAuthorName = (post: any) => {
+  const getAuthorName = (post: { author?: { first_name?: string; last_name?: string } }) => {
     if (post.author?.first_name && post.author?.last_name) {
       return `${post.author.first_name} ${post.author.last_name}`;
     }

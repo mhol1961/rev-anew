@@ -80,8 +80,9 @@ export default function JobEditor({ job, isEditing = false }: JobEditorProps) {
       }
 
       router.push('/admin/jobs')
-    } catch (err: any) {
-      setError(err.message || 'Failed to save job posting')
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to save job posting'
+      setError(errorMessage)
     } finally {
       setLoading(false)
     }
