@@ -6,7 +6,7 @@ import { FaCalendarAlt, FaUser, FaChevronLeft } from 'react-icons/fa';
 import PageLayout from '@/components/layout/PageLayout';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
-import { getBlogPostBySlug, getBlogPosts } from '@/lib/supabase';
+import { getBlogPostBySlug, getBlogPosts, User } from '@/lib/supabase';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -71,7 +71,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     });
   };
 
-  const getAuthorName = (post: { author?: { first_name?: string; last_name?: string } }) => {
+  const getAuthorName = (post: { author?: User }) => {
     if (post.author?.first_name && post.author?.last_name) {
       return `${post.author.first_name} ${post.author.last_name}`;
     }

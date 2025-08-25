@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FaCalendarAlt, FaUser } from 'react-icons/fa';
 import PageLayout from '@/components/layout/PageLayout';
 import AnimatedSection from '@/components/ui/AnimatedSection';
-import { getBlogPosts, getCategories } from '@/lib/supabase';
+import { getBlogPosts, getCategories, User } from '@/lib/supabase';
 
 export const metadata: Metadata = {
   title: 'Blog - Technology Insights & Best Practices | Technology Alliance Solutions',
@@ -28,7 +28,7 @@ export default async function BlogPage() {
     });
   };
 
-  const getAuthorName = (post: { author?: { first_name?: string; last_name?: string } }) => {
+  const getAuthorName = (post: { author?: User }) => {
     if (post.author?.first_name && post.author?.last_name) {
       return `${post.author.first_name} ${post.author.last_name}`;
     }
