@@ -1,10 +1,23 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+// Defensive environment variable loading for Vercel
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+
+// Log environment variable status during build
+if (typeof window === 'undefined') {
+  console.log('Build Environment Check:')
+  console.log('NEXT_PUBLIC_SUPABASE_URL:', supabaseUrl ? 'SET' : 'NOT SET')
+  console.log('NEXT_PUBLIC_SUPABASE_ANON_KEY:', supabaseAnonKey ? 'SET (hidden)' : 'NOT SET')
+}
+
+// For build time, use placeholder values if env vars are missing
+// This allows the build to complete
+const finalUrl = supabaseUrl || 'https://placeholder.supabase.co'
+const finalKey = supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsYWNlaG9sZGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDYyMzkwMjIsImV4cCI6MTk2MTgxNTAyMn0.placeholder'
 
 // Client for public/read operations
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export const supabase = createClient(finalUrl, finalKey)
 
 // Types for database tables
 export interface BlogPost {
