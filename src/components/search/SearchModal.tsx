@@ -31,10 +31,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   // Handle search with debouncing
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
+    const timeoutId = setTimeout(async () => {
       if (query.trim() || Object.keys(filters).length > 0) {
         setIsLoading(true);
-        const searchResults = searchContent(query, filters);
+        const searchResults = await searchContent(query, filters);
         setResults(searchResults);
         setIsLoading(false);
       } else {
@@ -43,7 +43,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
       // Update suggestions
       if (query.length >= 2) {
-        const newSuggestions = getSearchSuggestions(query);
+        const newSuggestions = await getSearchSuggestions(query);
         setSuggestions(newSuggestions);
         setShowSuggestions(newSuggestions.length > 0);
       } else {

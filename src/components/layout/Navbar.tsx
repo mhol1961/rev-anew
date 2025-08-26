@@ -146,7 +146,7 @@ export default function Navbar() {
 
     // Apply initial style directly if dark mode is detected on mount
     if (initialDarkMode && navRef.current) {
-      navRef.current.style.backgroundColor = '#1e3d8f';
+      navRef.current.style.backgroundColor = '#0D2253';
     }
     // Note: Mobile menu style applied when it renders/updates below
 
@@ -158,11 +158,11 @@ export default function Navbar() {
           setIsDarkMode(currentDarkMode);
           // Apply/remove style directly when dark mode changes
           if (navRef.current) {
-            navRef.current.style.backgroundColor = currentDarkMode ? '#1e3d8f' : '';
+            navRef.current.style.backgroundColor = currentDarkMode ? '#0D2253' : '';
           }
           // Apply/remove style for mobile menu if it exists
           if (mobileMenuRef.current) {
-             mobileMenuRef.current.style.backgroundColor = currentDarkMode ? '#1e3d8f' : '';
+             mobileMenuRef.current.style.backgroundColor = currentDarkMode ? '#0D2253' : '';
           }
         }
       });
@@ -195,12 +195,12 @@ export default function Navbar() {
   }, []);
 
   // Avoid rendering logo based on theme until mounted to prevent hydration mismatch
-  const logoSrc = mounted && isDarkMode ? "/images/TAS_logo.png" : "/images/TAS_LOGO3.png";
+  const logoSrc = mounted && isDarkMode ? "/images/TAS_logo2.png" : "/images/TAS_LOGO3.png";
 
   // Effect to apply style to mobile menu when it appears/dark mode changes
   useEffect(() => {
     if (mounted && isMobileMenuOpen && mobileMenuRef.current) {
-      mobileMenuRef.current.style.backgroundColor = isDarkMode ? '#1e3d8f' : '';
+      mobileMenuRef.current.style.backgroundColor = isDarkMode ? '#0D2253' : '';
     }
   }, [isMobileMenuOpen, isDarkMode, mounted]);
 
@@ -209,9 +209,12 @@ export default function Navbar() {
       ref={navRef} // Assign ref to nav element
       className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
         isScrolled 
-          ? 'shadow-lg backdrop-blur-sm bg-white/95 dark:bg-primary-darkblue/95' 
+          ? 'shadow-lg backdrop-blur-sm bg-white/95' 
           : 'shadow-md'
       }`}
+      style={{
+        backgroundColor: mounted && isDarkMode ? (isScrolled ? '#0D2253f2' : '#0D2253') : undefined
+      }}
       // Removed inline style, now controlled by useEffect
     >
       {/* Gradient background for light mode only */}

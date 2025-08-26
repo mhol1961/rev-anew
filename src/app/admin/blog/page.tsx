@@ -39,14 +39,13 @@ export default function BlogManagement() {
         // Fetch blog posts
         const { data, error } = await supabase
           .from('blog_posts')
-          .select(`
-            *,
-            category:categories!fk_blog_posts_category(*),
-            author:users(*)
-          `)
+          .select('*')
           .order('created_at', { ascending: false })
 
-        if (!error && data) {
+        if (error) {
+          console.error('Error fetching blog posts:', error)
+        } else if (data) {
+          console.log('Fetched blog posts:', data.length)
           setBlogPosts(data as BlogPost[])
         }
       } catch (error) {

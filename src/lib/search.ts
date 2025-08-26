@@ -1,3 +1,5 @@
+import { getTechnologies, getCaseStudies, getJobListings, getBlogPosts, getSupportArticles, getServices } from './supabase';
+
 // Search functionality for the website
 export interface SearchResult {
   id: string;
@@ -19,184 +21,131 @@ export interface SearchFilters {
   dateRange?: 'week' | 'month' | 'year' | 'all';
 }
 
-// Mock search index - In production, this would be replaced with a proper search engine
-const searchIndex: SearchResult[] = [
-  // Blog Articles
-  {
-    id: 'blog-1',
-    title: 'AI and CRM: Revolutionizing Customer Relationship Management',
-    excerpt: 'Discover how artificial intelligence is transforming CRM systems, making them smarter, more efficient, and incredibly powerful.',
-    url: '/blog/ai-crm-capabilities',
-    type: 'blog',
-    category: 'AI & Technology',
-    tags: ['AI', 'CRM', 'Automation', 'Customer Management'],
-    lastUpdated: '2025-01-20',
-    readTime: '8 min'
-  },
-  {
-    id: 'blog-2', 
-    title: 'CRM Implementation Best Practices: A Complete Guide',
-    excerpt: 'Learn the essential best practices for successful CRM implementation, from planning to user adoption.',
-    url: '/blog/crm-implementation-best-practices',
-    type: 'blog',
-    category: 'CRM',
-    tags: ['CRM', 'Implementation', 'Best Practices'],
-    lastUpdated: '2025-01-18',
-    readTime: '12 min'
-  },
-  {
-    id: 'blog-3',
-    title: 'Data Migration Strategies for Business Success',
-    excerpt: 'Comprehensive strategies for successful data migration during system implementations.',
-    url: '/blog/data-migration-strategies', 
-    type: 'blog',
-    category: 'Data Management',
-    tags: ['Data Migration', 'Implementation', 'Strategy'],
-    lastUpdated: '2025-01-16',
-    readTime: '10 min'
-  },
-  {
-    id: 'blog-4',
-    title: 'Email Marketing Automation Strategies That Work',
-    excerpt: 'Discover proven email marketing automation strategies that drive engagement and conversions.',
-    url: '/blog/email-marketing-automation-strategies',
-    type: 'blog', 
-    category: 'Marketing',
-    tags: ['Email Marketing', 'Automation', 'Marketing Strategy'],
-    lastUpdated: '2025-01-14',
-    readTime: '9 min'
-  },
 
-  // Support Articles
-  {
-    id: 'support-1',
-    title: 'Getting Started with CRM Implementation',
-    excerpt: 'A comprehensive guide to planning and executing your first CRM implementation project.',
-    url: '/resources/support/articles/getting-started-crm-implementation',
-    type: 'article',
-    category: 'CRM',
-    tags: ['CRM', 'Implementation', 'Getting Started'],
-    lastUpdated: '2025-01-20',
-    readTime: '8 min'
-  },
-  {
-    id: 'support-2',
-    title: 'Marketing Automation Best Practices',
-    excerpt: 'Learn how to optimize your marketing automation workflows for maximum efficiency and ROI.',
-    url: '/resources/support/articles/marketing-automation-best-practices',
-    type: 'article',
-    category: 'Marketing',
-    tags: ['Marketing Automation', 'Best Practices', 'Workflows'],
-    lastUpdated: '2025-01-18', 
-    readTime: '12 min'
-  },
-  {
-    id: 'support-3',
-    title: 'Data Migration Strategies and Tips',
-    excerpt: 'Essential strategies for successful data migration during system implementations.',
-    url: '/resources/support/articles/data-migration-strategies',
-    type: 'article',
-    category: 'Data Management',
-    tags: ['Data Migration', 'Implementation', 'Planning'],
-    lastUpdated: '2025-01-15',
-    readTime: '15 min'
-  },
+// Build dynamic search index from Supabase data
+async function buildSearchIndex(): Promise<SearchResult[]> {
+  const searchIndex: SearchResult[] = [];
 
-  // Knowledge Base
-  {
-    id: 'kb-1',
-    title: 'CRM Setup and Configuration Guide',
-    excerpt: 'Step-by-step instructions for setting up and configuring your CRM system.',
-    url: '/resources/support/knowledge-base/crm-setup-configuration-guide',
-    type: 'knowledge-base',
-    category: 'CRM',
-    difficulty: 'beginner',
-    tags: ['CRM', 'Setup', 'Configuration'],
-    lastUpdated: '2025-01-22',
-    readTime: '15 min'
-  },
-  {
-    id: 'kb-2',
-    title: 'Email Marketing Campaign Setup',
-    excerpt: 'Complete tutorial on creating and launching effective email marketing campaigns.',
-    url: '/resources/support/knowledge-base/email-marketing-campaign-setup',
-    type: 'knowledge-base',
-    category: 'Marketing',
-    difficulty: 'intermediate',
-    tags: ['Email Marketing', 'Campaigns', 'Marketing Automation'],
-    lastUpdated: '2025-01-20',
-    readTime: '20 min'
-  },
-  {
-    id: 'kb-3',
-    title: 'System Integration Troubleshooting',
-    excerpt: 'Solutions to common integration issues and error messages.',
-    url: '/resources/support/knowledge-base/system-integration-troubleshooting',
-    type: 'knowledge-base',
-    category: 'Integration',
-    difficulty: 'advanced',
-    tags: ['Integration', 'Troubleshooting', 'Technical Support'],
-    lastUpdated: '2025-01-15',
-    readTime: '25 min'
-  },
+  try {
+    // Get dynamic content from Supabase
+    const [technologies, caseStudies, jobListings, blogPosts, supportArticles, services] = await Promise.all([
+      getTechnologies(),
+      getCaseStudies(),
+      getJobListings(),
+      getBlogPosts(),
+      getSupportArticles(),
+      getServices()
+    ]);
 
-  // Services  
-  {
-    id: 'service-1',
-    title: 'CRM Solutions & Implementation',
-    excerpt: 'Comprehensive CRM solutions tailored to your business needs with expert implementation and ongoing support.',
-    url: '/services/crm',
-    type: 'service',
-    category: 'CRM Solutions',
-    tags: ['CRM', 'Implementation', 'Salesforce', 'HubSpot']
-  },
-  {
-    id: 'service-2',
-    title: 'Marketing Automation Services',
-    excerpt: 'Streamline your marketing efforts with powerful automation tools and strategies.',
-    url: '/services/marketing-automation',
-    type: 'service',
-    category: 'Marketing Solutions', 
-    tags: ['Marketing Automation', 'Email Marketing', 'Lead Generation']
-  },
-  {
-    id: 'service-3',
-    title: 'System Integration Services',
-    excerpt: 'Connect your business systems for seamless data flow and improved efficiency.',
-    url: '/services/integration',
-    type: 'service',
-    category: 'Integration Solutions',
-    tags: ['Integration', 'API', 'Data Synchronization']
-  },
+    // Add technologies to search index
+    technologies.forEach(tech => {
+      searchIndex.push({
+        id: tech.id,
+        title: tech.title,
+        excerpt: tech.description,
+        url: `/services/technologies/${tech.slug}`,
+        type: 'service',
+        category: 'Technology Platforms',
+        tags: [
+          ...(tech.feature_contact_management ? ['Contact Management'] : []),
+          ...(tech.feature_email_marketing ? ['Email Marketing'] : []),
+          ...(tech.feature_lead_management ? ['Lead Management'] : []),
+          ...(tech.feature_sales_automation ? ['Sales Automation'] : []),
+          ...(tech.feature_marketing_automation_workflows ? ['Marketing Automation'] : []),
+          ...(tech.feature_free_tier ? ['Free Tier'] : []),
+        ],
+        lastUpdated: tech.updated_at?.split('T')[0],
+      });
+    });
 
-  // Case Studies (placeholder)
-  {
-    id: 'case-1',
-    title: 'Manufacturing Company CRM Transformation',
-    excerpt: '300% increase in sales productivity through comprehensive CRM implementation.',
-    url: '/case-studies/manufacturing-crm-transformation',
-    type: 'case-study',
-    category: 'Manufacturing',
-    tags: ['CRM', 'Manufacturing', 'Sales Productivity']
-  },
+    // Add case studies to search index
+    caseStudies.forEach(study => {
+      searchIndex.push({
+        id: study.id,
+        title: study.title,
+        excerpt: study.challenge || study.solution || 'Learn about this successful technology implementation.',
+        url: `/case-studies/${study.slug}`,
+        type: 'case-study',
+        category: study.industry || undefined,
+        tags: Array.isArray(study.technologies_used) ? study.technologies_used : (study.technologies_used ? [study.technologies_used] : []),
+        lastUpdated: study.updated_at?.split('T')[0],
+      });
+    });
 
-  // Job Listings
-  {
-    id: 'job-1',
-    title: 'Senior CRM Consultant',
-    excerpt: 'Join our team as a Senior CRM Consultant and help businesses transform their customer relationships.',
-    url: '/careers/senior-crm-consultant',
-    type: 'job',
-    category: 'Consulting',
-    tags: ['CRM', 'Consulting', 'Senior Level']
+    // Add job listings to search index
+    jobListings.forEach(job => {
+      searchIndex.push({
+        id: job.id,
+        title: job.title,
+        excerpt: job.description || 'Join our team and help businesses transform their technology.',
+        url: `/careers/${job.slug}`,
+        type: 'job',
+        category: job.department,
+        tags: [job.department, job.type, job.location].filter(Boolean),
+        lastUpdated: job.updated_at?.split('T')[0],
+      });
+    });
+
+    // Add blog posts to search index
+    blogPosts.forEach(post => {
+      searchIndex.push({
+        id: post.id,
+        title: post.title,
+        excerpt: post.excerpt || 'Read our latest insights on technology and business solutions.',
+        url: `/blog/${post.slug}`,
+        type: 'blog',
+        category: post.category?.name || 'Technology',
+        tags: [], // Tags would need to be fetched separately in a more complex implementation
+        lastUpdated: post.updated_at?.split('T')[0],
+        readTime: '5 min', // Could be calculated or stored
+      });
+    });
+
+    // Add support articles to search index
+    supportArticles.forEach(article => {
+      searchIndex.push({
+        id: article.id,
+        title: article.title,
+        excerpt: article.excerpt,
+        url: `/resources/support/${article.type === 'knowledge-base' ? 'knowledge-base' : 'articles'}/${article.slug}`,
+        type: article.type === 'knowledge-base' ? 'knowledge-base' : 'article',
+        category: article.category || undefined,
+        tags: article.tags || [],
+        lastUpdated: article.updated_at?.split('T')[0],
+        readTime: article.read_time || undefined,
+        difficulty: article.difficulty || undefined,
+      });
+    });
+
+    // Add services to search index
+    services.forEach(service => {
+      searchIndex.push({
+        id: service.id,
+        title: service.title,
+        excerpt: service.excerpt || service.content?.substring(0, 200) || 'Learn about our professional services.',
+        url: `/services/${service.slug}`,
+        type: 'service',
+        category: 'Professional Services',
+        tags: [], // Could be extracted from content or stored separately
+        lastUpdated: service.updated_at?.split('T')[0],
+      });
+    });
+
+  } catch (error) {
+    console.error('Error building search index:', error);
   }
-];
 
-export function searchContent(query: string, filters: SearchFilters = {}): SearchResult[] {
+  return searchIndex;
+}
+
+
+export async function searchContent(query: string, filters: SearchFilters = {}): Promise<SearchResult[]> {
   if (!query.trim() && Object.keys(filters).length === 0) {
     return [];
   }
 
+  // Build search index with current Supabase data
+  const searchIndex = await buildSearchIndex();
   let results = [...searchIndex];
 
   // Apply filters first
@@ -280,19 +229,19 @@ export function searchContent(query: string, filters: SearchFilters = {}): Searc
     .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score)
     .map((item) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { score, ...result } = item;
       return result;
     });
 }
 
-export function getSearchSuggestions(query: string): string[] {
+export async function getSearchSuggestions(query: string): Promise<string[]> {
   if (!query.trim() || query.length < 2) {
     return [];
   }
 
   const suggestions = new Set<string>();
   const queryLower = query.toLowerCase();
+  const searchIndex = await buildSearchIndex();
 
   searchIndex.forEach(item => {
     // Add title suggestions
@@ -329,8 +278,9 @@ export function getPopularSearches(): string[] {
   ];
 }
 
-export function getSearchCategories(): { value: string; label: string; count: number }[] {
+export async function getSearchCategories(): Promise<{ value: string; label: string; count: number }[]> {
   const categories = new Map<string, number>();
+  const searchIndex = await buildSearchIndex();
   
   searchIndex.forEach(item => {
     if (item.category) {
@@ -348,8 +298,9 @@ export function getSearchCategories(): { value: string; label: string; count: nu
   ].sort((a, b) => b.count - a.count);
 }
 
-export function getSearchTypes(): { value: string; label: string; count: number }[] {
+export async function getSearchTypes(): Promise<{ value: string; label: string; count: number }[]> {
   const types = new Map<string, number>();
+  const searchIndex = await buildSearchIndex();
   
   searchIndex.forEach(item => {
     types.set(item.type, (types.get(item.type) || 0) + 1);

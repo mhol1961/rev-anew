@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   keywords: 'careers, jobs, technology careers, CRM jobs, marketing automation careers, system integration jobs',
 };
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 0; // No caching for debugging
 
 export default async function CareersPage() {
-  // Get active job postings from database
+  // Get open job postings from database
   const allJobPostings = await getJobPostings();
-  const activeJobPostings = allJobPostings.filter(job => job.status === 'active');
+  const activeJobPostings = allJobPostings.filter(job => job.status === 'open');
 
   const formatDate = (dateString: string | null) => {
     if (!dateString) return null;

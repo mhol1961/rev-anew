@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase, Service } from '@/lib/supabase'
+import ImageUpload from './ImageUpload'
 
 interface ServiceEditorProps {
   service?: Service
@@ -145,19 +146,11 @@ export default function ServiceEditor({ service, isEditing = false }: ServiceEdi
                 />
               </div>
 
-              <div>
-                <label htmlFor="featured_image" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Featured Image URL
-                </label>
-                <input
-                  type="url"
-                  id="featured_image"
-                  className="mt-1 focus:ring-primary-blue focus:border-primary-blue block w-full shadow-sm sm:text-sm border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  value={formData.featured_image}
-                  onChange={(e) => setFormData(prev => ({ ...prev, featured_image: e.target.value }))}
-                  placeholder="https://example.com/image.jpg"
-                />
-              </div>
+              <ImageUpload
+                value={formData.featured_image}
+                onChange={(imageUrl) => setFormData(prev => ({ ...prev, featured_image: imageUrl }))}
+                label="Featured Image"
+              />
 
               <div>
                 <label htmlFor="icon" className="block text-sm font-medium text-gray-700 dark:text-gray-300">

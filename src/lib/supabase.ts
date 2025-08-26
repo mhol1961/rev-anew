@@ -127,6 +127,26 @@ export interface JobPosting {
   updated_at: string
 }
 
+export interface SupportArticle {
+  id: string
+  slug: string
+  title: string
+  excerpt: string
+  content: string | null
+  category: string | null
+  type: 'article' | 'knowledge-base'
+  difficulty: 'beginner' | 'intermediate' | 'advanced' | null
+  tags: string[]
+  read_time: string | null
+  status: string
+  published_at: string | null
+  seo_title: string | null
+  seo_description: string | null
+  seo_keywords: string | null
+  created_at: string
+  updated_at: string
+}
+
 // Database operations
 export const getBlogPosts = async (limit?: number) => {
   let query = supabase
@@ -311,3 +331,140 @@ export const getCaseStudyById = async (id: string) => {
 
   return data as CaseStudy
 }
+
+export const getCaseStudyBySlug = async (slug: string) => {
+  const { data, error } = await supabase
+    .from('case_studies')
+    .select('*')
+    .eq('slug', slug)
+    .eq('status', 'published')
+    .single()
+
+  if (error) {
+    console.error('Error fetching case study by slug:', error)
+    return null
+  }
+
+  return data as CaseStudy
+}
+
+// Technology operations
+export interface Technology {
+  id: string
+  slug: string
+  title: string
+  description: string
+  pros: string[]
+  cons: string[]
+  cost_factors: string[]
+  image_url: string | null
+  cost_summary: string
+  feature_contact_management: boolean
+  feature_lead_management: boolean
+  feature_opportunity_management: boolean
+  feature_sales_pipeline_visualization: boolean
+  feature_sales_forecasting: boolean
+  feature_custom_objects: boolean
+  feature_email_marketing: boolean
+  feature_landing_pages: boolean
+  feature_lead_scoring: boolean
+  feature_marketing_automation_workflows: boolean
+  feature_social_media_integration: boolean
+  feature_workflow_automation: boolean
+  feature_sales_automation: boolean
+  feature_customer_service_tools: boolean
+  feature_standard_reporting: boolean
+  feature_custom_reporting: boolean
+  feature_dashboards: boolean
+  feature_api_access: boolean
+  feature_app_marketplace: boolean
+  feature_mobile_app: boolean
+  feature_free_tier: boolean
+  feature_dedicated_support_options: boolean
+  feature_gdpr_tools: boolean
+  status: string
+  published_at: string | null
+  seo_title: string | null
+  seo_description: string | null
+  seo_keywords: string | null
+  created_at: string
+  updated_at: string
+}
+
+export const getTechnologies = async (limit?: number) => {
+  let query = supabase
+    .from('technologies')
+    .select('*')
+    .eq('status', 'published')
+    .order('title')
+
+  if (limit) {
+    query = query.limit(limit)
+  }
+
+  const { data, error } = await query
+
+  if (error) {
+    console.error('Error fetching technologies:', error)
+    return []
+  }
+
+  return data as Technology[]
+}
+
+export const getTechnologyBySlug = async (slug: string) => {
+  const { data, error } = await supabase
+    .from('technologies')
+    .select('*')
+    .eq('slug', slug)
+    .eq('status', 'published')
+    .single()
+
+  if (error) {
+    console.error('Error fetching technology by slug:', error)
+    return null
+  }
+
+  return data as Technology
+}
+
+// Support Articles operations
+export const getSupportArticles = async (limit?: number) => {
+  let query = supabase
+    .from('support_articles')
+    .select('*')
+    .eq('status', 'published')
+    .order('published_at', { ascending: false })
+
+  if (limit) {
+    query = query.limit(limit)
+  }
+
+  const { data, error } = await query
+
+  if (error) {
+    console.error('Error fetching support articles:', error)
+    return []
+  }
+
+  return data as SupportArticle[]
+}
+
+export const getSupportArticleBySlug = async (slug: string) => {
+  const { data, error } = await supabase
+    .from('support_articles')
+    .select('*')
+    .eq('slug', slug)
+    .eq('status', 'published')
+    .single()
+
+  if (error) {
+    console.error('Error fetching support article:', error)
+    return null
+  }
+
+  return data as SupportArticle
+}
+
+// Alias functions for backward compatibility with search system
+export const getJobListings = getJobPostings

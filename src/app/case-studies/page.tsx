@@ -1,92 +1,64 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { FaBuilding, FaChartLine, FaUsers, FaLaptopCode } from 'react-icons/fa';
 import PageLayout from '@/components/layout/PageLayout';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
+import { getCaseStudies } from '@/lib/supabase';
 
-// Define case studies
-// Updated image references below
-const caseStudies = [
-  {
-    id: 'enterprise-crm-implementation',
-    title: 'Enterprise CRM Implementation',
-    client: 'Global Manufacturing Corporation',
-    industry: 'Manufacturing',
-    challenge: 'Fragmented customer data across multiple systems leading to inefficient sales processes and poor customer visibility.',
-    solution: 'Implemented a centralized Salesforce CRM system with custom integrations to ERP and legacy systems.',
-    results: [
-      '42% increase in sales productivity',
-      '360-degree customer visibility',
-      'Streamlined cross-departmental workflows',
-      'Reduced lead response time by 68%'
-    ],
-    image: '/images/photos/Two_People_looking_at_screen1.png', // Using existing image
-    icon: FaBuilding,
-    bgColor: 'bg-blue-100 dark:bg-blue-900/30',
-    iconColor: 'text-blue-600 dark:text-blue-400'
-  },
-  {
-    id: 'marketing-automation-overhaul',
-    title: 'Marketing Automation Overhaul',
-    client: 'TechGrowth Solutions',
-    industry: 'SaaS Technology',
-    challenge: 'Manual marketing processes hindering growth with limited ability to scale campaigns and analyze performance effectively.',
-    solution: 'Deployed HubSpot Marketing Hub with custom lead scoring, automated nurture workflows, and analytics dashboards.',
-    results: [
-      '89% increase in marketing qualified leads',
-      '67% reduction in campaign setup time',
-      'Improved lead-to-customer conversion rate by 38%',
-      'Granular marketing ROI attribution'
-    ],
-    image: '/images/photos/TransformYourBusinessAutomation.png?v=2', // Added cache buster
-    icon: FaChartLine,
-    bgColor: 'bg-green-100 dark:bg-green-900/30',
-    iconColor: 'text-green-600 dark:text-green-400'
-  },
-  {
-    id: 'customer-service-transformation',
-    title: 'Customer Service Transformation',
-    client: 'Regional Healthcare Provider',
-    industry: 'Healthcare',
-    challenge: 'Disconnected patient communication channels and slow response times affecting care quality and patient satisfaction.',
-    solution: 'Implemented Zendesk integrated with custom patient portal and telemedicine systems.',
-    results: [
-      'First response time reduced by 76%',
-      'Patient satisfaction increased by 47%',
-      'Support staff efficiency improved by 58%',
-      'Successful handling of 3,200+ daily inquiries'
-    ],
-    // Force unique image reference with timestamp
-    image: `/images/photos/cust_service_trans.png?t=${Date.now()}`,
-    icon: FaUsers,
-    bgColor: 'bg-purple-100 dark:bg-purple-900/30',
-    iconColor: 'text-purple-600 dark:text-purple-400'
-  },
-  {
-    id: 'systems-integration-project',
-    title: 'Cross-Platform Systems Integration',
-    client: 'Financial Services Corporation',
-    industry: 'Financial Services',
-    challenge: 'Siloed data across CRM, ERP, and proprietary trading platforms causing data discrepancies and redundant processes.',
-    solution: 'Designed and implemented a comprehensive integration architecture with real-time data synchronization.',
-    results: [
-      'Eliminated 14+ hours of weekly manual data reconciliation',
-      'Achieved 99.98% data accuracy across systems',
-      'Reduced client onboarding time by 72%',
-      'Enabled real-time compliance reporting'
-    ],
-    image: '/images/photos/Table_with_laptops.png?v=2', // Added cache buster
-    icon: FaLaptopCode,
-    bgColor: 'bg-orange-100 dark:bg-orange-900/30',
-    iconColor: 'text-orange-600 dark:text-orange-400'
+// Helper function to get icon and colors based on industry
+function getIndustryIconAndColors(industry: string) {
+  const industryMap: { [key: string]: any } = {
+    'Manufacturing': {
+      icon: FaBuilding,
+      bgColor: 'bg-blue-100 dark:bg-blue-900/30',
+      iconColor: 'text-blue-600 dark:text-blue-400'
+    },
+    'SaaS Technology': {
+      icon: FaChartLine,
+      bgColor: 'bg-green-100 dark:bg-green-900/30',
+      iconColor: 'text-green-600 dark:text-green-400'
+    },
+    'Healthcare': {
+      icon: FaUsers,
+      bgColor: 'bg-purple-100 dark:bg-purple-900/30',
+      iconColor: 'text-purple-600 dark:text-purple-400'
+    },
+    'Financial Services': {
+      icon: FaLaptopCode,
+      bgColor: 'bg-orange-100 dark:bg-orange-900/30',
+      iconColor: 'text-orange-600 dark:text-orange-400'
+    }
   }
-];
+  
+  return industryMap[industry] || {
+    icon: FaBuilding,
+    bgColor: 'bg-gray-100 dark:bg-gray-900/30',
+    iconColor: 'text-gray-600 dark:text-gray-400'
+  }
+}
 
-export default function CaseStudies() {
+export default async function CaseStudies() {
+  // Get published case studies from database
+  const dbCaseStudies = await getCaseStudies();
+  
+  // Transform database data to match the UI format
+  const caseStudies = dbCaseStudies.map((study) => {
+    const { icon, bgColor, iconColor } = getIndustryIconAndColors(study.industry || '');
+    return {
+      id: study.slug,
+      title: study.title,
+      client: study.client_name,
+      industry: study.industry,
+      challenge: study.challenge,
+      solution: study.solution,
+      results: study.results ? study.results.split('\n').map(result => result.replace(/^• /, '')) : [],
+      image: study.featured_image,
+      icon,
+      bgColor,
+      iconColor
+    }
+  });
   return (
     <PageLayout>
       <main className="flex-1">
@@ -105,28 +77,13 @@ export default function CaseStudies() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left">
             <div className="md:flex items-center justify-between">
               <div className="md:w-1/2 mb-10 md:mb-0">
-                <motion.h1 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-4xl md:text-5xl font-bold text-white mb-6"
-                >
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   Client Success Stories
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-xl text-white/90 mb-8 max-w-lg"
-                >
+                </h1>
+                <p className="text-xl text-white/90 mb-8 max-w-lg">
                   Discover how our technology solutions have transformed businesses across industries with measurable results and ROI.
-                </motion.p>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="flex flex-wrap gap-4"
-                >
+                </p>
+                <div className="flex flex-wrap gap-4">
                   <Link href="/contact">
                     <AnimatedButton className="bg-white text-primary-navy hover:bg-white/90 border-transparent">
                       Discuss Your Project
@@ -137,26 +94,21 @@ export default function CaseStudies() {
                       Explore Our Services
                     </AnimatedButton>
                   </Link>
-                </motion.div>
+                </div>
               </div>
               
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                className="md:w-2/5" // Reverted width for hero image
-              >
-                <div className="relative h-80 w-full rounded-lg overflow-hidden shadow-2xl"> {/* Reverted height to h-80 */}
+              <div className="md:w-2/5">
+                <div className="relative h-80 w-full rounded-lg overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/photos/ClientSuccessStories.png?v=2" // Added cache buster
+                    src="/images/photos/ClientSuccessStories.png?v=2"
                     alt="Technology Implementation Results"
                     fill
-                    className="object-cover" // Kept object-cover
-                    sizes="(max-width: 768px) 100vw, 40vw" // Reverted sizes attribute
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 40vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary-blue/20 to-transparent"></div> {/* Kept reduced overlay opacity */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary-blue/20 to-transparent"></div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -165,34 +117,20 @@ export default function CaseStudies() {
         <AnimatedSection className="py-16 bg-white dark:bg-primary-navy">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <motion.h2
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="text-3xl font-bold text-primary-navy dark:text-white mb-4"
-              >
+              <h2 className="text-3xl font-bold text-primary-navy dark:text-white mb-4">
                 Featured Case Studies
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
+              </h2>
+              <p
                 className="text-lg text-primary-slate dark:text-white/80 max-w-3xl mx-auto"
               >
                 See how our clients have achieved remarkable results with our technology solutions and expertise.
-              </motion.p>
+              </p>
             </div>
 
             <div className="space-y-16">
               {caseStudies.map((caseStudy, index) => (
-                <motion.div 
+                <div 
                   key={caseStudy.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
                   className={`relative rounded-xl overflow-hidden shadow-lg ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}
                 >
                   <div className="bg-white dark:bg-primary-slate/40 rounded-xl shadow-lg overflow-hidden">
@@ -264,7 +202,7 @@ export default function CaseStudies() {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -274,24 +212,14 @@ export default function CaseStudies() {
         <AnimatedSection className="py-16 bg-primary-light dark:bg-primary-slate">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <motion.h2
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="text-3xl font-bold text-primary-navy dark:text-white mb-4"
-              >
+              <h2 className="text-3xl font-bold text-primary-navy dark:text-white mb-4">
                 Results By Industry
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
+              </h2>
+              <p
                 className="text-lg text-primary-slate dark:text-white/80 max-w-3xl mx-auto"
               >
                 We deliver measurable improvements across a wide range of industries
-              </motion.p>
+              </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -360,7 +288,7 @@ export default function CaseStudies() {
                       </svg>
                     </Link>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -379,7 +307,7 @@ export default function CaseStudies() {
                   className="text-3xl font-bold mb-4"
                 >
                   Ready to Be Our Next Success Story?
-                </motion.h2>
+                </h2>
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -388,7 +316,7 @@ export default function CaseStudies() {
                   className="text-lg text-white/90 mb-8 max-w-3xl mx-auto"
                 >
                   Let us help you transform your business with the right technology solutions tailored to your specific needs and goals.
-                </motion.p>
+                </p>
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -400,7 +328,7 @@ export default function CaseStudies() {
                       Start Your Transformation
                     </AnimatedButton>
                   </Link>
-                </motion.div>
+                </div>
               </div>
             </div>
           </div>

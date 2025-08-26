@@ -8,6 +8,21 @@
 /* Import logo dark mode enhancements */
 @import '../styles/logo-dark-mode.css';
 
+/* Force dark mode navbar color to match logo background */
+html.dark nav,
+.dark nav,
+html.dark body nav,
+.dark body nav {
+  background-color: #0D2253 !important;
+  background: #0D2253 !important;
+}
+
+html.dark nav.scrolled,
+.dark nav.scrolled {
+  background-color: #0D2253f2 !important;
+  background: #0D2253f2 !important;
+}
+
 /* Add @font-face rules for Roobert */
 @font-face {
   font-family: 'Roobert';

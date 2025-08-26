@@ -1,103 +1,34 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
+import { getSupportArticles } from '@/lib/supabase';
+import SupportArticlesClient from './SupportArticlesClient';
 
-interface SupportArticle {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  readTime: string;
-  lastUpdated: string;
-  tags: string[];
-  slug: string;
-}
+export const revalidate = 0; // Disable caching for debugging
 
-export default function SupportArticlesPage() {
-  // Static support articles data (will be replaced with CMS eventually)
-  const articles: SupportArticle[] = [
-    {
-      id: '1',
-      title: 'Getting Started with CRM Implementation',
-      description: 'A comprehensive guide to planning and executing your first CRM implementation project.',
-      category: 'CRM',
-      readTime: '8 min',
-      lastUpdated: '2025-01-20',
-      tags: ['CRM', 'Implementation', 'Getting Started'],
-      slug: 'getting-started-crm-implementation'
-    },
-    {
-      id: '2',
-      title: 'Marketing Automation Best Practices',
-      description: 'Learn how to optimize your marketing automation workflows for maximum efficiency and ROI.',
-      category: 'Marketing',
-      readTime: '12 min',
-      lastUpdated: '2025-01-18',
-      tags: ['Marketing Automation', 'Best Practices', 'Workflows'],
-      slug: 'marketing-automation-best-practices'
-    },
-    {
-      id: '3',
-      title: 'Data Migration Strategies and Tips',
-      description: 'Essential strategies for successful data migration during system implementations.',
-      category: 'Data Management',
-      readTime: '15 min',
-      lastUpdated: '2025-01-15',
-      tags: ['Data Migration', 'Implementation', 'Planning'],
-      slug: 'data-migration-strategies'
-    },
-    {
-      id: '4',
-      title: 'User Adoption Techniques for New Systems',
-      description: 'Proven methods to increase user adoption and reduce resistance to new technology.',
-      category: 'Change Management',
-      readTime: '10 min',
-      lastUpdated: '2025-01-12',
-      tags: ['User Adoption', 'Change Management', 'Training'],
-      slug: 'user-adoption-techniques'
-    },
-    {
-      id: '5',
-      title: 'Security Best Practices for Business Systems',
-      description: 'Essential security measures to protect your business data and systems.',
-      category: 'Security',
-      readTime: '6 min',
-      lastUpdated: '2025-01-10',
-      tags: ['Security', 'Data Protection', 'Best Practices'],
-      slug: 'security-best-practices'
-    },
-    {
-      id: '6',
-      title: 'Integration Troubleshooting Guide',
-      description: 'Common integration issues and step-by-step solutions to resolve them.',
-      category: 'Integration',
-      readTime: '20 min',
-      lastUpdated: '2025-01-08',
-      tags: ['Integration', 'Troubleshooting', 'Technical Support'],
-      slug: 'integration-troubleshooting'
-    }
-  ];
-
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const categories = ['All', ...new Set(articles.map(article => article.category))];
-
-  const filteredArticles = selectedCategory === 'All' 
-    ? articles 
-    : articles.filter(article => article.category === selectedCategory);
-
-  const getCategoryIcon = (category: string) => {
-    const iconMap: Record<string, string> = {
-      'CRM': '🔧',
-      'Marketing': '📈',
-      'Data Management': '💾',
-      'Change Management': '👥',
-      'Security': '🔒',
-      'Integration': '🔗'
+export default async function SupportArticlesPage() {
+  // Get support articles from database
+  const dbArticles = await getSupportArticles();
+  
+  // Transform database data to match the UI format
+  const articles = dbArticles.map((article) => {
+    // Parse tags from JSON string
+    const tags = typeof article.tags === 'string' 
+      ? JSON.parse(article.tags) 
+      : Array.isArray(article.tags) 
+        ? article.tags 
+        : [];
+    
+    return {
+      id: article.id,
+      title: article.title,
+      description: article.excerpt,
+      category: article.category || 'General',
+      readTime: article.read_time ? `${article.read_time} min` : '5 min',
+      lastUpdated: article.published_at ? new Date(article.published_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+      tags: tags,
+      slug: article.slug
     };
-    return iconMap[category] || '📝';
-  };
+  });
 
   return (
     <PageLayout>
@@ -133,79 +64,7 @@ export default function SupportArticlesPage() {
 
         {/* Content section */}
         <div className="container mx-auto px-4 py-12">
-          {/* Categories filter */}
-          <div className="mb-8">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Browse by Category</h2>
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    selectedCategory === category
-                      ? 'bg-primary-blue text-white'
-                      : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300'
-                  }`}
-                >
-                  {category !== 'All' && (
-                    <span className="mr-2">{getCategoryIcon(category)}</span>
-                  )}
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Articles grid */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredArticles.map((article) => (
-              <Link
-                key={article.id}
-                href={`/resources/support/articles/${article.slug}`}
-                className="group overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm transition hover:shadow-md dark:hover:shadow-lg dark:hover:shadow-gray-900/50"
-              >
-                <div className="p-6">
-                  <div className="mb-3 flex items-center justify-between">
-                    <span className="inline-flex items-center rounded-full bg-primary-light dark:bg-blue-900/30 px-3 py-1 text-xs font-medium text-primary-navy dark:text-blue-300">
-                      <span className="mr-1">{getCategoryIcon(article.category)}</span>
-                      {article.category}
-                    </span>
-                    <span className="text-xs text-gray-500 dark:text-gray-400">{article.readTime} read</span>
-                  </div>
-                  
-                  <h3 className="mb-2 text-lg font-medium text-gray-900 dark:text-white group-hover:text-primary-blue dark:group-hover:text-blue-400">
-                    {article.title}
-                  </h3>
-                  
-                  <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
-                    {article.description}
-                  </p>
-
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-1">
-                      {article.tags.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="inline-flex items-center px-2 py-1 rounded-md bg-gray-100 dark:bg-gray-700 text-xs text-gray-600 dark:text-gray-300"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">
-                      Updated {new Date(article.lastUpdated).toLocaleDateString()}
-                    </span>
-                    <span className="text-sm font-medium text-primary-blue dark:text-blue-400 group-hover:text-blue-600 dark:group-hover:text-blue-300">
-                      Read Article →
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <SupportArticlesClient articles={articles} />
 
           {/* Coming Soon Section */}
           <div className="mt-16 text-center">

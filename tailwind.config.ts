@@ -32,6 +32,7 @@ const config: Config = {
           light: '#f8fafc',     // Softer light background
           white: '#ffffff',
           darkblue: '#1e40af',  // Enhanced dark blue for navbar
+          navdark: '#0D2253',   // Custom dark navbar color matching logo
           red: '#dc2626',       // Better contrast red
           accentblue: '#3b82f6', // Improved accent blue
           gray: {

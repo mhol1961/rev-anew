@@ -1,19 +1,31 @@
-import { technologies, TechnologyDetails } from '@/data/technologiesData';
-import React from 'react';
+'use client';
+
+import { getTechnologies, type Technology } from '@/lib/supabase';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const CompareTechnologiesPage = () => {
-  const techArray = Object.values(technologies);
+  const [techArray, setTechArray] = useState<Technology[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadTechnologies() {
+      const technologies = await getTechnologies();
+      setTechArray(technologies);
+      setLoading(false);
+    }
+    loadTechnologies();
+  }, []);
 
   // Define the features we want to compare
-  const featureMap: { key: keyof TechnologyDetails; label: string }[] = [
-    { key: 'feature_emailMarketing', label: 'Email Marketing' },
-    { key: 'feature_leadScoring', label: 'Lead Scoring' },
-    { key: 'feature_salesAutomation', label: 'Sales Automation' },
-    { key: 'feature_customReporting', label: 'Custom Reporting' },
-    { key: 'feature_apiAccess', label: 'API Access' },
-    { key: 'feature_mobileApp', label: 'Mobile App' },
-    { key: 'feature_freeTier', label: 'Free Tier Available' },
+  const featureMap: { key: keyof Technology; label: string }[] = [
+    { key: 'feature_email_marketing', label: 'Email Marketing' },
+    { key: 'feature_lead_scoring', label: 'Lead Scoring' },
+    { key: 'feature_sales_automation', label: 'Sales Automation' },
+    { key: 'feature_custom_reporting', label: 'Custom Reporting' },
+    { key: 'feature_api_access', label: 'API Access' },
+    { key: 'feature_mobile_app', label: 'Mobile App' },
+    { key: 'feature_free_tier', label: 'Free Tier Available' },
   ];
 
   return (
