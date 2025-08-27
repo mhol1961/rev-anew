@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Defensive environment variable loading for Vercel
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+// Environment variable validation
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 // Log environment variable status during build
 if (typeof window === 'undefined') {
@@ -11,13 +11,35 @@ if (typeof window === 'undefined') {
   console.log('NEXT_PUBLIC_SUPABASE_ANON_KEY:', supabaseAnonKey ? 'SET (hidden)' : 'NOT SET')
 }
 
-// For build time, use placeholder values if env vars are missing
-// This allows the build to complete
-const finalUrl = supabaseUrl || 'https://placeholder.supabase.co'
-const finalKey = supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsYWNlaG9sZGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDYyMzkwMjIsImV4cCI6MTk2MTgxNTAyMn0.placeholder'
+// Runtime validation - throw error if environment variables are missing in production
+if (typeof window !== 'undefined' && (!supabaseUrl || !supabaseAnonKey)) {
+  console.error('Missing Supabase environment variables. Please check your deployment configuration.')
+  console.error('NEXT_PUBLIC_SUPABASE_URL:', supabaseUrl ? 'SET' : 'MISSING')
+  console.error('NEXT_PUBLIC_SUPABASE_ANON_KEY:', supabaseAnonKey ? 'SET' : 'MISSING')
+}
+
+// For build time, use placeholder values if env vars are missing to allow build to complete
+// For runtime, use actual values or empty strings (which will cause clear errors)
+const finalUrl = supabaseUrl || (typeof window === 'undefined' ? 'https://placeholder.supabase.co' : '')
+const finalKey = supabaseAnonKey || (typeof window === 'undefined' ? 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.placeholder' : '')
 
 // Client for public/read operations
 export const supabase = createClient(finalUrl, finalKey)
+
+// Health check function to test Supabase connection
+export const testSupabaseConnection = async () => {
+  try {
+    const { error } = await supabase.from('users').select('count').limit(1)
+    if (error) {
+      console.error('Supabase connection test failed:', error)
+      return false
+    }
+    return true
+  } catch (err) {
+    console.error('Supabase connection test error:', err)
+    return false
+  }
+}
 
 // Types for database tables
 export interface BlogPost {
