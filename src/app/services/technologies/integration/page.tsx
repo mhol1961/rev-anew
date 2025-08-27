@@ -3,28 +3,36 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 // Import relevant icons - FaCogs, FaPlug, FaSyncAlt might be good
-import { FaCogs, FaPlug, FaSyncAlt } from 'react-icons/fa'; // Removed unused icons
-import { technologies, TechnologyDetails } from '@/data/technologiesData';
+import { FaCogs, FaPlug, FaSyncAlt } from 'react-icons/fa';
+import { getTechnologies, type Technology } from '@/lib/supabase';
 import PageLayout from '@/components/layout/PageLayout';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 
-// Convert technologies object to array for iteration
-const technologyItems = Object.values(technologies);
-
 // Helper function to determine if a technology is an Integration Tool
-const isIntegrationTool = (tech: TechnologyDetails): boolean => {
+const isIntegrationTool = (tech: Technology): boolean => {
   const titleLower = tech.title.toLowerCase();
   // Keywords indicating Integration Tools (adjust as needed based on data)
-  const integrationKeywords = ['integration', 'connect', 'api', 'middleware', 'zapier', 'mulesoft', 'boomi']; // Example keywords
+  const integrationKeywords = ['integration', 'connect', 'api', 'middleware', 'zapier', 'mulesoft', 'boomi'];
   // Also check specific feature flags if available and relevant
-  return integrationKeywords.some(keyword => titleLower.includes(keyword)) || tech.feature_apiAccess; // Example: include if it has API access
+  return integrationKeywords.some(keyword => titleLower.includes(keyword)) || tech.feature_api_access;
 };
 
 export default function IntegrationTechnologiesPage() {
-  // Filter technologies to only include Integration Tools
-  const integrationTechnologies = technologyItems.filter(isIntegrationTool);
+  const [integrationTechnologies, setIntegrationTechnologies] = useState<Technology[]>([]);
+  const [, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadTechnologies() {
+      const allTechnologies = await getTechnologies();
+      const filtered = allTechnologies.filter(isIntegrationTool);
+      setIntegrationTechnologies(filtered);
+      setLoading(false);
+    }
+    loadTechnologies();
+  }, []);
 
   return (
     <PageLayout>
@@ -130,9 +138,9 @@ export default function IntegrationTechnologiesPage() {
                     className="bg-white dark:bg-primary-slate/40 rounded-lg shadow-md overflow-hidden flex flex-col border border-gray-200 dark:border-primary-navy"
                   >
                     <div className="relative h-48 bg-gray-100 dark:bg-primary-slate">
-                      {tech.imageUrl ? (
+                      {tech.image_url ? (
                         <Image
-                          src={tech.imageUrl}
+                          src={tech.image_url}
                           alt={tech.title}
                           fill
                           className="object-cover transition-transform duration-300 hover:scale-105"
@@ -158,17 +166,17 @@ export default function IntegrationTechnologiesPage() {
                       <div className="mb-4">
                         <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Key Aspects</div>
                         <div className="flex flex-wrap gap-2">
-                          {tech.feature_apiAccess && (
+                          {tech.feature_api_access && (
                             <span className="bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 text-xs px-2 py-1 rounded">
                               API Access
                             </span>
                           )}
-                          {tech.feature_workflowAutomation && (
+                          {tech.feature_workflow_automation && (
                             <span className="bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 text-xs px-2 py-1 rounded">
                               Workflow Automation
                             </span>
                           )}
-                           {tech.feature_appMarketplace && (
+                           {tech.feature_app_marketplace && (
                             <span className="bg-gray-100 dark:bg-gray-700/30 text-gray-800 dark:text-gray-300 text-xs px-2 py-1 rounded">
                               App Marketplace
                             </span>

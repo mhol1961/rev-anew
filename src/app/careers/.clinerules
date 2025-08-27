@@ -1,0 +1,9 @@
+__Additional Safety Measures:__
+
+- __NEVER run the sync scripts__ (`sync-to-github.bat`, `sync-to-github-both-branches.bat`)
+- __NEVER use `git pull`__ until remote is confirmed working
+- __Always use `git status`__ before any git operations
+- __Only stage specific files__ you've intentionally changed
+- __Create backup branches__ before major changes: `git checkout -b backup-before-changes`
+
+This approach ensures your working local code stays protected and overwrites the broken remote code instead of the other way around.

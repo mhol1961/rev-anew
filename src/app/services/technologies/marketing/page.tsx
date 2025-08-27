@@ -3,28 +3,36 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 // Import relevant icons - FaBullhorn, FaFilter, FaRocket
-import { FaBullhorn, FaFilter, FaRocket } from 'react-icons/fa'; // Removed unused icons
-import { technologies, TechnologyDetails } from '@/data/technologiesData';
+import { FaBullhorn, FaFilter, FaRocket } from 'react-icons/fa';
+import { getTechnologies, type Technology } from '@/lib/supabase';
 import PageLayout from '@/components/layout/PageLayout';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 
-// Convert technologies object to array for iteration
-const technologyItems = Object.values(technologies);
-
 // Helper function to determine if a technology is a Marketing Platform
-const isMarketingPlatform = (tech: TechnologyDetails): boolean => {
+const isMarketingPlatform = (tech: Technology): boolean => {
   const titleLower = tech.title.toLowerCase();
   // Keywords indicating Marketing Platforms
   const marketingKeywords = ['marketing', 'marketo', 'pardot', 'clickdimensions', 'activecampaign', 'mailchimp', 'hubspot marketing'];
   // Check specific feature flags
-  return marketingKeywords.some(keyword => titleLower.includes(keyword)) || tech.feature_emailMarketing || tech.feature_marketingAutomationWorkflows;
+  return marketingKeywords.some(keyword => titleLower.includes(keyword)) || tech.feature_email_marketing || tech.feature_marketing_automation_workflows;
 };
 
 export default function MarketingTechnologiesPage() {
-  // Filter technologies to only include Marketing Platforms
-  const marketingTechnologies = technologyItems.filter(isMarketingPlatform);
+  const [marketingTechnologies, setMarketingTechnologies] = useState<Technology[]>([]);
+  const [, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadTechnologies() {
+      const allTechnologies = await getTechnologies();
+      const filtered = allTechnologies.filter(isMarketingPlatform);
+      setMarketingTechnologies(filtered);
+      setLoading(false);
+    }
+    loadTechnologies();
+  }, []);
 
   return (
     <PageLayout>
@@ -120,9 +128,9 @@ export default function MarketingTechnologiesPage() {
                   className="bg-white dark:bg-primary-slate/40 rounded-lg shadow-md overflow-hidden flex flex-col border border-gray-200 dark:border-primary-navy"
                 >
                   <div className="relative h-48 bg-gray-100 dark:bg-primary-slate">
-                    {tech.imageUrl ? (
+                    {tech.image_url ? (
                       <Image
-                        src={tech.imageUrl}
+                        src={tech.image_url}
                         alt={tech.title}
                         fill
                         className="object-cover transition-transform duration-300 hover:scale-105"
@@ -147,17 +155,17 @@ export default function MarketingTechnologiesPage() {
                     <div className="mb-4">
                       <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Key Features</div>
                       <div className="flex flex-wrap gap-2">
-                        {tech.feature_emailMarketing && (
+                        {tech.feature_email_marketing && (
                           <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-xs px-2 py-1 rounded">
                             Email Marketing
                           </span>
                         )}
-                        {tech.feature_marketingAutomationWorkflows && (
+                        {tech.feature_marketing_automation_workflows && (
                           <span className="bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 text-xs px-2 py-1 rounded">
                             Automation Workflows
                           </span>
                         )}
-                         {tech.feature_leadScoring && (
+                         {tech.feature_lead_scoring && (
                           <span className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 text-xs px-2 py-1 rounded">
                             Lead Scoring
                           </span>

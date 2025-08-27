@@ -3,17 +3,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FaChartLine, FaRocket, FaCogs } from 'react-icons/fa'; // Removed unused icons
-import { technologies, TechnologyDetails } from '@/data/technologiesData';
+import { useState, useEffect } from 'react';
+import { FaChartLine, FaRocket, FaCogs } from 'react-icons/fa';
+import { getTechnologies, type Technology } from '@/lib/supabase';
 import PageLayout from '@/components/layout/PageLayout';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 
-// Convert technologies object to array for iteration
-const technologyItems = Object.values(technologies);
-
 // Helper function to determine if a technology is a CRM platform
-const isCrmPlatform = (tech: TechnologyDetails): boolean => {
+const isCrmPlatform = (tech: Technology): boolean => {
   const titleLower = tech.title.toLowerCase();
   // Keywords indicating CRM
   const crmKeywords = ['crm', 'salesforce', 'dynamics 365 sales', 'hubspot crm', 'zoho crm', 'sugarcrm', 'zendesk sell', 'pipedrive'];
@@ -21,8 +19,18 @@ const isCrmPlatform = (tech: TechnologyDetails): boolean => {
 };
 
 export default function CrmTechnologiesPage() {
-  // Filter technologies to only include CRM platforms
-  const crmTechnologies = technologyItems.filter(isCrmPlatform);
+  const [crmTechnologies, setCrmTechnologies] = useState<Technology[]>([]);
+  const [, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadTechnologies() {
+      const allTechnologies = await getTechnologies();
+      const filtered = allTechnologies.filter(isCrmPlatform);
+      setCrmTechnologies(filtered);
+      setLoading(false);
+    }
+    loadTechnologies();
+  }, []);
 
   return (
     <PageLayout>
@@ -126,9 +134,9 @@ export default function CrmTechnologiesPage() {
                   className="bg-white dark:bg-primary-slate/40 rounded-lg shadow-md overflow-hidden flex flex-col border border-gray-200 dark:border-primary-navy"
                 >
                   <div className="relative h-48 bg-gray-100 dark:bg-primary-slate">
-                    {tech.imageUrl && (
+                    {tech.image_url && (
                       <Image
-                        src={tech.imageUrl}
+                        src={tech.image_url}
                         alt={tech.title}
                         fill
                         className="object-cover transition-transform duration-300 hover:scale-105"
@@ -149,17 +157,17 @@ export default function CrmTechnologiesPage() {
                     <div className="mb-4">
                       <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Key Features</div>
                       <div className="flex flex-wrap gap-2">
-                        {tech.feature_contactManagement && (
+                        {tech.feature_contact_management && (
                           <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs px-2 py-1 rounded">
                             Contact Management
                           </span>
                         )}
-                        {tech.feature_salesPipelineVisualization && (
+                        {tech.feature_sales_pipeline_visualization && (
                           <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-xs px-2 py-1 rounded">
                             Sales Pipeline
                           </span>
                         )}
-                         {tech.feature_leadManagement && (
+                         {tech.feature_lead_management && (
                           <span className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 text-xs px-2 py-1 rounded">
                             Lead Management
                           </span>

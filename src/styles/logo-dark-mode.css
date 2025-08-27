@@ -1,0 +1,25 @@
+/* Enhanced logo visibility for dark mode on blue backgrounds */
+.dark .logo-enhance {
+  /* Subtle enhancement to blend with matching navbar color */
+  filter: brightness(1.1) contrast(1.1) saturate(1.0);
+  /* Remove glow since navbar and logo colors now match */
+}
+
+.dark .logo-container {
+  /* Remove background overlay to let logo blend naturally */
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* Enhanced hover effect */
+.dark .logo-container:hover .logo-enhance {
+  filter: brightness(1.2) contrast(1.2) saturate(1.0);
+  transition: filter 0.3s ease;
+}
+
+.dark .logo-container:hover {
+  background: transparent;
+  border: none;
+  transition: all 0.3s ease;
+}
