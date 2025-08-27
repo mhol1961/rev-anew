@@ -228,7 +228,7 @@ export async function searchContent(query: string, filters: SearchFilters = {}):
   return scoredResults
     .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score)
-    .map(({ score, ...result }) => result);
+    .map(({ score: _score, ...result }) => result);
 }
 
 export async function getSearchSuggestions(query: string): Promise<string[]> {
