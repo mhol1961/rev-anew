@@ -229,7 +229,7 @@ export async function searchContent(query: string, filters: SearchFilters = {}):
     .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score)
     .map((item) => {
-      const { score, ...result } = item;
+      const { score: _, ...result } = item;
       return result;
     });
 }

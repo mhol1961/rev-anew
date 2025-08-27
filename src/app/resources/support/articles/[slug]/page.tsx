@@ -39,13 +39,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   }
 
   // Format tags if they're stored as JSON string
-  let tags = [];
+  let tags: string[] = [];
   if (article.tags) {
     if (typeof article.tags === 'string') {
       try {
         tags = JSON.parse(article.tags);
       } catch {
-        tags = article.tags.split(',').map(tag => tag.trim());
+        tags = (article.tags as string).split(',').map(tag => tag.trim());
       }
     } else if (Array.isArray(article.tags)) {
       tags = article.tags;

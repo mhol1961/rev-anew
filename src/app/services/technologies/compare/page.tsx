@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const CompareTechnologiesPage = () => {
   const [techArray, setTechArray] = useState<Technology[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadTechnologies() {

@@ -22,7 +22,7 @@ const isMarketingPlatform = (tech: Technology): boolean => {
 
 export default function MarketingTechnologiesPage() {
   const [marketingTechnologies, setMarketingTechnologies] = useState<Technology[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadTechnologies() {

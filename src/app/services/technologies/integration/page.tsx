@@ -22,7 +22,7 @@ const isIntegrationTool = (tech: Technology): boolean => {
 
 export default function IntegrationTechnologiesPage() {
   const [integrationTechnologies, setIntegrationTechnologies] = useState<Technology[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadTechnologies() {

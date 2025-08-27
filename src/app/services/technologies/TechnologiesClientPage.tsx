@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FaChartLine, FaLaptop, FaRocket } from 'react-icons/fa';
+import { FaLaptop, FaRocket } from 'react-icons/fa';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import type { Technology } from '@/lib/supabase';

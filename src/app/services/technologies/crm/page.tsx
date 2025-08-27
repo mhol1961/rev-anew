@@ -20,7 +20,7 @@ const isCrmPlatform = (tech: Technology): boolean => {
 
 export default function CrmTechnologiesPage() {
   const [crmTechnologies, setCrmTechnologies] = useState<Technology[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadTechnologies() {
