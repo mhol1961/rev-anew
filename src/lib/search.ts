@@ -229,8 +229,8 @@ export async function searchContent(query: string, filters: SearchFilters = {}):
     .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score)
     .map((item) => {
-      // eslint-disable-next-line no-unused-vars
       const { score, ...result } = item;
+      void score; // Explicitly mark score as intentionally unused
       return result;
     });
 }
