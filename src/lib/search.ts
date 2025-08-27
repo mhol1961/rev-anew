@@ -228,7 +228,11 @@ export async function searchContent(query: string, filters: SearchFilters = {}):
   return scoredResults
     .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score)
-    .map(({ score: _score, ...result }) => result);
+    .map((item) => {
+      // eslint-disable-next-line no-unused-vars
+      const { score, ...result } = item;
+      return result;
+    });
 }
 
 export async function getSearchSuggestions(query: string): Promise<string[]> {
