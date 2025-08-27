@@ -14,13 +14,6 @@ interface TechnologyDetailPageProps {
   }>;
 }
 
-// Helper component for list items
-const ListItem = ({ children }: { children: React.ReactNode }) => (
-  <li className="flex items-start">
-    <span className="text-green-500 mr-2 mt-1">✓</span>
-    <span>{children}</span>
-  </li>
-);
 
 export async function generateStaticParams() {
   const technologies = await getTechnologies();
