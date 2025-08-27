@@ -1,7 +1,16 @@
-import { Suspense } from 'react'
+'use client'
+
+import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 
-async function getStats() {
+interface StatsData {
+  blogPosts: number
+  services: number
+  caseStudies: number
+  categories: number
+}
+
+async function getStats(): Promise<StatsData> {
   try {
     const [
       { count: blogCount },
@@ -82,8 +91,33 @@ function StatsLoading() {
   )
 }
 
-async function StatsContent() {
-  const stats = await getStats()
+export default function DashboardStats() {
+  const [stats, setStats] = useState<StatsData>({
+    blogPosts: 0,
+    services: 0,
+    caseStudies: 0,
+    categories: 0
+  })
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const data = await getStats()
+        setStats(data)
+      } catch (error) {
+        console.error('Error loading stats:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchStats()
+  }, [])
+
+  if (loading) {
+    return <StatsLoading />
+  }
 
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -92,7 +126,7 @@ async function StatsContent() {
         count={stats.blogPosts}
         icon={
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 01-2-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
           </svg>
         }
       />
@@ -124,13 +158,5 @@ async function StatsContent() {
         }
       />
     </div>
-  )
-}
-
-export default function DashboardStats() {
-  return (
-    <Suspense fallback={<StatsLoading />}>
-      <StatsContent />
-    </Suspense>
   )
 }
