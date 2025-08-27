@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { FaBuilding, FaChartLine, FaUsers, FaLaptopCode } from 'react-icons/fa';
 import PageLayout from '@/components/layout/PageLayout';
 import AnimatedSection from '@/components/ui/AnimatedSection';
@@ -57,7 +58,7 @@ export default async function CaseStudies() {
       icon,
       bgColor,
       iconColor
-    }
+    };
   });
   return (
     <PageLayout>
@@ -288,7 +289,7 @@ export default async function CaseStudies() {
                       </svg>
                     </Link>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -307,7 +308,7 @@ export default async function CaseStudies() {
                   className="text-3xl font-bold mb-4"
                 >
                   Ready to Be Our Next Success Story?
-                </h2>
+                </motion.h2>
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -316,7 +317,7 @@ export default async function CaseStudies() {
                   className="text-lg text-white/90 mb-8 max-w-3xl mx-auto"
                 >
                   Let us help you transform your business with the right technology solutions tailored to your specific needs and goals.
-                </p>
+                </motion.p>
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -328,7 +329,7 @@ export default async function CaseStudies() {
                       Start Your Transformation
                     </AnimatedButton>
                   </Link>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
