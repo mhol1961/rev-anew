@@ -16,85 +16,18 @@ const navigation = [
     href: '/services', 
     megaMenu: {
       services: [
-        {
-          category: 'CRM',
-          href: '/services/crm',
-          items: [
-            { name: 'Dynamics', href: '/services/crm/dynamics' },
-            { name: 'Salesforce', href: '/services/crm/salesforce' },
-            { name: 'HubSpot CRM', href: '/services/crm/hubspot' }
-          ]
-        },
-        {
-          category: 'Marketing',
-          href: '/services/marketing',
-          items: [
-            { name: 'Dynamics', href: '/services/marketing/dynamics' },
-            { name: 'HubSpot', href: '/services/marketing/hubspot' },
-            { name: 'Marketo', href: '/services/marketing/marketo' }
-          ]
-        },
-        {
-          category: 'Finance',
-          href: '/services/finance',
-          items: [
-            { name: 'F&O', href: '/services/finance/fo' },
-            { name: 'Sage', href: '/services/finance/sage' }
-          ]
-        },
-        {
-          category: 'Projects',
-          href: '/services/projects',
-          items: [
-            { name: 'Project Operations', href: '/services/projects/operations' }
-          ]
-        },
-        {
-          category: 'Azure',
-          href: '/services/azure',
-          items: [
-            { name: 'Entra ID', href: '/services/azure/entra-id' },
-            { name: 'DevOps', href: '/services/azure/devops' }
-          ]
-        },
-        {
-          category: 'Power Platform',
-          href: '/services/power-platform',
-          items: [
-            { name: 'Power Apps', href: '/services/power-platform/power-apps' },
-            { name: 'Power Automate', href: '/services/power-platform/power-automate' },
-            { name: 'Power BI', href: '/services/power-platform/power-bi' },
-            { name: 'Power Pages', href: '/services/power-platform/power-pages' },
-            { name: 'Copilot Studio', href: '/services/power-platform/copilot-studio' }
-          ]
-        },
-        {
-          category: 'M365',
-          href: '/services/m365',
-          items: [
-            { name: 'Office', href: '/services/m365/office' },
-            { name: 'SharePoint', href: '/services/m365/sharepoint' }
-          ]
-        },
-        {
-          category: 'AI',
-          href: '/services/ai',
-          items: [
-            { name: 'Microsoft Copilot', href: '/services/ai/microsoft-copilot' },
-            { name: 'Microsoft 365 Copilot', href: '/services/ai/m365-copilot' },
-            { name: 'Copilot Studio', href: '/services/ai/copilot-studio' },
-            { name: 'Copilot for Sales', href: '/services/ai/copilot-sales' },
-            { name: 'Copilot for Service', href: '/services/ai/copilot-service' },
-            { name: 'Security Copilot', href: '/services/ai/security-copilot' },
-            { name: 'Dynamics 365 Copilot', href: '/services/ai/dynamics-copilot' }
-          ]
-        }
-      ],
-      industries: [
-        { name: 'Enterprise', href: '/industries/enterprise' },
-        { name: 'Government', href: '/industries/government' },
-        { name: 'Healthcare', href: '/industries/healthcare' },
-        { name: 'Non-profits', href: '/industries/nonprofits' }
+        { name: 'CRM Solutions', href: '/services/crm' },
+        { name: 'ERP Solutions', href: '/services/erp' },
+        { name: 'Marketing Automation', href: '/services/marketing-automation' },
+        { name: 'Power Platform Solutions', href: '/services/power-platform' },
+        { name: 'Systems Integration', href: '/services/systems-integration' },
+        { name: 'Cloud Architecture', href: '/services/cloud-architecture' },
+        { name: 'Data & Analytics', href: '/services/data-analytics' },
+        { name: 'Technology Consulting', href: '/services/technology-consulting' },
+        { name: 'Change Management', href: '/services/change-management' },
+        { name: 'Customer Experience Design', href: '/services/customer-experience' },
+        { name: 'Governance & Compliance', href: '/services/governance-compliance' },
+        { name: 'Managed Services', href: '/services/managed-services' }
       ]
     }
   },
@@ -103,19 +36,15 @@ const navigation = [
     href: '/about'
   },
   { 
-    name: 'Resources', 
-    href: '/resources',
-    submenu: [
-      { name: 'Blog', href: '/blog' },
-      { name: 'Case Studies', href: '/case-studies' },
-      { name: 'Events', href: '/resources/events' },
-      { name: 'Support Articles', href: '/resources/support/articles' },
-      { name: 'Knowledge Base', href: '/resources/support/knowledge-base' },
-      { name: 'Social Media', href: '/resources/social-media' },
-      { name: 'Partnerships', href: '/resources/partnerships' }
-    ]
+    name: 'Industries', 
+    href: '/industries'
   },
-  { name: 'Careers', href: '/careers' }
+  { 
+    name: 'Insights', 
+    href: '/blog'
+  },
+  { name: 'Careers', href: '/careers' },
+  { name: 'Contact', href: '/contact' }
 ];
 
 export default function Navbar() {
@@ -267,7 +196,7 @@ export default function Navbar() {
                   key={item.name}
                   className="relative group"
                   onMouseEnter={() => {
-                    if (item.submenu || item.megaMenu) {
+                    if (item.megaMenu) {
                       if (timeoutRef.current) {
                         clearTimeout(timeoutRef.current); // Clear any pending close timeout
                         timeoutRef.current = null;
@@ -276,7 +205,7 @@ export default function Navbar() {
                     }
                   }}
                   onMouseLeave={() => {
-                    if (item.submenu || item.megaMenu) {
+                    if (item.megaMenu) {
                       // Set a timeout to close the dropdown after a short delay
                       timeoutRef.current = setTimeout(() => {
                         setActiveDropdown(null);
@@ -284,7 +213,7 @@ export default function Navbar() {
                     }
                   }}
                 >
-                  {item.submenu || item.megaMenu ? (
+                  {item.megaMenu ? (
                     <div className="flex items-center">
                       <Link href={item.href} className="text-text-primary dark:text-dark-text hover:text-primary-blue dark:hover:text-primary-red px-3 py-2 text-sm font-semibold rounded-full transition-all duration-150 hover:bg-primary-light/50 hover:scale-105">
                         {item.name}
@@ -299,38 +228,6 @@ export default function Navbar() {
                     </Link>
                   )}
 
-                  {/* Regular Submenu */}
-                  {item.submenu && activeDropdown === item.name && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="absolute z-10 -ml-4 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-primary-slate ring-1 ring-black ring-opacity-5"
-                      onMouseEnter={() => {
-                        if (timeoutRef.current) {
-                          clearTimeout(timeoutRef.current);
-                          timeoutRef.current = null;
-                        }
-                      }}
-                      onMouseLeave={() => {
-                        timeoutRef.current = setTimeout(() => {
-                          setActiveDropdown(null);
-                        }, 150);
-                      }}
-                    >
-                      <div className="py-1">
-                        {item.submenu.map((subItem) => (
-                          <Link
-                            key={subItem.name}
-                            href={subItem.href}
-                            className="block px-4 py-2 text-sm text-primary-navy dark:text-white hover:bg-primary-blue/10 dark:hover:text-primary-red dark:hover:bg-primary-accentblue/20"
-                          >
-                            {subItem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
 
                   {/* Mega Menu */}
                   {item.megaMenu && activeDropdown === item.name && (
@@ -338,7 +235,7 @@ export default function Navbar() {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="absolute z-10 -ml-4 mt-2 w-96 rounded-md shadow-lg bg-white dark:bg-primary-slate ring-1 ring-black ring-opacity-5"
+                      className="absolute z-10 -ml-4 mt-2 w-[600px] max-h-[500px] overflow-y-auto rounded-md shadow-lg bg-white dark:bg-primary-slate ring-1 ring-black ring-opacity-5"
                       onMouseEnter={() => {
                         if (timeoutRef.current) {
                           clearTimeout(timeoutRef.current);
@@ -351,45 +248,19 @@ export default function Navbar() {
                         }, 150);
                       }}
                     >
-                      <div className="p-4">
-                        <div className="grid grid-cols-2 gap-6">
-                          {/* Services Column */}
+                      <div className="p-6">
+                        <div className="grid grid-cols-1">
+                          {/* Services Grid */}
                           <div>
-                            <h3 className="text-sm font-semibold text-primary-navy dark:text-white mb-3">Services</h3>
-                            <div className="space-y-2">
+                            <h3 className="text-sm font-semibold text-primary-navy dark:text-white mb-4">Our Solutions</h3>
+                            <div className="grid grid-cols-3 gap-4">
                               {item.megaMenu.services.map((service) => (
-                                <div key={service.category} className="space-y-1">
-                                  <Link
-                                    href={service.href}
-                                    className="block text-sm font-medium text-primary-blue dark:text-primary-red hover:text-primary-accentblue dark:hover:text-primary-red/80"
-                                  >
-                                    {service.category}
-                                  </Link>
-                                  {service.items.map((subItem) => (
-                                    <Link
-                                      key={subItem.name}
-                                      href={subItem.href}
-                                      className="block pl-3 text-xs text-gray-600 dark:text-gray-300 hover:text-primary-blue dark:hover:text-primary-red"
-                                    >
-                                      {subItem.name}
-                                    </Link>
-                                  ))}
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                          
-                          {/* Industries Column */}
-                          <div>
-                            <h3 className="text-sm font-semibold text-primary-navy dark:text-white mb-3">Industries</h3>
-                            <div className="space-y-1">
-                              {item.megaMenu.industries.map((industry) => (
                                 <Link
-                                  key={industry.name}
-                                  href={industry.href}
-                                  className="block text-sm text-primary-navy dark:text-white hover:text-primary-blue dark:hover:text-primary-red"
+                                  key={service.name}
+                                  href={service.href}
+                                  className="block p-3 text-sm font-medium text-primary-navy dark:text-white hover:text-primary-blue dark:hover:text-primary-red hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors"
                                 >
-                                  {industry.name}
+                                  {service.name}
                                 </Link>
                               ))}
                             </div>
@@ -403,14 +274,6 @@ export default function Navbar() {
             </div>
             <SearchButton />
             <FinalDarkModeToggle />
-            {/* Contact Button */}
-            <Link href="/contact" passHref>
-              <AnimatedButton
-                className="bg-primary-blue hover:bg-primary-accentblue text-white border-transparent"
-              >
-                Contact Us
-              </AnimatedButton>
-            </Link>
             {/* Get Started CTA Button */}
             <Link href="/contact" passHref>
               <AnimatedButton
@@ -474,44 +337,7 @@ export default function Navbar() {
             <div className="px-4 pt-3 pb-4 space-y-3">
               {navigation.map((item) => (
                 <div key={item.name}>
-                  {item.submenu ? (
-                    <>
-                      <div className="flex flex-col">
-                        <Link 
-                          href={item.href} 
-                          className="text-primary-navy dark:text-white hover:text-primary-blue dark:hover:text-primary-red block px-3 py-3 text-base font-medium"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {item.name}
-                        </Link>
-                        <button
-                          onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                          className="text-gray-500 dark:text-gray-400 text-sm font-medium px-3 py-2 flex items-center justify-between w-full"
-                        >
-                          Show submenu {activeDropdown === item.name ? '▲' : '▼'}
-                        </button>
-                      </div>
-                      {activeDropdown === item.name && (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="pl-4"
-                        >
-                          {item.submenu.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="text-primary-navy dark:text-white hover:text-primary-blue dark:hover:text-primary-red block px-3 py-3 text-sm touch-manipulation"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
-                        </motion.div>
-                      )}
-                    </>
-                  ) : item.megaMenu ? (
+                  {item.megaMenu ? (
                     <>
                       <div className="flex flex-col">
                         <Link 
@@ -544,51 +370,19 @@ export default function Navbar() {
                           className="mx-3 mt-3 bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden"
                         >
                           {/* Services Section */}
-                          <div className="border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                          <div>
                             <h4 className="text-sm font-semibold text-primary-navy dark:text-white px-4 py-3 bg-gray-100 dark:bg-gray-700">
-                              🔧 Services
+                              🔧 Our Solutions
                             </h4>
                             <div className="px-2 py-2 space-y-1">
                               {item.megaMenu.services.map((service) => (
-                                <div key={service.category} className="space-y-1">
-                                  <Link
-                                    href={service.href}
-                                    className="block px-3 py-2 text-sm font-medium text-primary-blue dark:text-primary-red rounded-md hover:bg-white dark:hover:bg-gray-700 transition-colors touch-manipulation min-h-[44px] flex items-center"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                  >
-                                    {service.category}
-                                  </Link>
-                                  <div className="ml-4 space-y-1">
-                                    {service.items.map((subItem) => (
-                                      <Link
-                                        key={subItem.name}
-                                        href={subItem.href}
-                                        className="block px-3 py-2 text-xs text-gray-600 dark:text-gray-300 rounded-md hover:bg-white dark:hover:bg-gray-700 transition-colors touch-manipulation min-h-[40px] flex items-center"
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                      >
-                                        • {subItem.name}
-                                      </Link>
-                                    ))}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                          
-                          {/* Industries Section */}
-                          <div>
-                            <h4 className="text-sm font-semibold text-primary-navy dark:text-white px-4 py-3 bg-gray-100 dark:bg-gray-700">
-                              🏢 Industries
-                            </h4>
-                            <div className="px-2 py-2 space-y-1">
-                              {item.megaMenu.industries.map((industry) => (
                                 <Link
-                                  key={industry.name}
-                                  href={industry.href}
-                                  className="block px-3 py-2 text-sm text-primary-navy dark:text-white rounded-md hover:bg-white dark:hover:bg-gray-700 transition-colors touch-manipulation min-h-[44px] flex items-center"
+                                  key={service.name}
+                                  href={service.href}
+                                  className="block px-3 py-2 text-sm font-medium text-primary-blue dark:text-primary-red rounded-md hover:bg-white dark:hover:bg-gray-700 transition-colors touch-manipulation min-h-[44px] flex items-center"
                                   onClick={() => setIsMobileMenuOpen(false)}
                                 >
-                                  {industry.name}
+                                  {service.name}
                                 </Link>
                               ))}
                             </div>
@@ -607,20 +401,8 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
-              {/* Enhanced CTA Buttons for Mobile Menu */}
-              <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 space-y-4 px-2">
-                {/* Contact Button */}
-                <Link 
-                  href="/contact" 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full"
-                >
-                  <AnimatedButton
-                    className="w-full justify-center bg-primary-blue hover:bg-blue-700 text-white border-transparent py-4 text-lg font-medium rounded-lg shadow-md min-h-[56px]"
-                  >
-                    💬 Contact Us
-                  </AnimatedButton>
-                </Link>
+              {/* Enhanced CTA Button for Mobile Menu */}
+              <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 px-2">
                 {/* Get Started Button */}
                 <Link 
                   href="/contact" 
