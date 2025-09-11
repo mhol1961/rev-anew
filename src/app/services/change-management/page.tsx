@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
-import { FaUsers, FaGraduationCap, FaChartLine, FaHandshake, FaLightbulb, FaCogs, FaCheckCircle, FaClipboardCheck, FaUserTie, FaRocket } from 'react-icons/fa';
+import { FaUsers, FaGraduationCap, FaChartLine, FaHandshake, FaCogs, FaCheckCircle, FaClipboardCheck, FaUserTie, FaRocket } from 'react-icons/fa';
 
 export default function ChangeManagementPage() {
   const changeServices = [

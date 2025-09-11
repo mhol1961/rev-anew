@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
-import { FaCogs, FaHeadset, FaChartLine, FaShieldAlt, FaServer, FaToolbox, FaCheckCircle, FaClock, FaUserTie, FaRocket } from 'react-icons/fa';
+import { FaCogs, FaHeadset, FaChartLine, FaShieldAlt, FaServer, FaToolbox, FaCheckCircle, FaUserTie, FaRocket } from 'react-icons/fa';
 
 export default function ManagedServicesPage() {
   const managedServices = [

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
-import { FaUserTie, FaRoad, FaLightbulb, FaChartLine, FaCogs, FaShieldAlt, FaCheckCircle, FaClipboardList, FaProjectDiagram, FaHandshake } from 'react-icons/fa';
+import { FaRoad, FaLightbulb, FaChartLine, FaCogs, FaShieldAlt, FaCheckCircle, FaClipboardList, FaProjectDiagram, FaHandshake } from 'react-icons/fa';
 
 export default function TechnologyConsultingPage() {
   const consultingAreas = [

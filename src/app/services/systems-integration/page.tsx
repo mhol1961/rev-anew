@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
-import { FaExchangeAlt, FaNetworkWired, FaDatabase, FaShieldAlt, FaCogs, FaCloudDownloadAlt, FaCheckCircle, FaPlug, FaSync, FaLock } from 'react-icons/fa';
+import { FaExchangeAlt, FaNetworkWired, FaDatabase, FaShieldAlt, FaCogs, FaCloudDownloadAlt, FaCheckCircle, FaPlug, FaSync } from 'react-icons/fa';
 
 export default function SystemsIntegrationPage() {
   const integrationTypes = [

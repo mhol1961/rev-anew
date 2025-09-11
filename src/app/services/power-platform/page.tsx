@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
-import { FaLaptopCode, FaChartBar, FaCogs, FaRobot, FaLightbulb, FaMobile, FaCheckCircle, FaDatabase, FaNetworkWired } from 'react-icons/fa';
+import { FaLaptopCode, FaChartBar, FaCogs, FaRobot, FaLightbulb, FaMobile, FaCheckCircle, FaDatabase } from 'react-icons/fa';
 
 export default function PowerPlatformPage() {
   const powerPlatformComponents = [

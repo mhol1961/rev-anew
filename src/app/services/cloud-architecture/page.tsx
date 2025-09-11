@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
-import { FaCloud, FaNetworkWired, FaShieldAlt, FaServer, FaDocker, FaCogs, FaCheckCircle, FaLock, FaRocket, FaExpandArrowsAlt } from 'react-icons/fa';
+import { FaCloud, FaShieldAlt, FaServer, FaDocker, FaCogs, FaCheckCircle, FaRocket, FaExpandArrowsAlt } from 'react-icons/fa';
 
 export default function CloudArchitecturePage() {
   const cloudPlatforms = [

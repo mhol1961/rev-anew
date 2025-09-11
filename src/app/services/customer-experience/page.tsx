@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
-import { FaUserFriends, FaHeart, FaRoute, FaChartLine, FaMobile, FaComments, FaCheckCircle, FaEye, FaHandshake, FaStar } from 'react-icons/fa';
+import { FaHeart, FaRoute, FaChartLine, FaMobile, FaComments, FaCheckCircle, FaEye } from 'react-icons/fa';
 
 export default function CustomerExperiencePage() {
   const cxServices = [
