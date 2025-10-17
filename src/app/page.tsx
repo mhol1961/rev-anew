@@ -451,7 +451,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="body-large text-center px-4 xs:px-0 mt-3 xs:mt-4 text-white"
+                className="body-large text-center px-4 xs:px-0 mt-3 xs:mt-4 !text-white"
               >
                 See how TAS has helped leading organizations modernize technology, improve operations, and drive measurable outcomes.
               </motion.p>

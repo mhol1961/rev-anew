@@ -1,4 +1,4 @@
-import { FaHospital, FaIndustry, FaLandmark, FaLaptopCode, FaBriefcase } from 'react-icons/fa';
+import { FaHospital, FaIndustry, FaLandmark, FaLaptopCode, FaBriefcase, FaUniversity } from 'react-icons/fa';
 import { IconType } from 'react-icons';
 
 export interface Industry {
@@ -19,54 +19,41 @@ export const industries: Industry[] = [
     title: 'Healthcare',
     description: 'Streamline patient care, optimize operations, and enhance compliance with integrated CRM and ERP solutions tailored for healthcare providers and medical organizations.',
     icon: FaHospital,
-    link: '/industries/healthcare',
-    stats: [
-      { label: 'Patient Satisfaction', value: '95%' },
-      { label: 'Efficiency Gain', value: '40%' }
-    ]
+    link: '/industries/healthcare'
   },
   {
     id: 'manufacturing',
     title: 'Manufacturing',
     description: 'Drive operational excellence with supply chain optimization, production tracking, and quality management through powerful ERP and automation solutions.',
     icon: FaIndustry,
-    link: '/industries/manufacturing',
-    stats: [
-      { label: 'Production Efficiency', value: '35%' },
-      { label: 'Cost Reduction', value: '25%' }
-    ]
+    link: '/industries/manufacturing'
   },
   {
     id: 'government',
     title: 'Government',
     description: 'Modernize public services, improve citizen engagement, and ensure transparency with secure, compliant technology solutions designed for government agencies.',
     icon: FaLandmark,
-    link: '/industries/government',
-    stats: [
-      { label: 'Service Delivery', value: '50%' },
-      { label: 'Citizen Satisfaction', value: '92%' }
-    ]
+    link: '/industries/government'
   },
   {
     id: 'technology',
     title: 'Technology',
     description: 'Accelerate growth and innovation with scalable CRM, marketing automation, and integration solutions built for fast-moving technology companies.',
     icon: FaLaptopCode,
-    link: '/industries/technology',
-    stats: [
-      { label: 'Sales Cycle Reduction', value: '45%' },
-      { label: 'Lead Conversion', value: '60%' }
-    ]
+    link: '/industries/technology'
   },
   {
     id: 'professional-services',
     title: 'Professional Services',
     description: 'Optimize client relationships, project delivery, and resource management with integrated solutions designed for consulting, legal, and professional service firms.',
     icon: FaBriefcase,
-    link: '/industries/professional-services',
-    stats: [
-      { label: 'Project Delivery', value: '98%' },
-      { label: 'Client Retention', value: '94%' }
-    ]
+    link: '/industries/professional-services'
+  },
+  {
+    id: 'financial-services',
+    title: 'Financial Services',
+    description: 'Transform customer relationships, ensure regulatory compliance, and drive digital innovation with secure CRM, ERP, and automation solutions built for banking, insurance, and fintech organizations.',
+    icon: FaUniversity,
+    link: '/industries/financial-services'
   }
 ];
