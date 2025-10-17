@@ -51,12 +51,6 @@ const successStories = [
     outcome: 'Improved campaign execution, enhanced data quality, and provided marketing and sales teams with greater visibility into performance and attribution.'
   },
   {
-    client: 'Wellmark Blue Cross and Blue Shield',
-    challenge: 'Needed to integrate Marketo with Dynamics 365 to support healthcare marketing automation while ensuring compliance.',
-    solution: 'TAS configured Marketo assets, aligned data flows, and implemented governance best practices.',
-    outcome: 'Enabled secure, compliant campaign automation with improved visibility into marketing performance.'
-  },
-  {
     client: 'StarTech.com',
     challenge: 'Wanted to strengthen global sales, marketing, and customer service using Dynamics 365 and Marketo.',
     solution: 'TAS acted as Subject Matter Experts across multiple workstreams, leading a transition to real-time marketing, implementing a consent center, and aligning CRM with service workflows.',
@@ -215,24 +209,23 @@ export default function Home() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 font-heading">
-                    <span className="block text-white">Your Trusted Partner for</span>
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-blue-400 block mt-1 xs:mt-2">CRM, ERP, Marketing Automation & Cloud Solutions</span>
+                  <h1 className="text-[24px] xs:text-[28px] sm:text-[32px] md:text-[38px] lg:text-[42px] xl:text-[56px] font-bold leading-[1.1] mb-6 font-heading">
+                    <span className="block text-white">Your Trusted CRM, ERP, Marketing Automation & Cloud Solutions Provider</span>
                   </h1>
-                  
+
                   <p className="text-sm xs:text-base sm:text-lg text-white/95 mb-6 sm:mb-8 max-w-xl leading-relaxed font-normal">
                     Empowering businesses to unlock growth, optimize processes, and deliver measurable ROI through modern technology and proven expertise.
                   </p>
 
                   <div className="flex flex-col xs:flex-row gap-3 sm:gap-4">
                     <Link href="/contact" className="flex-1 xs:flex-none">
-                      <AnimatedButton className="bg-blue-600 hover:bg-blue-700 text-white border-white border-2 shadow-lg w-full xs:w-auto px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base font-medium">
+                      <AnimatedButton className="bg-primary-blue hover:bg-primary-blue/90 text-white border-transparent shadow-lg w-full xs:w-auto px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base font-medium">
                         Request a Consultation
                       </AnimatedButton>
                     </Link>
-                    <Link href="/case-studies" className="flex-1 xs:flex-none">
-                      <AnimatedButton className="bg-white/20 hover:bg-white/30 text-white border-white border-2 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 w-full xs:w-auto px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base font-medium">
-                        Explore Our Work
+                    <Link href="/services" className="flex-1 xs:flex-none">
+                      <AnimatedButton className="bg-transparent hover:bg-primary-blue/10 text-white border-primary-blue border-2 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 w-full xs:w-auto px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base font-medium">
+                        Explore Solutions
                       </AnimatedButton>
                     </Link>
                   </div>
@@ -421,139 +414,14 @@ export default function Home() {
             <div className="mt-12 text-center">
               <Link href="/services">
                 <AnimatedButton className="bg-primary-blue text-white hover:bg-primary-blue/90 border-none shadow-md">
-                  View All Services
+                  View All Solutions
                 </AnimatedButton>
               </Link>
             </div>
           </div>
         </AnimatedSection>
 
-        {/* Technology Integration Section */}
-        <AnimatedSection className="section-padding bg-primary-slate text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid-pattern opacity-[0.05] pointer-events-none"></div>
-          
-          <div className="max-w-7xl mx-auto container-padding relative z-10">
-            <div className="grid-integration">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="heading-2 !text-white mb-4 xs:mb-6">
-                  Stop Losing Revenue to Data Silos
-                </h2>
-                <p className="text-base xs:text-lg text-white/95 mb-6 xs:mb-8 leading-relaxed font-normal">
-                  TAS helps organizations eliminate data silos, automate workflows, and create a unified technology ecosystem. By integrating CRM, ERP, and marketing platforms, we enable seamless data flow and higher operational efficiency.
-                </p>
-                <ul className="space-y-3 xs:space-y-4 mb-6 xs:mb-8">
-                  {[
-                    'Eliminate manual data entry with secure, automated integrations',
-                    'Ensure accuracy and consistency across all platforms',
-                    'Improve productivity with unified workflows',
-                    'Gain a complete 360° customer view across systems'
-                  ].map((item, i) => (
-                    <motion.li 
-                      key={i}
-                      className="flex items-start text-white"
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: 0.1 * i }}
-                      viewport={{ once: true }}
-                    >
-                      <span className="text-blue-400 mr-2">✓</span>
-                      <span className="text-white">{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-                <Link href="/services/technology-integration">
-                  <AnimatedButton className="bg-blue-600 hover:bg-blue-700 text-white border-transparent shadow-md">
-                    Explore Integration Services
-                  </AnimatedButton>
-                </Link>
-              </motion.div>
-              
-              <motion.div
-                className="relative rounded-xl overflow-hidden shadow-2xl"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <div className="aspect-w-4 aspect-h-3 bg-primary-navy relative rounded-xl overflow-hidden border border-white/10">
-                  <Image
-                    src="/images/photos/Table_with_laptops.png"
-                    alt="Technology Integration"
-                    fill
-                    className="object-cover rounded-xl opacity-70"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary-blue/40 to-transparent"></div>
-                  
-                  {/* Integration Mockup */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-white/10 backdrop-blur-lg rounded-lg w-[80%] h-[80%] p-5 border border-white/20 shadow-xl">
-                      <div className="border-b border-white/20 pb-2 mb-4">
-                        <h3 className="text-xl font-bold">Systems Integration</h3>
-                      </div>
-                      
-                      <div className="flex justify-center items-center h-[80%]">
-                        <div className="relative w-full h-full">
-                          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-primary-blue/30 rounded-full flex items-center justify-center">
-                            <FaExchangeAlt className="text-white text-2xl" />
-                          </div>
-                          
-                          {/* Connected systems */}
-                          {['CRM', 'ERP', 'Marketing', 'Analytics'].map((system, index) => {
-                            const angle = (index * Math.PI / 2);
-                            const x = Math.cos(angle) * 120;
-                            const y = Math.sin(angle) * 120;
-                            return (
-                              <div 
-                                key={system}
-                                className="absolute w-24 h-16 bg-white/10 rounded-lg flex items-center justify-center border border-white/20"
-                                style={{ 
-                                  left: `calc(50% + ${x}px - 48px)`, 
-                                  top: `calc(50% + ${y}px - 32px)`
-                                }}
-                              >
-                                <span className="text-white font-medium">{system}</span>
-                              </div>
-                            );
-                          })}
-                          
-                          {/* Connection lines */}
-                          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                            {['CRM', 'ERP', 'Marketing', 'Analytics'].map((_, index) => {
-                              const angle = (index * Math.PI / 2);
-                              const x = Math.cos(angle) * 120;
-                              const y = Math.sin(angle) * 120;
-                              return (
-                                <line 
-                                  key={index}
-                                  x1="50%" 
-                                  y1="50%" 
-                                  x2={`calc(50% + ${x}px)`}
-                                  y2={`calc(50% + ${y}px)`}
-                                  stroke="rgba(255,255,255,0.3)" 
-                                  strokeWidth="2"
-                                  strokeDasharray="5,5"
-                                />
-                              );
-                            })}
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </AnimatedSection>
-
-
-        {/* Testimonials Section */}
+        {/* Success Stories Section */}
         <AnimatedSection className="section-padding bg-primary-light/50 dark:bg-dark-card text-text-primary dark:text-dark-text relative overflow-hidden">
           {/* Background image with overlay */}
           <div className="absolute inset-0 z-0">
@@ -632,29 +500,37 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Trust indicators section */}
+            {/* CTAs and Trust indicators section */}
             <div className="mt-12 text-center">
-              {/* Client satisfaction metrics */}
-              <div className="flex flex-wrap justify-center items-center gap-6 mb-8">
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+                <Link href="/contact">
+                  <AnimatedButton className="bg-primary-blue hover:bg-primary-blue/90 text-white border-transparent shadow-lg px-8 py-4">
+                    Become Our Next Success Story
+                  </AnimatedButton>
+                </Link>
+                <Link href="/case-studies">
+                  <AnimatedButton className="bg-transparent hover:bg-primary-blue/10 text-text-primary dark:text-dark-text border-primary-blue border-2 shadow-lg px-8 py-4">
+                    Read More Case Studies →
+                  </AnimatedButton>
+                </Link>
+              </div>
+
+              {/* Icon row */}
+              <div className="flex flex-wrap justify-center items-center gap-6">
                 <div className="flex items-center space-x-2 bg-white/10 dark:bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
-                  <span className="text-green-500 text-xl">⭐</span>
-                  <span className="text-sm font-medium">4.9/5 Client Rating</span>
+                  <span className="text-blue-500 text-xl">📅</span>
+                  <span className="text-sm font-medium">In Business Since 2016</span>
                 </div>
                 <div className="flex items-center space-x-2 bg-white/10 dark:bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
-                  <span className="text-blue-500 text-xl">🏆</span>
-                  <span className="text-sm font-medium">Microsoft Gold Partner</span>
+                  <span className="text-green-500 text-xl">🌍</span>
+                  <span className="text-sm font-medium">Trusted by Industry Leaders Worldwide</span>
                 </div>
                 <div className="flex items-center space-x-2 bg-white/10 dark:bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
-                  <span className="text-purple-500 text-xl">🔒</span>
-                  <span className="text-sm font-medium">ISO 27001 Certified</span>
+                  <span className="text-purple-500 text-xl">🏅</span>
+                  <span className="text-sm font-medium">Certified Multi Platform Partner</span>
                 </div>
               </div>
-              
-              <Link href="/contact">
-                <AnimatedButton className="bg-blue-600 hover:bg-blue-700 text-white border-transparent shadow-lg">
-                  Become Our Next Success Story
-                </AnimatedButton>
-              </Link>
             </div>
           </div>
         </AnimatedSection>
@@ -677,42 +553,42 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className="body-large text-center max-w-2xl mx-auto mb-6 xs:mb-8 sm:mb-10 px-4 xs:px-0"
+              className="body-large text-center max-w-3xl mx-auto mb-6 xs:mb-8 sm:mb-10 px-4 xs:px-0"
             >
-              Partner with TAS to unlock the full potential of your CRM, ERP, marketing automation, and cloud platforms. Our team combines deep technical expertise with proven consulting experience to modernize systems, connect data, and deliver measurable business outcomes.
+              Partner with TAS to unlock the full potential of your CRM, ERP, marketing automation, and cloud platforms. As Certified Partners with Microsoft, Salesforce, HubSpot, Adobe, and ClickDimensions, our team combines deep technical expertise with proven consulting experience to modernize systems, connect data, and deliver measurable business outcomes across ecosystems.
             </motion.p>
 
             <div className="flex flex-col sm:flex-row gap-3 xs:gap-4 justify-center w-full sm:w-auto px-4 xs:px-0">
               <Link href="/contact" className="w-full sm:w-auto">
-                <AnimatedButton className="bg-blue-600 text-white hover:bg-blue-700 border-none shadow-md w-full sm:w-auto px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base font-medium">
+                <AnimatedButton className="bg-primary-blue text-white hover:bg-primary-blue/90 border-none shadow-md w-full sm:w-auto px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base font-medium">
                   Request a Consultation
                 </AnimatedButton>
               </Link>
 
               <Link href="/services" className="w-full sm:w-auto">
-                <AnimatedButton className="bg-primary-navy text-white hover:bg-primary-navy/90 border-2 border-primary-blue shadow-md w-full sm:w-auto px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base font-medium">
+                <AnimatedButton className="bg-transparent hover:bg-primary-blue/10 text-text-primary dark:text-dark-text border-primary-blue border-2 shadow-md w-full sm:w-auto px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base font-medium">
                   Explore Solutions
                 </AnimatedButton>
               </Link>
             </div>
 
-            {/* Stats section */}
+            {/* Credibility Tiles */}
             <div className="content-grid grid-stats">
               {[
-                { 
-                  value: '30+ Years', 
-                  label: 'of Consulting Experience',
+                {
+                  value: '30+ Years',
+                  label: 'of Combined Consulting Experience',
                   subtext: 'Deep expertise in CRM, ERP, marketing automation, and cloud solutions.'
                 },
-                { 
-                  value: '95%', 
-                  label: 'Client Satisfaction Rate',
-                  subtext: 'A proven record of delivering successful outcomes for clients.'
-                },
-                { 
-                  value: 'Dozens', 
-                  label: 'of Clients Served Across Industries',
+                {
+                  value: 'Dozens of Clients',
+                  label: 'Served Across Multiple Industries',
                   subtext: 'Trusted by organizations across healthcare, government, finance, technology, and more.'
+                },
+                {
+                  value: 'Exceptional Client Satisfaction',
+                  label: 'Trusted by Clients Worldwide',
+                  subtext: 'Dedicated to delivering measurable value, partnership, and long term success across every engagement.'
                 }
               ].map((stat, index) => (
                 <motion.div
@@ -723,7 +599,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="card-stat text-center"
                 >
-                  <div className="text-3xl xs:text-4xl font-bold mb-2 text-blue-600 dark:text-blue-400">{stat.value}</div>
+                  <div className="text-2xl xs:text-3xl font-bold mb-2 text-blue-600 dark:text-blue-400">{stat.value}</div>
                   <div className="body-base font-medium mb-2">{stat.label}</div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">{stat.subtext}</div>
                 </motion.div>
