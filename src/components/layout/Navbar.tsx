@@ -124,7 +124,7 @@ export default function Navbar() {
   }, []);
 
   // Avoid rendering logo based on theme until mounted to prevent hydration mismatch
-  const logoSrc = mounted && isDarkMode ? "/images/TAS_logo2.png" : "/images/TAS_LOGO3.png";
+  const logoSrc = mounted && isDarkMode ? "/images/TAS_logo2.png" : "/images/logo_transparent_version.png";
 
   // Effect to apply style to mobile menu when it appears/dark mode changes
   useEffect(() => {
@@ -173,8 +173,8 @@ export default function Navbar() {
                 {/* Optional: Render a placeholder or the light logo initially to prevent layout shift */}
                 {!mounted && (
                   <div className="relative h-full w-full">
-                    <Image 
-                      src="/images/TAS_LOGO3.png" // Default to light logo before mount
+                    <Image
+                      src="/images/logo_transparent_version.png" // Default to light logo before mount
                       alt="Technology Alliance Solutions Logo"
                       fill
                       sizes="(max-width: 768px) 9rem, 9rem"
