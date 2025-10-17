@@ -444,14 +444,14 @@ export default function Home() {
             <div className="content-header max-w-3xl mx-auto">
               <AnimatedText
                 text="Success Stories"
-                className="heading-2 text-center"
+                className="heading-2 text-center !text-white"
               />
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="body-large text-center px-4 xs:px-0 mt-3 xs:mt-4"
+                className="body-large text-center px-4 xs:px-0 mt-3 xs:mt-4 text-white"
               >
                 See how TAS has helped leading organizations modernize technology, improve operations, and drive measurable outcomes.
               </motion.p>
@@ -510,7 +510,7 @@ export default function Home() {
                   </AnimatedButton>
                 </Link>
                 <Link href="/case-studies">
-                  <AnimatedButton className="bg-transparent hover:bg-primary-blue/10 text-text-primary dark:text-dark-text border-primary-blue border-2 shadow-lg px-8 py-4">
+                  <AnimatedButton className="bg-white hover:bg-white/90 text-primary-navy border-white border-2 shadow-lg px-8 py-4">
                     Read More Case Studies →
                   </AnimatedButton>
                 </Link>
@@ -518,17 +518,17 @@ export default function Home() {
 
               {/* Icon row */}
               <div className="flex flex-wrap justify-center items-center gap-6">
-                <div className="flex items-center space-x-2 bg-white/10 dark:bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
-                  <span className="text-blue-500 text-xl">📅</span>
-                  <span className="text-sm font-medium">In Business Since 2016</span>
+                <div className="flex items-center space-x-2 bg-white/20 rounded-full px-4 py-2 backdrop-blur-sm border border-white/30">
+                  <span className="text-blue-400 text-xl">📅</span>
+                  <span className="text-sm font-medium text-white">In Business Since 2016</span>
                 </div>
-                <div className="flex items-center space-x-2 bg-white/10 dark:bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
-                  <span className="text-green-500 text-xl">🌍</span>
-                  <span className="text-sm font-medium">Trusted by Industry Leaders Worldwide</span>
+                <div className="flex items-center space-x-2 bg-white/20 rounded-full px-4 py-2 backdrop-blur-sm border border-white/30">
+                  <span className="text-green-400 text-xl">🌍</span>
+                  <span className="text-sm font-medium text-white">Trusted by Industry Leaders Worldwide</span>
                 </div>
-                <div className="flex items-center space-x-2 bg-white/10 dark:bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
-                  <span className="text-purple-500 text-xl">🏅</span>
-                  <span className="text-sm font-medium">Certified Multi Platform Partner</span>
+                <div className="flex items-center space-x-2 bg-white/20 rounded-full px-4 py-2 backdrop-blur-sm border border-white/30">
+                  <span className="text-purple-400 text-xl">🏅</span>
+                  <span className="text-sm font-medium text-white">Certified Multi Platform Partner</span>
                 </div>
               </div>
             </div>
