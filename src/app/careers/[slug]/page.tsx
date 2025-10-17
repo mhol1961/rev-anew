@@ -15,7 +15,7 @@ export const revalidate = 3600; // Revalidate every hour
 
 export async function generateStaticParams() {
   const jobs = await getJobPostings();
-  const activeJobs = jobs.filter(job => job.status === 'active');
+  const activeJobs = jobs.filter(job => job.status === 'open');
   return activeJobs.map((job) => ({
     slug: job.slug,
   }));
@@ -43,7 +43,7 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
   const { slug } = await params;
   const job = await getJobPostingBySlug(slug);
 
-  if (!job || job.status !== 'active') {
+  if (!job || job.status !== 'open') {
     notFound();
   }
 
