@@ -1,54 +1,44 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getJobPostingBySlug, getJobPostings } from '@/lib/supabase';
 import PageLayout from '@/components/layout/PageLayout';
+import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import Link from 'next/link';
+import { getJobPostingBySlug } from '@/lib/supabase';
 
 interface JobDetailPageProps {
-  params: Promise<{
+  params: {
     slug: string;
-  }>;
-}
-
-export const revalidate = 3600; // Revalidate every hour
-
-export async function generateStaticParams() {
-  const jobs = await getJobPostings();
-  const activeJobs = jobs.filter(job => job.status === 'open');
-  return activeJobs.map((job) => ({
-    slug: job.slug,
-  }));
+  };
 }
 
 export async function generateMetadata({ params }: JobDetailPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const job = await getJobPostingBySlug(slug);
-  
+  const job = await getJobPostingBySlug(params.slug);
+
   if (!job) {
     return {
       title: 'Job Not Found | Technology Alliance Solutions',
-      description: 'The requested job posting could not be found.',
     };
   }
 
   return {
-    title: `${job.title} - Careers | Technology Alliance Solutions`,
+    title: `${job.title} - ${job.department} | Technology Alliance Solutions`,
     description: job.description.replace(/<[^>]*>/g, '').substring(0, 160),
-    keywords: `careers, ${job.title}, ${job.department}, ${job.location}, technology jobs`,
+    keywords: `${job.title}, ${job.department}, ${job.location}, ${job.type}, careers, jobs`,
   };
 }
 
-export default async function JobDetailPage({ params }: JobDetailPageProps) {
-  const { slug } = await params;
-  const job = await getJobPostingBySlug(slug);
+export const revalidate = 0;
 
-  if (!job || job.status !== 'open') {
+export default async function JobDetailPage({ params }: JobDetailPageProps) {
+  const job = await getJobPostingBySlug(params.slug);
+
+  if (!job) {
     notFound();
   }
 
   const formatDate = (dateString: string | null) => {
-    if (!dateString) return 'Recently';
+    if (!dateString) return null;
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
@@ -56,242 +46,244 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
     });
   };
 
-  // Parse responsibilities, qualifications, and benefits from HTML or text
-  const parseListFromHtml = (htmlString: string | null): string[] => {
-    if (!htmlString) return [];
-    // Extract list items from HTML or split by line breaks
-    const listItems = htmlString.match(/<li[^>]*>(.*?)<\/li>/gi);
-    if (listItems) {
-      return listItems.map(item => item.replace(/<[^>]*>/g, '').trim());
-    }
-    // Fallback: split by line breaks and filter empty lines
-    return htmlString.split('\n').filter(line => line.trim()).slice(0, 10);
-  };
-
-  const responsibilities = parseListFromHtml(job.responsibilities);
-  const qualifications = parseListFromHtml(job.qualifications);
-  const preferredQualifications = parseListFromHtml(job.preferred_qualifications);
-  const benefits = parseListFromHtml(job.benefits);
-
   return (
     <PageLayout>
-      <div className="min-h-screen bg-white dark:bg-gray-900">
-        {/* Header */}
-        <div className="bg-gradient-to-r from-primary-blue to-blue-700 text-white py-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Breadcrumb */}
-            <div className="mb-6">
-              <Link href="/careers" className="text-blue-200 hover:text-white transition-colors">
-                ← Back to Careers
-              </Link>
-            </div>
-            
-            <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-500 bg-opacity-20 text-blue-100">
-                {job.department}
-              </span>
-              <span className="text-blue-200 text-sm">
-                Posted {formatDate(job.posted_date)}
-              </span>
-            </div>
-            <h1 className="text-4xl font-bold mb-4">{job.title}</h1>
-            <div className="flex flex-wrap gap-4 text-blue-100">
-              <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                </svg>
-                {job.location}
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
+        {/* Job Header */}
+        <AnimatedSection className="pt-32 pb-12 bg-gradient-to-br from-primary-navy to-primary-blue">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center text-white">
+              <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+                <Link href="/careers" className="hover:underline">
+                  ← Back to Careers
+                </Link>
               </div>
-              <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                </svg>
-                {job.type}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                {job.title}
+              </h1>
+              <div className="flex flex-wrap justify-center gap-4 text-lg">
+                <span className="flex items-center">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                  {job.department}
+                </span>
+                <span className="text-white/70">•</span>
+                <span className="flex items-center">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  {job.location}
+                </span>
+                <span className="text-white/70">•</span>
+                <span className="flex items-center">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {job.type}
+                </span>
               </div>
-              {job.experience_level && (
-                <div className="flex items-center">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {job.experience_level}
-                </div>
-              )}
-              {job.salary_range && (
-                <div className="flex items-center">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" />
-                  </svg>
-                  {job.salary_range}
-                </div>
-              )}
-            </div>
-            {job.closing_date && (
-              <div className="mt-4 p-3 bg-yellow-500/20 border border-yellow-400/30 rounded-lg">
-                <p className="text-yellow-100 text-sm">
-                  ⏰ Application deadline: {formatDate(job.closing_date)}
+              {job.posted_date && (
+                <p className="mt-4 text-white/80">
+                  Posted {formatDate(job.posted_date)}
+                  {job.closing_date && ` • Closes ${formatDate(job.closing_date)}`}
                 </p>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
 
-        {/* Content */}
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-8">
+        {/* Job Content */}
+        <AnimatedSection className="py-16">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 lg:p-12">
+              {/* Quick Info Cards */}
+              <div className="grid md:grid-cols-2 gap-6 mb-12">
+                {job.experience_level && (
+                  <div className="bg-blue-50 dark:bg-blue-900/30 p-6 rounded-lg">
+                    <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Experience Level</h3>
+                    <p className="text-lg font-semibold text-primary-navy dark:text-white">{job.experience_level}</p>
+                  </div>
+                )}
+                {job.salary_range && (
+                  <div className="bg-green-50 dark:bg-green-900/30 p-6 rounded-lg">
+                    <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Salary Range</h3>
+                    <p className="text-lg font-semibold text-primary-navy dark:text-white">{job.salary_range}</p>
+                  </div>
+                )}
+              </div>
+
               {/* Job Description */}
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">About This Role</h2>
-                <div 
-                  className="prose prose-lg max-w-none dark:prose-invert text-gray-700 dark:text-gray-300 leading-relaxed"
+              <div className="mb-12">
+                <h2 className="text-2xl font-bold text-primary-navy dark:text-white mb-6 flex items-center">
+                  <svg className="w-6 h-6 mr-3 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  About the Role
+                </h2>
+                <div
+                  className="prose prose-lg dark:prose-invert max-w-none"
                   dangerouslySetInnerHTML={{ __html: job.description }}
                 />
               </div>
 
               {/* Responsibilities */}
-              {responsibilities.length > 0 && (
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Key Responsibilities</h3>
-                  <ul className="space-y-3">
-                    {responsibilities.map((responsibility, index) => (
-                      <li key={index} className="flex items-start">
-                        <svg className="w-5 h-5 text-primary-blue mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-gray-700 dark:text-gray-300">{responsibility}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {job.responsibilities && (
+                <div className="mb-12">
+                  <h2 className="text-2xl font-bold text-primary-navy dark:text-white mb-6 flex items-center">
+                    <svg className="w-6 h-6 mr-3 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                    </svg>
+                    Responsibilities
+                  </h2>
+                  <div
+                    className="prose prose-lg dark:prose-invert max-w-none"
+                    dangerouslySetInnerHTML={{ __html: job.responsibilities }}
+                  />
                 </div>
               )}
 
-              {/* Requirements */}
-              {qualifications.length > 0 && (
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Requirements</h3>
-                  <ul className="space-y-3">
-                    {qualifications.map((requirement, index) => (
-                      <li key={index} className="flex items-start">
-                        <svg className="w-5 h-5 text-primary-blue mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-gray-700 dark:text-gray-300">{requirement}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Qualifications */}
+              {job.qualifications && (
+                <div className="mb-12">
+                  <h2 className="text-2xl font-bold text-primary-navy dark:text-white mb-6 flex items-center">
+                    <svg className="w-6 h-6 mr-3 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Required Qualifications
+                  </h2>
+                  <div
+                    className="prose prose-lg dark:prose-invert max-w-none"
+                    dangerouslySetInnerHTML={{ __html: job.qualifications }}
+                  />
                 </div>
               )}
 
               {/* Preferred Qualifications */}
-              {preferredQualifications.length > 0 && (
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Preferred Qualifications</h3>
-                  <ul className="space-y-3">
-                    {preferredQualifications.map((qualification, index) => (
-                      <li key={index} className="flex items-start">
-                        <svg className="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-gray-700 dark:text-gray-300">{qualification}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {job.preferred_qualifications && (
+                <div className="mb-12">
+                  <h2 className="text-2xl font-bold text-primary-navy dark:text-white mb-6 flex items-center">
+                    <svg className="w-6 h-6 mr-3 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                    </svg>
+                    Preferred Qualifications
+                  </h2>
+                  <div
+                    className="prose prose-lg dark:prose-invert max-w-none"
+                    dangerouslySetInnerHTML={{ __html: job.preferred_qualifications }}
+                  />
                 </div>
               )}
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-6">
-              {/* Apply Button */}
-              <div className="bg-primary-light/20 dark:bg-primary-blue/20 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Ready to Apply?</h3>
-                {job.application_url ? (
-                  <a 
-                    href={job.application_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full"
-                  >
-                    <AnimatedButton className="w-full bg-primary-blue hover:bg-primary-navy text-white font-semibold py-3 px-6">
-                      Apply Now
-                    </AnimatedButton>
-                  </a>
-                ) : job.contact_email ? (
-                  <a href={`mailto:${job.contact_email}?subject=Application for ${job.title}`} className="block w-full">
-                    <AnimatedButton className="w-full bg-primary-blue hover:bg-primary-navy text-white font-semibold py-3 px-6">
-                      Email Application
-                    </AnimatedButton>
-                  </a>
-                ) : (
-                  <Link href="/contact" className="block w-full">
-                    <AnimatedButton className="w-full bg-primary-blue hover:bg-primary-navy text-white font-semibold py-3 px-6">
-                      Contact Us to Apply
-                    </AnimatedButton>
-                  </Link>
-                )}
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-3 text-center">
-                  We'll review your application and get back to you within 48 hours.
-                </p>
-              </div>
 
               {/* Benefits */}
-              {benefits.length > 0 && (
-                <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">What We Offer</h3>
-                  <ul className="space-y-3">
-                    {benefits.map((benefit, index) => (
-                      <li key={index} className="flex items-start">
-                        <svg className="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-sm text-gray-700 dark:text-gray-300">{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {job.benefits && (
+                <div className="mb-12">
+                  <h2 className="text-2xl font-bold text-primary-navy dark:text-white mb-6 flex items-center">
+                    <svg className="w-6 h-6 mr-3 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                    </svg>
+                    Benefits & Perks
+                  </h2>
+                  <div
+                    className="prose prose-lg dark:prose-invert max-w-none"
+                    dangerouslySetInnerHTML={{ __html: job.benefits }}
+                  />
                 </div>
               )}
 
-              {/* Job Details */}
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Job Details</h3>
-                <div className="space-y-3">
-                  <div>
-                    <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Department:</span>
-                    <p className="text-sm text-gray-900 dark:text-white">{job.department}</p>
+              {/* Application CTA */}
+              <div className="border-t-2 border-gray-200 dark:border-gray-700 pt-8">
+                <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 p-8 rounded-lg text-center">
+                  <h3 className="text-2xl font-bold text-primary-navy dark:text-white mb-4">
+                    Ready to Apply?
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+                    Join our team and help transform businesses through innovative technology solutions.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    {job.application_url ? (
+                      <a
+                        href={job.application_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block"
+                      >
+                        <AnimatedButton className="bg-primary-blue hover:bg-primary-navy text-white px-8 py-3 text-lg">
+                          Apply Now
+                        </AnimatedButton>
+                      </a>
+                    ) : job.contact_email ? (
+                      <a
+                        href={`mailto:${job.contact_email}?subject=Application for ${job.title}`}
+                        className="inline-block"
+                      >
+                        <AnimatedButton className="bg-primary-blue hover:bg-primary-navy text-white px-8 py-3 text-lg">
+                          Apply via Email
+                        </AnimatedButton>
+                      </a>
+                    ) : (
+                      <Link href="/contact">
+                        <AnimatedButton className="bg-primary-blue hover:bg-primary-navy text-white px-8 py-3 text-lg">
+                          Contact Us to Apply
+                        </AnimatedButton>
+                      </Link>
+                    )}
+                    <Link href="/careers">
+                      <AnimatedButton className="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3 text-lg">
+                        View All Positions
+                      </AnimatedButton>
+                    </Link>
                   </div>
-                  <div>
-                    <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Location:</span>
-                    <p className="text-sm text-gray-900 dark:text-white">{job.location}</p>
-                  </div>
-                  <div>
-                    <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Employment Type:</span>
-                    <p className="text-sm text-gray-900 dark:text-white">{job.type}</p>
-                  </div>
-                  {job.experience_level && (
-                    <div>
-                      <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Experience Level:</span>
-                      <p className="text-sm text-gray-900 dark:text-white">{job.experience_level}</p>
-                    </div>
-                  )}
-                  {job.salary_range && (
-                    <div>
-                      <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Salary Range:</span>
-                      <p className="text-sm text-gray-900 dark:text-white">{job.salary_range}</p>
-                    </div>
-                  )}
-                  {job.closing_date && (
-                    <div>
-                      <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Application Deadline:</span>
-                      <p className="text-sm text-gray-900 dark:text-white">{formatDate(job.closing_date)}</p>
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
+
+        {/* Why Work at TAS Section */}
+        <AnimatedSection className="py-16 bg-white dark:bg-gray-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-primary-navy dark:text-white text-center mb-12">
+              Why Work at Technology Alliance Solutions?
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4 mx-auto">
+                  <span className="text-3xl">🚀</span>
+                </div>
+                <h3 className="text-xl font-semibold text-primary-navy dark:text-white mb-2">
+                  Innovation First
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Work with cutting-edge technologies and shape the future of business automation.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-4 mx-auto">
+                  <span className="text-3xl">🌱</span>
+                </div>
+                <h3 className="text-xl font-semibold text-primary-navy dark:text-white mb-2">
+                  Growth Opportunities
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  $5,000 annual learning budget, certifications, mentorship, and clear career paths.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-4 mx-auto">
+                  <span className="text-3xl">🤝</span>
+                </div>
+                <h3 className="text-xl font-semibold text-primary-navy dark:text-white mb-2">
+                  Collaborative Culture
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Join a supportive team where your ideas matter and work-life balance is prioritized.
+                </p>
+              </div>
+            </div>
+          </div>
+        </AnimatedSection>
       </div>
     </PageLayout>
   );

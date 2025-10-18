@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase, JobPosting } from '@/lib/supabase'
+import RichTextEditor from '@/components/admin/RichTextEditor'
 
 interface JobEditorProps {
   job?: JobPosting
@@ -227,73 +228,57 @@ export default function JobEditor({ job, isEditing = false }: JobEditorProps) {
           <div className="mt-5 md:mt-0 md:col-span-2">
             <div className="space-y-6">
               <div>
-                <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Job Description *
                 </label>
-                <textarea
-                  id="description"
-                  rows={4}
-                  required
-                  className="mt-1 focus:ring-primary-blue focus:border-primary-blue block w-full shadow-sm sm:text-sm border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  value={formData.description}
-                  onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+                <RichTextEditor
+                  content={formData.description}
+                  onChange={(content) => setFormData(prev => ({ ...prev, description: content }))}
                   placeholder="Brief overview of the role and what the candidate will be doing..."
                 />
               </div>
 
               <div>
-                <label htmlFor="responsibilities" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Responsibilities
                 </label>
-                <textarea
-                  id="responsibilities"
-                  rows={6}
-                  className="mt-1 focus:ring-primary-blue focus:border-primary-blue block w-full shadow-sm sm:text-sm border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  value={formData.responsibilities}
-                  onChange={(e) => setFormData(prev => ({ ...prev, responsibilities: e.target.value }))}
-                  placeholder="• Responsibility 1&#10;• Responsibility 2&#10;• Responsibility 3"
+                <RichTextEditor
+                  content={formData.responsibilities}
+                  onChange={(content) => setFormData(prev => ({ ...prev, responsibilities: content }))}
+                  placeholder="List the main responsibilities of this role..."
                 />
               </div>
 
               <div>
-                <label htmlFor="qualifications" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Required Qualifications
                 </label>
-                <textarea
-                  id="qualifications"
-                  rows={6}
-                  className="mt-1 focus:ring-primary-blue focus:border-primary-blue block w-full shadow-sm sm:text-sm border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  value={formData.qualifications}
-                  onChange={(e) => setFormData(prev => ({ ...prev, qualifications: e.target.value }))}
-                  placeholder="• Requirement 1&#10;• Requirement 2&#10;• Requirement 3"
+                <RichTextEditor
+                  content={formData.qualifications}
+                  onChange={(content) => setFormData(prev => ({ ...prev, qualifications: content }))}
+                  placeholder="List the required qualifications for this role..."
                 />
               </div>
 
               <div>
-                <label htmlFor="preferred_qualifications" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Preferred Qualifications
                 </label>
-                <textarea
-                  id="preferred_qualifications"
-                  rows={4}
-                  className="mt-1 focus:ring-primary-blue focus:border-primary-blue block w-full shadow-sm sm:text-sm border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  value={formData.preferred_qualifications}
-                  onChange={(e) => setFormData(prev => ({ ...prev, preferred_qualifications: e.target.value }))}
-                  placeholder="• Preferred skill 1&#10;• Preferred skill 2"
+                <RichTextEditor
+                  content={formData.preferred_qualifications}
+                  onChange={(content) => setFormData(prev => ({ ...prev, preferred_qualifications: content }))}
+                  placeholder="List preferred qualifications (nice-to-have)..."
                 />
               </div>
 
               <div>
-                <label htmlFor="benefits" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Benefits
                 </label>
-                <textarea
-                  id="benefits"
-                  rows={4}
-                  className="mt-1 focus:ring-primary-blue focus:border-primary-blue block w-full shadow-sm sm:text-sm border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  value={formData.benefits}
-                  onChange={(e) => setFormData(prev => ({ ...prev, benefits: e.target.value }))}
-                  placeholder="• Benefit 1&#10;• Benefit 2&#10;• Benefit 3"
+                <RichTextEditor
+                  content={formData.benefits}
+                  onChange={(content) => setFormData(prev => ({ ...prev, benefits: content }))}
+                  placeholder="List the benefits offered with this position..."
                 />
               </div>
             </div>

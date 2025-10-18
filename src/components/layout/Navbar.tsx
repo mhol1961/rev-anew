@@ -160,13 +160,13 @@ export default function Navbar() {
                   <div className="relative h-full w-full">
                     <Image
                       key={logoSrc} // Add key to force re-render on src change if needed
-                      src={logoSrc} 
-                      alt="Technology Alliance Solutions Logo" 
+                      src={logoSrc}
+                      alt="Technology Alliance Solutions Logo"
                       fill
-                      sizes="(max-width: 768px) 9rem, 9rem"
-                      style={{ objectFit: 'contain' }}
+                      sizes="(max-width: 768px) 10rem, 10rem"
+                      style={{ objectFit: 'contain', objectPosition: 'left center' }}
                       className="logo-enhance"
-                      priority 
+                      priority
                     />
                   </div>
                 )}
@@ -177,8 +177,8 @@ export default function Navbar() {
                       src="/images/logo_transparent_version.png" // Default to light logo before mount
                       alt="Technology Alliance Solutions Logo"
                       fill
-                      sizes="(max-width: 768px) 9rem, 9rem"
-                      style={{ objectFit: 'contain' }} // Corrected indentation and ensured props are aligned
+                      sizes="(max-width: 768px) 10rem, 10rem"
+                      style={{ objectFit: 'contain', objectPosition: 'left center' }}
                       priority
                     />
                   </div>

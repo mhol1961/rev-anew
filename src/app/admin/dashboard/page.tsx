@@ -17,23 +17,57 @@ export default function AdminDashboard() {
       try {
         const currentUser = await getCurrentUser()
         console.log('Dashboard auth check:', currentUser)
-        
+
         if (!currentUser) {
+          // TEMPORARY DEV MODE: Allow access without authentication
+          if (process.env.NODE_ENV === 'development') {
+            console.log('DEV MODE: Bypassing dashboard authentication')
+            setUser({
+              id: 'dev-admin',
+              auth_id: 'dev-admin',
+              email: 'dev@admin.local',
+              first_name: 'Dev',
+              last_name: 'Admin',
+              role: 'admin',
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString(),
+              isAuthenticated: true
+            })
+            setLoading(false)
+            return
+          }
           console.log('No user found, redirecting to login')
           router.push('/admin/login')
           return
         }
-        
+
         if (currentUser.role !== 'admin') {
           console.log('User is not admin, access denied')
           router.push('/admin/login')
           return
         }
-        
+
         console.log('Admin access granted')
         setUser(currentUser)
       } catch (error) {
         console.error('Auth check error:', error)
+        // TEMPORARY DEV MODE: Allow access without authentication
+        if (process.env.NODE_ENV === 'development') {
+          console.log('DEV MODE: Bypassing dashboard authentication due to error')
+          setUser({
+            id: 'dev-admin',
+            auth_id: 'dev-admin',
+            email: 'dev@admin.local',
+            first_name: 'Dev',
+            last_name: 'Admin',
+            role: 'admin',
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+            isAuthenticated: true
+          })
+          setLoading(false)
+          return
+        }
         router.push('/admin/login')
       } finally {
         setLoading(false)

@@ -155,8 +155,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {/* Main Content */}
               <div className="lg:col-span-2">
                 <AnimatedSection>
-                  <div 
-                    className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-primary-navy dark:prose-headings:text-white prose-links:text-primary-blue dark:prose-links:text-blue-400 prose-strong:text-primary-navy dark:prose-strong:text-white article-content"
+                  <div
+                    className="article-content prose prose-lg text-primary-navy dark:text-white prose-headings:text-primary-navy dark:prose-headings:text-white prose-p:text-primary-navy dark:prose-p:text-white prose-li:text-primary-navy dark:prose-li:text-white prose-strong:text-primary-navy dark:prose-strong:text-white prose-a:text-primary-blue dark:prose-a:text-primary-blue/90 max-w-none"
                     dangerouslySetInnerHTML={{ __html: post.content }}
                   />
                 </AnimatedSection>
