@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram, FaYoutube, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaLinkedin, FaFacebook, FaInstagram, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
   // Animation variants
@@ -23,10 +24,10 @@ const Footer = () => {
             <div>
               <motion.div className="space-y-4" variants={itemVariants}>
                 <h3 className="text-base font-bold text-primary-blue">
-                  Technology Alliance Solutions, INC.
+                  Technology Alliance Solutions, Inc.
                 </h3>
                 <p className="text-sm text-gray-300 leading-relaxed">
-                  Trusted experts in CRM, ERP, marketing automation, and integration. Delivering enterprise technology solutions and consulting services across Microsoft, Salesforce, HubSpot, and Adobe ecosystems.
+                  Trusted experts in CRM, ERP, marketing automation, and cloud solutions. Delivering enterprise technology and consulting services across platforms such as Microsoft, Salesforce, HubSpot, and Adobe.
                 </p>
                 <div className="pt-2">
                   <div className="flex items-start space-x-2 text-sm mb-2">
@@ -57,9 +58,9 @@ const Footer = () => {
                     className="text-primary-blue hover:text-white transition-colors touch-manipulation"
                     whileHover={{ scale: 1.2, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
-                    aria-label="Twitter"
+                    aria-label="X (formerly Twitter)"
                   >
-                    <FaTwitter size={20} />
+                    <FaXTwitter size={20} />
                   </motion.a>
                   <motion.a
                     href="https://facebook.com/technologyalliancesolutions"
@@ -83,39 +84,27 @@ const Footer = () => {
                   >
                     <FaInstagram size={20} />
                   </motion.a>
-                  <motion.a
-                    href="https://youtube.com/c/technologyalliancesolutions"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary-blue hover:text-white transition-colors"
-                    whileHover={{ scale: 1.2, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    aria-label="YouTube"
-                  >
-                    <FaYoutube size={20} />
-                  </motion.a>
                 </div>
               </motion.div>
             </div>
 
-            {/* Our Services - Column 2 */}
+            {/* Our Solutions - Column 2 */}
             <div>
               <motion.div className="space-y-4" variants={itemVariants}>
-                <h3 className="text-base font-bold text-primary-blue">Our Services</h3>
+                <h3 className="text-base font-bold text-primary-blue">Our Solutions</h3>
                 <ul className="space-y-2 text-sm">
-                  <li><Link href="/services" className="text-gray-300 hover:text-primary-blue transition-colors">All Services</Link></li>
-                  <li><Link href="/services/seo" className="text-gray-300 hover:text-primary-blue transition-colors">SEO Services</Link></li>
-                  <li><Link href="/services/website-creation" className="text-gray-300 hover:text-primary-blue transition-colors">Website Creation</Link></li>
-                  <li><Link href="/services/email-marketing" className="text-gray-300 hover:text-primary-blue transition-colors">Email Marketing</Link></li>
-                  <li><Link href="/services/lead-generation" className="text-gray-300 hover:text-primary-blue transition-colors">Lead Generation</Link></li>
-                  <li><Link href="/services/crm" className="text-gray-300 hover:text-primary-blue transition-colors">CRM & Automation</Link></li>
-                  <li><Link href="/services/reputation" className="text-gray-300 hover:text-primary-blue transition-colors">Reputation Management</Link></li>
-                  <li><Link href="/services/social-media" className="text-gray-300 hover:text-primary-blue transition-colors">Social Media Management</Link></li>
-                  <li><Link href="/services/technology-integration" className="text-gray-300 hover:text-primary-blue transition-colors">Technology Integration</Link></li>
+                  <li><Link href="/services/crm" className="text-gray-300 hover:text-primary-blue transition-colors">CRM</Link></li>
+                  <li><Link href="/services/erp" className="text-gray-300 hover:text-primary-blue transition-colors">ERP</Link></li>
                   <li><Link href="/services/marketing-automation" className="text-gray-300 hover:text-primary-blue transition-colors">Marketing Automation</Link></li>
-                  <li><Link href="/services/custom-solutions" className="text-gray-300 hover:text-primary-blue transition-colors">Custom Solutions</Link></li>
-                  <li><Link href="/services/systems-optimization" className="text-gray-300 hover:text-primary-blue transition-colors">System Optimization</Link></li>
-                  <li><Link href="/services/data-management" className="text-gray-300 hover:text-primary-blue transition-colors">Data Management</Link></li>
+                  <li><Link href="/services/power-platform" className="text-gray-300 hover:text-primary-blue transition-colors">Power Platform</Link></li>
+                  <li><Link href="/services/systems-integration" className="text-gray-300 hover:text-primary-blue transition-colors">Systems Integration</Link></li>
+                  <li><Link href="/services/cloud-architecture" className="text-gray-300 hover:text-primary-blue transition-colors">Cloud Architecture</Link></li>
+                  <li><Link href="/services/data-analytics" className="text-gray-300 hover:text-primary-blue transition-colors">Data & Analytics</Link></li>
+                  <li><Link href="/services/technology-consulting" className="text-gray-300 hover:text-primary-blue transition-colors">Technology Consulting & Advisory</Link></li>
+                  <li><Link href="/services/change-management" className="text-gray-300 hover:text-primary-blue transition-colors">Change Management & Adoption</Link></li>
+                  <li><Link href="/services/customer-experience" className="text-gray-300 hover:text-primary-blue transition-colors">CX Design</Link></li>
+                  <li><Link href="/services/governance-compliance" className="text-gray-300 hover:text-primary-blue transition-colors">Governance & Compliance</Link></li>
+                  <li><Link href="/services/managed-services" className="text-gray-300 hover:text-primary-blue transition-colors">Managed Services & Support</Link></li>
                 </ul>
               </motion.div>
             </div>
@@ -128,11 +117,21 @@ const Footer = () => {
                   <div>
                     <h3 className="text-base font-bold text-primary-blue mb-4">Technologies</h3>
                     <ul className="space-y-2 text-sm">
-                      <li><Link href="/services/technologies" className="text-gray-300 hover:text-primary-blue transition-colors">All Technologies</Link></li>
-                      <li className="text-gray-300">CRM Platforms</li>
-                      <li className="text-gray-300">Integration Tools</li>
-                      <li className="text-gray-300">Marketing Platforms</li>
-                      <li className="text-gray-300">Compare Solutions</li>
+                      <li className="text-gray-400 font-semibold mt-2">CRM Platforms</li>
+                      <li><span className="text-gray-300">Microsoft Dynamics 365</span></li>
+                      <li><span className="text-gray-300">Salesforce</span></li>
+                      <li><span className="text-gray-300">HubSpot</span></li>
+                      <li className="text-gray-400 font-semibold mt-2">Marketing Platforms</li>
+                      <li><span className="text-gray-300">Marketo Engage</span></li>
+                      <li><span className="text-gray-300">ClickDimensions</span></li>
+                      <li><span className="text-gray-300">Dynamics 365 Customer Insights</span></li>
+                      <li className="text-gray-400 font-semibold mt-2">Integration Tools</li>
+                      <li><span className="text-gray-300">Power Platform</span></li>
+                      <li><span className="text-gray-300">Azure Logic Apps</span></li>
+                      <li><span className="text-gray-300">APIs</span></li>
+                      <li className="text-gray-400 font-semibold mt-2">Data & Analytics</li>
+                      <li><span className="text-gray-300">Power BI</span></li>
+                      <li><span className="text-gray-300">Fabric</span></li>
                     </ul>
                   </div>
 
@@ -152,9 +151,9 @@ const Footer = () => {
 
                 {/* Subscribe Section - Below Technologies and Company */}
                 <div className="mt-8 pt-8 border-t border-gray-800">
-                  <h3 className="text-base font-bold text-primary-blue mb-2">Subscribe to Updates</h3>
+                  <h3 className="text-base font-bold text-primary-blue mb-2">Subscribe</h3>
                   <p className="text-sm text-gray-300 mb-4">
-                    Stay informed about our latest AI tools, marketing strategies, and industry insights.
+                    Stay informed about CRM, ERP, and marketing automation insights — plus TAS case studies and technology updates.
                   </p>
                   <form className="flex flex-col sm:flex-row gap-3 max-w-xl">
                     <div className="flex-1">
@@ -169,7 +168,10 @@ const Footer = () => {
                         required
                       />
                       <p className="text-xs text-gray-400 mt-2">
-                        Get the latest updates on our services and industry insights
+                        Get the latest updates on our solutions, success stories, and industry insights.
+                      </p>
+                      <p className="text-xs text-gray-500 mt-1">
+                        We respect your privacy; unsubscribe anytime.
                       </p>
                     </div>
                     <div className="flex items-end">
@@ -193,7 +195,7 @@ const Footer = () => {
         <div className="bg-gray-950 dark:bg-black py-5 relative z-10">
           <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-400">
             <p>
-              © 2025 Technology Alliance Solutions, INC. All rights reserved.
+              © 2025 Technology Alliance Solutions, Inc. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center sm:justify-start gap-x-6 gap-y-2 mt-4 sm:mt-0">
               <Link href="/privacy" className="hover:text-primary-blue transition-colors">
