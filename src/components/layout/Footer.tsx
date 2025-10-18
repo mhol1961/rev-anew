@@ -118,12 +118,12 @@ const Footer = () => {
                     <h3 className="text-base font-bold text-primary-blue mb-4">Technologies</h3>
                     <ul className="space-y-2 text-sm">
                       <li className="text-gray-400 font-semibold mt-2">CRM Platforms</li>
-                      <li><span className="text-gray-300">Microsoft Dynamics 365</span></li>
-                      <li><span className="text-gray-300">Salesforce</span></li>
-                      <li><span className="text-gray-300">HubSpot</span></li>
+                      <li><Link href="/services/technologies/microsoft-dynamics-365" className="text-gray-300 hover:text-primary-blue transition-colors">Microsoft Dynamics 365</Link></li>
+                      <li><Link href="/services/technologies/salesforce" className="text-gray-300 hover:text-primary-blue transition-colors">Salesforce</Link></li>
+                      <li><Link href="/services/technologies/hubspot" className="text-gray-300 hover:text-primary-blue transition-colors">HubSpot</Link></li>
                       <li className="text-gray-400 font-semibold mt-2">Marketing Platforms</li>
-                      <li><span className="text-gray-300">Marketo Engage</span></li>
-                      <li><span className="text-gray-300">ClickDimensions</span></li>
+                      <li><Link href="/services/technologies/marketo" className="text-gray-300 hover:text-primary-blue transition-colors">Marketo Engage</Link></li>
+                      <li><Link href="/services/technologies/clickdimensions" className="text-gray-300 hover:text-primary-blue transition-colors">ClickDimensions</Link></li>
                       <li><span className="text-gray-300">Dynamics 365 Customer Insights</span></li>
                       <li className="text-gray-400 font-semibold mt-2">Integration Tools</li>
                       <li><span className="text-gray-300">Power Platform</span></li>
