@@ -153,7 +153,7 @@ const Footer = () => {
                 <div className="mt-8 pt-8 border-t border-gray-800">
                   <h3 className="text-base font-bold text-primary-blue mb-2">Subscribe</h3>
                   <p className="text-sm text-gray-300 mb-4">
-                    Stay informed about CRM, ERP, and marketing automation insights — plus TAS case studies and technology updates.
+                    Subscribe to our newsletter for the latest insights on technology consulting, CRM, and digital transformation.
                   </p>
                   <form className="flex flex-col sm:flex-row gap-3 max-w-xl">
                     <div className="flex-1">
