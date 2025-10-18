@@ -67,7 +67,7 @@ export default function RichTextEditor({ content, onChange, placeholder = 'Start
             const { tr } = state;
             let inserted = false;
 
-            paragraphs.forEach((para, index) => {
+            paragraphs.forEach((para) => {
               const lines = para.split('\n').filter(l => l.trim());
               lines.forEach((line) => {
                 if (line.trim()) {

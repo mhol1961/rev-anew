@@ -7,13 +7,14 @@ import Link from 'next/link';
 import { getJobPostingBySlug } from '@/lib/supabase';
 
 interface JobDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: JobDetailPageProps): Promise<Metadata> {
-  const job = await getJobPostingBySlug(params.slug);
+  const resolvedParams = await params;
+  const job = await getJobPostingBySlug(resolvedParams.slug);
 
   if (!job) {
     return {
@@ -31,7 +32,8 @@ export async function generateMetadata({ params }: JobDetailPageProps): Promise<
 export const revalidate = 0;
 
 export default async function JobDetailPage({ params }: JobDetailPageProps) {
-  const job = await getJobPostingBySlug(params.slug);
+  const resolvedParams = await params;
+  const job = await getJobPostingBySlug(resolvedParams.slug);
 
   if (!job) {
     notFound();

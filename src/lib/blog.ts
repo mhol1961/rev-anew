@@ -2,6 +2,11 @@
 import { supabase } from '@/lib/supabase';
 import type { BlogPost, BlogCategory, BlogTag, BlogPostFormData } from '@/types/blog';
 
+// Helper type for Supabase tag join structure
+interface TagJoin {
+  tag: BlogTag;
+}
+
 // Generate a URL-friendly slug from a title
 export function generateSlug(title: string): string {
   return title
@@ -37,7 +42,7 @@ export async function getPublishedPosts(limit?: number): Promise<BlogPost[]> {
   // Transform the tags array structure
   return (data || []).map(post => ({
     ...post,
-    tags: post.tags?.map((t: any) => t.tag) || []
+    tags: post.tags?.map((t: TagJoin) => t.tag) || []
   }));
 }
 
@@ -61,7 +66,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   // Transform the tags array structure
   return {
     ...data,
-    tags: data.tags?.map((t: any) => t.tag) || []
+    tags: data.tags?.map((t: TagJoin) => t.tag) || []
   };
 }
 
@@ -122,7 +127,7 @@ export async function getPostsByCategory(categorySlug: string, limit?: number): 
 
   return (data || []).map(post => ({
     ...post,
-    tags: post.tags?.map((t: any) => t.tag) || []
+    tags: post.tags?.map((t: TagJoin) => t.tag) || []
   }));
 }
 
@@ -153,7 +158,7 @@ export async function getPostsByTag(tagSlug: string, limit?: number): Promise<Bl
 
   return (data || []).map(post => ({
     ...post,
-    tags: post.tags?.map((t: any) => t.tag) || []
+    tags: post.tags?.map((t: TagJoin) => t.tag) || []
   }));
 }
 
@@ -270,6 +275,6 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 
   return (data || []).map(post => ({
     ...post,
-    tags: post.tags?.map((t: any) => t.tag) || []
+    tags: post.tags?.map((t: TagJoin) => t.tag) || []
   }));
 }

@@ -1,8 +1,5 @@
 import { supabase } from '@/lib/supabase'
 import type {
-  CMSPage,
-  CMSSection,
-  CMSContentField,
   CMSPageWithSections,
   CMSSectionWithFields
 } from '@/types/cms'
