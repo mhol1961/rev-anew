@@ -25,7 +25,7 @@ export default async function BlogPage() {
     if (post.author?.first_name && post.author?.last_name) {
       return `${post.author.first_name} ${post.author.last_name}`;
     }
-    return 'Technology Alliance Solutions';
+    return 'REV-ANEW';
   };
 
   const formatDate = (dateString: string) => {

@@ -334,7 +334,7 @@ export default function DataAnalyticsPage() {
                   </li>
                 </ul>
                 <p className="text-primary-slate dark:text-gray-300 italic">
-                  "TAS delivered analytics solutions that transformed how we understand and engage with our patients while ensuring full compliance with healthcare regulations." - Analytics Director
+                  "REV-ANEW delivered analytics solutions that transformed how we understand and engage with our patients while ensuring full compliance with healthcare regulations." - Analytics Director
                 </p>
               </div>
             </div>

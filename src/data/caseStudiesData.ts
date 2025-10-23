@@ -48,7 +48,7 @@ export const caseStudies: CaseStudy[] = [
     implementation: 'Phased rollout across regions with comprehensive training programs, data migration, and change management support.',
     outcome: 'Achieved 40% improvement in sales efficiency, 60% reduction in lead processing time, and 95% customer satisfaction rating.',
     testimonial: {
-      quote: "TAS transformed how we manage customer relationships globally. The unified system has given us unprecedented visibility into our sales pipeline.",
+      quote: "REV-ANEW transformed how we manage customer relationships globally. The unified system has given us unprecedented visibility into our sales pipeline.",
       author: "Sarah Johnson",
       position: "VP of Sales Operations"
     },

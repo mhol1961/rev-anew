@@ -11,17 +11,14 @@ if (typeof window === 'undefined') {
   console.log('NEXT_PUBLIC_SUPABASE_ANON_KEY:', supabaseAnonKey ? 'SET (hidden)' : 'NOT SET')
 }
 
-// Runtime validation - throw error if environment variables are missing in production
+// Runtime validation - log warning if environment variables are missing
 if (typeof window !== 'undefined' && (!supabaseUrl || !supabaseAnonKey)) {
-  console.error('Missing Supabase environment variables. Please check your deployment configuration.')
-  console.error('NEXT_PUBLIC_SUPABASE_URL:', supabaseUrl ? 'SET' : 'MISSING')
-  console.error('NEXT_PUBLIC_SUPABASE_ANON_KEY:', supabaseAnonKey ? 'SET' : 'MISSING')
+  console.warn('Supabase not configured - CMS features will be disabled')
 }
 
-// For build time, use placeholder values if env vars are missing to allow build to complete
-// For runtime, use actual values or empty strings (which will cause clear errors)
-const finalUrl = supabaseUrl || (typeof window === 'undefined' ? 'https://placeholder.supabase.co' : '')
-const finalKey = supabaseAnonKey || (typeof window === 'undefined' ? 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.placeholder' : '')
+// Use placeholder values if env vars are missing to allow build/runtime without errors
+const finalUrl = supabaseUrl || 'https://placeholder.supabase.co'
+const finalKey = supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsYWNlaG9sZGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDUxOTIwMDAsImV4cCI6MTk2MDc2ODAwMH0.placeholder'
 
 // Client for public/read operations
 export const supabase = createClient(finalUrl, finalKey)

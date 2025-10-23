@@ -25,88 +25,67 @@ interface SolutionsSectionProps {
 
 const features = [
   {
-    title: 'CRM Solutions',
-    shortDescription: 'Streamline sales, marketing, and service with tailored CRM implementations.',
-    description: 'Deploy and optimize Microsoft Dynamics 365, Salesforce, and HubSpot CRM. From data migration to user adoption, TAS ensures CRM success tailored to your business.',
+    title: 'CRM & Pipeline Management',
+    shortDescription: 'Manage leads, contacts, and deals with an intuitive all-in-one CRM.',
+    description: 'Track every customer interaction, visualize your sales pipeline, and close more deals with GoHighLevel\'s powerful CRM. Custom fields, stages, and automation keep your team aligned and productive.',
     icon: FaUserFriends,
     link: '/services/crm'
   },
   {
-    title: 'ERP Solutions',
-    shortDescription: 'Modernize financials, operations, and supply chain with leading ERP platforms.',
-    description: 'TAS supports Microsoft Dynamics 365 Finance & Operations, Sage, and NetSuite. We also provide integration and optimization across ERP systems such as SAP and Oracle, ensuring seamless connectivity with CRM, marketing, and analytics platforms.',
-    icon: FaCogs,
-    link: '/services/erp'
+    title: 'Reputation Management',
+    shortDescription: 'Build trust and credibility with automated review generation and monitoring.',
+    description: 'Request, collect, and showcase customer reviews automatically. Monitor your online reputation across Google, Facebook, and other platforms. Respond to feedback and turn happy customers into brand advocates.',
+    icon: FaChartLine,
+    link: '/services/reputation-management'
   },
   {
     title: 'Marketing Automation',
-    shortDescription: 'Drive smarter campaigns with enterprise-grade marketing automation platforms.',
-    description: 'Implement and optimize Marketo, Dynamics 365 Customer Insights, HubSpot, and Salesforce Marketing Cloud. TAS helps you orchestrate campaigns, personalize journeys, and measure ROI.',
+    shortDescription: 'Nurture leads and automate campaigns with smart workflows.',
+    description: 'Create sophisticated marketing campaigns with drag-and-drop automation. Send targeted messages based on behavior, segment your audience, and nurture leads from first contact to conversion.',
     icon: FaChartLine,
     link: '/services/marketing-automation'
   },
   {
-    title: 'Power Platform Solutions',
-    shortDescription: 'Unlock innovation with Power BI, Power Apps, and Power Automate.',
-    description: 'From dashboards to custom apps, TAS leverages Microsoft Power Platform to empower productivity, streamline processes, and deliver scalable business solutions.',
+    title: 'Funnel & Website Builder',
+    shortDescription: 'Build high-converting funnels and websites without code.',
+    description: 'Create stunning landing pages, sales funnels, and complete websites with an intuitive drag-and-drop builder. Mobile-responsive templates, A/B testing, and conversion tracking included.',
     icon: FaLaptopCode,
-    link: '/services/power-platform'
+    link: '/services/website-creation'
   },
   {
-    title: 'Systems Integration',
-    shortDescription: 'Eliminate silos by connecting CRM, ERP, and marketing platforms.',
-    description: 'TAS designs secure APIs and middleware that unify systems, automate workflows, and ensure seamless data flow across your business.',
+    title: 'SMS & Email Marketing',
+    shortDescription: 'Reach customers instantly with multi-channel messaging.',
+    description: 'Send personalized SMS and email campaigns that drive engagement. Schedule messages, automate follow-ups, and track opens, clicks, and conversions in real-time.',
     icon: FaExchangeAlt,
-    link: '/services/systems-integration'
+    link: '/services/email-marketing'
   },
   {
-    title: 'Cloud Architecture',
-    shortDescription: 'Build secure, scalable, and cloud-native environments.',
-    description: 'TAS architects cloud solutions using AWS, Azure, and Kubernetes. We deliver secure, scalable infrastructures that support long-term growth and innovation.',
+    title: 'Lead Generation',
+    shortDescription: 'Capture and qualify leads across multiple channels.',
+    description: 'Deploy custom forms, chatbots, and landing pages to capture leads 24/7. Automatically score and route leads to the right team members with intelligent workflows.',
     icon: FaNetworkWired,
-    link: '/services/cloud-architecture'
+    link: '/services/lead-generation'
   },
   {
-    title: 'Data & Analytics',
-    shortDescription: 'Transform raw data into actionable insights.',
-    description: 'TAS provides data migration, cleansing, and analytics solutions. Our dashboards and reporting empower smarter, faster, and more confident decision-making.',
+    title: 'Social Media Management',
+    shortDescription: 'Schedule posts and engage audiences across all platforms.',
+    description: 'Plan, schedule, and publish content to Facebook, Instagram, LinkedIn, and more from one dashboard. Monitor engagement, respond to comments, and grow your social presence.',
+    icon: FaDatabase,
+    link: '/services/social-media-management'
+  },
+  {
+    title: 'Workflow Automation',
+    shortDescription: 'Automate repetitive tasks and save hours every week.',
+    description: 'Build custom workflows that trigger actions based on customer behavior. Automate follow-ups, task assignments, notifications, and data updates without writing code.',
+    icon: FaCogs,
+    link: '/services/integration'
+  },
+  {
+    title: 'Analytics & Reporting',
+    shortDescription: 'Make data-driven decisions with real-time insights.',
+    description: 'Track campaign performance, conversion rates, and ROI with comprehensive dashboards. Custom reports show exactly what\'s working and where to optimize for better results.',
     icon: FaDatabase,
     link: '/services/data-analytics'
-  },
-  {
-    title: 'Technology Consulting & Advisory',
-    shortDescription: 'Align technology investments with business strategy.',
-    description: 'TAS subject matter experts deliver strategic guidance, solution architecture, and advisory services. From CRM and ERP roadmaps to marketing transformation and cloud adoption, we help you achieve measurable outcomes.',
-    icon: FaUserFriends,
-    link: '/services/technology-consulting'
-  },
-  {
-    title: 'Change Management & Adoption',
-    shortDescription: 'Ensure long-term success with effective adoption programs.',
-    description: 'TAS builds structured adoption strategies with user training and organizational change management. We maximize the value of your technology investments by ensuring successful adoption.',
-    icon: FaUserFriends,
-    link: '/services/change-management'
-  },
-  {
-    title: 'Customer Experience (CX) Design',
-    shortDescription: 'Create seamless customer experiences across every touchpoint.',
-    description: 'TAS enhances customer engagement by aligning CRM, marketing automation, and service strategies to deliver meaningful and consistent experiences.',
-    icon: FaUserFriends,
-    link: '/services/customer-experience'
-  },
-  {
-    title: 'Governance & Compliance',
-    shortDescription: 'Protect your business with tailored governance frameworks.',
-    description: 'TAS ensures data security and regulatory compliance with governance models designed for healthcare, financial services, and government organizations.',
-    icon: FaCogs,
-    link: '/services/governance-compliance'
-  },
-  {
-    title: 'Managed Services & Support',
-    shortDescription: 'Extend your team with ongoing platform support and monitoring.',
-    description: 'TAS provides continuous support, optimization, and administration for CRM, ERP, marketing, and cloud platforms, ensuring your systems perform at their best.',
-    icon: FaCogs,
-    link: '/services/managed-services'
   }
 ];
 
@@ -119,12 +98,12 @@ export default function SolutionsSection({ cmsContent }: SolutionsSectionProps) 
     : 'Our Services';
 
   const heading = cmsContent
-    ? getFieldValue(cmsContent, 'heading') || 'Proven Solutions That Deliver Results'
-    : 'Proven Solutions That Deliver Results';
+    ? getFieldValue(cmsContent, 'heading') || 'All-In-One GoHighLevel Solutions'
+    : 'All-In-One GoHighLevel Solutions';
 
   const subtext = cmsContent
-    ? getFieldValue(cmsContent, 'subtext') || 'TAS delivers CRM, ERP, Marketing Automation, and Cloud Solutions designed to optimize operations, empower teams, and drive measurable growth across industries.'
-    : 'TAS delivers CRM, ERP, Marketing Automation, and Cloud Solutions designed to optimize operations, empower teams, and drive measurable growth across industries.';
+    ? getFieldValue(cmsContent, 'subtext') || 'REV-ANEW delivers white-label GoHighLevel solutions including CRM, reputation management, marketing automation, and workflow tools designed to help agencies and businesses grow faster and work smarter.'
+    : 'REV-ANEW delivers white-label GoHighLevel solutions including CRM, reputation management, marketing automation, and workflow tools designed to help agencies and businesses grow faster and work smarter.';
 
   const buttonText = cmsContent
     ? getFieldValue(cmsContent, 'button_text') || 'View All Solutions'
@@ -149,7 +128,7 @@ export default function SolutionsSection({ cmsContent }: SolutionsSectionProps) 
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-sm xs:text-base text-primary-blue font-semibold tracking-wide uppercase mb-3 inline-block px-3 xs:px-4 py-1 bg-primary-blue/10 rounded-full"
+            className="text-sm xs:text-base text-primary-teal font-semibold tracking-wide uppercase mb-3 inline-block px-3 xs:px-4 py-1 bg-primary-teal/10 rounded-full"
           >
             {tagText}
           </motion.h2>
@@ -241,7 +220,7 @@ export default function SolutionsSection({ cmsContent }: SolutionsSectionProps) 
 
         <div className="mt-12 text-center">
           <Link href={buttonUrl}>
-            <AnimatedButton className="bg-primary-blue text-white hover:bg-primary-blue/90 border-none shadow-md">
+            <AnimatedButton className="bg-primary-teal text-white hover:bg-primary-tealDark border-none shadow-md">
               {buttonText}
             </AnimatedButton>
           </Link>

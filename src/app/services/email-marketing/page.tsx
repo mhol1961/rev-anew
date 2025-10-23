@@ -262,7 +262,7 @@ export default function EmailMarketingPage() {
                   </li>
                 </ul>
                 <p className="text-primary-slate dark:text-gray-300 italic">
-                  "Technology Alliance Solutions transformed our email marketing from a basic newsletter to a sophisticated revenue driver. Their strategic approach and automation expertise has significantly improved our customer engagement and sales." - Marketing Director
+                  "REV-ANEW transformed our email marketing from a basic newsletter to a sophisticated revenue driver. Their strategic approach and automation expertise has significantly improved our customer engagement and sales." - Marketing Director
                 </p>
               </div>
             </div>

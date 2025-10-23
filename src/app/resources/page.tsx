@@ -3,7 +3,7 @@ import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 
 export const metadata: Metadata = {
-  title: 'Resources & Downloads | Technology Alliance Solutions',
+  title: 'Resources & Downloads | REV-ANEW',
   description: 'Access our library of resources, guides, templates, and downloadable documents to help grow your business.',
 };
 

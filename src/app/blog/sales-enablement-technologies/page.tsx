@@ -156,7 +156,7 @@ export default function BlogPost() {
       
       <p class="mb-4">The sales enablement technology landscape continues to evolve rapidly, with AI-driven capabilities becoming increasingly central to high-performing sales organizations. By strategically implementing the right mix of these technologies, sales leaders can equip their teams with powerful tools that enhance productivity, improve buyer experiences, and ultimately drive more closed deals.</p>
       
-      <p class="mb-4">At Technology Alliance Solutions, we help organizations select, implement, and optimize sales enablement technologies that align with their specific business needs and sales processes. Contact us to learn how we can help your sales team leverage these cutting-edge tools for maximum impact.</p>
+      <p class="mb-4">At REV-ANEW, we help organizations select, implement, and optimize sales enablement technologies that align with their specific business needs and sales processes. Contact us to learn how we can help your sales team leverage these cutting-edge tools for maximum impact.</p>
     `
   };
 
@@ -252,7 +252,7 @@ export default function BlogPost() {
             <div className="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8">
               <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-2">About the Author</h3>
               <p className="text-primary-slate dark:text-white/80 mb-4">
-                {post.author} is the VP of Sales Enablement at Technology Alliance Solutions, where she helps organizations optimize their sales technologies and processes to improve productivity and performance.
+                {post.author} is the VP of Sales Enablement at REV-ANEW, where she helps organizations optimize their sales technologies and processes to improve productivity and performance.
               </p>
             </div>
             

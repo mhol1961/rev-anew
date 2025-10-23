@@ -212,7 +212,7 @@ export default function BlogPost() {
       
       <p class="mb-4">Successful data migration requires careful planning, meticulous execution, and comprehensive validation. By following a structured approach and incorporating these best practices, organizations can significantly reduce the risks associated with system transitions and ensure that their data assets remain protected and accessible throughout the process.</p>
       
-      <p class="mb-4">At Technology Alliance Solutions, we specialize in guiding organizations through complex data migration initiatives, combining technical expertise with proven methodologies to ensure successful outcomes. Contact us to learn how we can support your next system transition project.</p>
+      <p class="mb-4">At REV-ANEW, we specialize in guiding organizations through complex data migration initiatives, combining technical expertise with proven methodologies to ensure successful outcomes. Contact us to learn how we can support your next system transition project.</p>
     `
   };
 
@@ -308,7 +308,7 @@ export default function BlogPost() {
             <div className="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8">
               <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-2">About the Author</h3>
               <p className="text-primary-slate dark:text-white/80 mb-4">
-                {post.author} is a Data Migration Specialist at Technology Alliance Solutions with over a decade of experience managing complex data transitions for enterprise clients across industries.
+                {post.author} is a Data Migration Specialist at REV-ANEW with over a decade of experience managing complex data transitions for enterprise clients across industries.
               </p>
             </div>
             

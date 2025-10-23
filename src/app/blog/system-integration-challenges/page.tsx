@@ -147,7 +147,7 @@ export default function BlogPost() {
       
       <p class="mb-4">The most successful integration initiatives combine technical solutions with organizational alignment, ensuring that integration serves business needs rather than becoming an end unto itself.</p>
       
-      <p class="mb-4">At Technology Alliance Solutions, we specialize in helping organizations design and implement integration strategies that connect disparate systems while maintaining security, performance, and flexibility. Contact us to learn how we can help streamline your integration initiatives.</p>
+      <p class="mb-4">At REV-ANEW, we specialize in helping organizations design and implement integration strategies that connect disparate systems while maintaining security, performance, and flexibility. Contact us to learn how we can help streamline your integration initiatives.</p>
     `
   };
 
@@ -243,7 +243,7 @@ export default function BlogPost() {
             <div className="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8">
               <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-2">About the Author</h3>
               <p className="text-primary-slate dark:text-white/80 mb-4">
-                {post.author} is the Chief Integration Architect at Technology Alliance Solutions with extensive experience designing and implementing enterprise integration solutions across industries.
+                {post.author} is the Chief Integration Architect at REV-ANEW with extensive experience designing and implementing enterprise integration solutions across industries.
               </p>
             </div>
             

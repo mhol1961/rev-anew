@@ -18,12 +18,12 @@ export async function generateMetadata({ params }: JobDetailPageProps): Promise<
 
   if (!job) {
     return {
-      title: 'Job Not Found | Technology Alliance Solutions',
+      title: 'Job Not Found | REV-ANEW',
     };
   }
 
   return {
-    title: `${job.title} - ${job.department} | Technology Alliance Solutions`,
+    title: `${job.title} - ${job.department} | REV-ANEW`,
     description: job.description.replace(/<[^>]*>/g, '').substring(0, 160),
     keywords: `${job.title}, ${job.department}, ${job.location}, ${job.type}, careers, jobs`,
   };
@@ -243,11 +243,11 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
           </div>
         </AnimatedSection>
 
-        {/* Why Work at TAS Section */}
+        {/* Why Work at REV-ANEW Section */}
         <AnimatedSection className="py-16 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-primary-navy dark:text-white text-center mb-12">
-              Why Work at Technology Alliance Solutions?
+              Why Work at REV-ANEW?
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">

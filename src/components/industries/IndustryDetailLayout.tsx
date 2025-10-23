@@ -117,7 +117,7 @@ export default function IndustryDetailLayout({
       {/* CTA Section */}
       <CTASection
         title={`Ready to Transform Your ${title} Organization?`}
-        description="Contact us to learn how TAS can help you achieve your technology goals with proven solutions and expert guidance."
+        description="Contact us to learn how REV-ANEW can help you achieve your technology goals with proven solutions and expert guidance."
         primaryButtonText="Schedule a Consultation"
         primaryButtonLink="/contact"
         secondaryButtonText="View All Industries"

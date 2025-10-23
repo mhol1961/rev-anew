@@ -13,16 +13,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   
   if (!caseStudy) {
     return {
-      title: 'Case Study Not Found | Technology Alliance Solutions',
+      title: 'Case Study Not Found | REV-ANEW',
       description: 'The requested case study could not be found.',
     };
   }
   
   return {
-    title: `${caseStudy.title} | Case Study | Technology Alliance Solutions`,
+    title: `${caseStudy.title} | Case Study | REV-ANEW`,
     description: caseStudy.challenge || caseStudy.solution || 'Learn about this successful technology implementation.',
     openGraph: {
-      title: `${caseStudy.title} | Case Study | Technology Alliance Solutions`,
+      title: `${caseStudy.title} | Case Study | REV-ANEW`,
       description: caseStudy.challenge || caseStudy.solution || 'Learn about this successful technology implementation.',
       url: `/case-studies/${caseStudy.slug}`,
       type: 'article',

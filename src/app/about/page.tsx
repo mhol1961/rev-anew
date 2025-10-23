@@ -9,27 +9,27 @@ import { FaLightbulb, FaHandshake, FaChartLine, FaUsers } from 'react-icons/fa';
 export default function AboutPage() {
   const teamMembers = [
     {
-      name: 'Sarah Johnson',
-      title: 'CEO & Founder',
-      bio: 'With over 15 years of experience in CRM implementation and strategy, Sarah founded TAS to help businesses leverage technology for growth.',
+      name: 'Marketing Lead',
+      title: 'Reputation Management Specialist',
+      bio: 'Expert in reputation management, review generation, and online brand protection using GoHighLevel platform.',
       image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
     },
     {
-      name: 'Michael Chen',
-      title: 'CTO',
-      bio: 'Michael brings 12+ years of software engineering expertise, specializing in integration solutions and marketing automation platforms.',
+      name: 'Automation Expert',
+      title: 'Marketing Automation Specialist',
+      bio: 'Specializes in building sophisticated marketing workflows, funnels, and automation sequences that drive revenue.',
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
     },
     {
-      name: 'Priya Patel',
-      title: 'Director of Client Services',
-      bio: 'Priya ensures every client receives exceptional service and results, with deep expertise in CRM strategy and implementation.',
+      name: 'CRM Specialist',
+      title: 'Client Success Manager',
+      bio: 'Ensures every client maximizes their GoHighLevel investment with personalized strategies and ongoing support.',
       image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
     },
     {
-      name: 'James Wilson',
-      title: 'Marketing Automation Lead',
-      bio: 'James specializes in creating sophisticated marketing automation workflows that drive engagement and conversion.',
+      name: 'Growth Strategist',
+      title: 'Business Development Lead',
+      bio: 'Helps businesses leverage white-label solutions to scale their operations and increase customer lifetime value.',
       image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
     }
   ];
@@ -54,15 +54,15 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl font-bold mb-6 text-center"
           >
-            About TAS
+            About REV-ANEW
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl max-w-3xl mx-auto text-center leading-relaxed"
           >
-            We're a team of CRM and marketing automation experts dedicated to helping businesses transform their customer relationships and drive growth.
+            We're reputation management and marketing automation experts helping businesses reimagine their revenue through white-label GoHighLevel solutions.
           </motion.p>
         </div>
       </div>
@@ -74,19 +74,19 @@ export default function AboutPage() {
             <div className="md:w-1/2">
               <h2 className="text-3xl font-bold mb-6 text-primary-navy dark:text-white">Our Story</h2>
               <p className="text-lg text-primary-slate dark:text-gray-300 mb-4">
-                Founded in 2015, TAS began with a simple mission: to help businesses leverage CRM and marketing automation technologies to their fullest potential. We saw too many companies investing in powerful tools without the strategy or expertise to maximize their return on investment.
+                REV-ANEW was built on a simple belief: your reputation is your revenue. We help businesses harness the power of GoHighLevel's white-label platform to transform how they manage customer relationships, automate marketing, and grow their revenue.
               </p>
               <p className="text-lg text-primary-slate dark:text-gray-300 mb-4">
-                What started as a boutique consultancy has grown into a comprehensive technology advisory firm serving mid-to-large enterprises across industries. Our team combines deep technical knowledge with strategic business acumen to deliver solutions that drive measurable results.
+                As certified GoHighLevel partners, we specialize in reputation management, marketing automation, CRM implementation, and business growth tools that help our clients stand out in competitive markets. Our white-label approach means you get enterprise-level capabilities with your own branding.
               </p>
               <p className="text-lg text-primary-slate dark:text-gray-300">
-                Today, we're proud to be trusted advisors to over 200 companies worldwide, helping them transform their customer relationships, streamline operations, and accelerate growth through technology.
+                From lead generation and funnel building to review management and social media automation, we provide the complete suite of tools and expertise you need to reimagine your revenue.
               </p>
             </div>
             <div className="md:w-1/2 relative h-[400px] rounded-lg overflow-hidden shadow-xl">
               <Image 
                 src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                alt="TAS team meeting" 
+                alt="REV-ANEW team meeting" 
                 fill 
                 className="object-cover"
               />

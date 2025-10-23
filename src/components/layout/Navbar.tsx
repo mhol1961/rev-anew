@@ -11,36 +11,29 @@ import SearchButton from '@/components/search/SearchButton';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { 
-    name: 'Solutions', 
-    href: '/services', 
+  {
+    name: 'Solutions',
+    href: '/services',
     megaMenu: {
       services: [
-        { name: 'CRM Solutions', href: '/services/crm' },
-        { name: 'ERP Solutions', href: '/services/erp' },
+        { name: 'CRM & Pipeline Management', href: '/services/crm' },
+        { name: 'Reputation Management', href: '/services/reputation-management' },
         { name: 'Marketing Automation', href: '/services/marketing-automation' },
-        { name: 'Power Platform Solutions', href: '/services/power-platform' },
-        { name: 'Systems Integration', href: '/services/systems-integration' },
-        { name: 'Cloud Architecture', href: '/services/cloud-architecture' },
-        { name: 'Data & Analytics', href: '/services/data-analytics' },
-        { name: 'Technology Consulting', href: '/services/technology-consulting' },
-        { name: 'Change Management', href: '/services/change-management' },
-        { name: 'Customer Experience Design', href: '/services/customer-experience' },
-        { name: 'Governance & Compliance', href: '/services/governance-compliance' },
-        { name: 'Managed Services', href: '/services/managed-services' }
+        { name: 'Funnel & Website Builder', href: '/services/website-creation' },
+        { name: 'SMS & Email Marketing', href: '/services/email-marketing' },
+        { name: 'Lead Generation', href: '/services/lead-generation' },
+        { name: 'Social Media Management', href: '/services/social-media-management' },
+        { name: 'Workflow Automation', href: '/services/integration' },
+        { name: 'Analytics & Reporting', href: '/services/data-analytics' }
       ]
     }
   },
-  { 
-    name: 'About Us', 
+  {
+    name: 'About Us',
     href: '/about'
   },
-  { 
-    name: 'Industries', 
-    href: '/industries'
-  },
-  { 
-    name: 'Insights', 
+  {
+    name: 'Insights',
     href: '/blog'
   },
   { name: 'Careers', href: '/careers' },
@@ -73,11 +66,10 @@ export default function Navbar() {
     const initialDarkMode = checkDarkMode();
     setIsDarkMode(initialDarkMode);
 
-    // Apply initial style directly if dark mode is detected on mount
-    if (initialDarkMode && navRef.current) {
-      navRef.current.style.backgroundColor = '#0D2253';
+    // ALWAYS apply dark background - #252A30
+    if (navRef.current) {
+      navRef.current.style.backgroundColor = '#252A30';
     }
-    // Note: Mobile menu style applied when it renders/updates below
 
     // Set up mutation observer to watch for class changes on <html> element
     const observer = new MutationObserver((mutations) => {
@@ -85,13 +77,13 @@ export default function Navbar() {
         if (mutation.attributeName === 'class') {
           const currentDarkMode = checkDarkMode();
           setIsDarkMode(currentDarkMode);
-          // Apply/remove style directly when dark mode changes
+          // ALWAYS keep navbar background as #252A30
           if (navRef.current) {
-            navRef.current.style.backgroundColor = currentDarkMode ? '#0D2253' : '';
+            navRef.current.style.backgroundColor = '#252A30';
           }
-          // Apply/remove style for mobile menu if it exists
+          // ALWAYS keep mobile menu background as #252A30
           if (mobileMenuRef.current) {
-             mobileMenuRef.current.style.backgroundColor = currentDarkMode ? '#0D2253' : '';
+             mobileMenuRef.current.style.backgroundColor = '#252A30';
           }
         }
       });
@@ -123,31 +115,28 @@ export default function Navbar() {
     }
   }, []);
 
-  // Avoid rendering logo based on theme until mounted to prevent hydration mismatch
-  const logoSrc = mounted && isDarkMode ? "/images/TAS_logo2.png" : "/images/logo_transparent_version.png";
+  // Use REV-ANEW logo for both light and dark modes
+  const logoSrc = "/images/ra-logo.png";
 
   // Effect to apply style to mobile menu when it appears/dark mode changes
   useEffect(() => {
     if (mounted && isMobileMenuOpen && mobileMenuRef.current) {
-      mobileMenuRef.current.style.backgroundColor = isDarkMode ? '#0D2253' : '';
+      mobileMenuRef.current.style.backgroundColor = isDarkMode ? '#374151' : '';
     }
   }, [isMobileMenuOpen, isDarkMode, mounted]);
 
   return (
-    <nav 
-      ref={navRef} // Assign ref to nav element
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
-        isScrolled 
-          ? 'shadow-lg backdrop-blur-sm bg-white/95' 
+    <nav
+      ref={navRef}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'shadow-lg backdrop-blur-sm'
           : 'shadow-md'
       }`}
       style={{
-        backgroundColor: mounted && isDarkMode ? (isScrolled ? '#0D2253f2' : '#0D2253') : undefined
+        backgroundColor: '#374151'
       }}
-      // Removed inline style, now controlled by useEffect
     >
-      {/* Gradient background for light mode only */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-light/30 to-primary-blue/10 dark:hidden"></div> {/* Hide gradient in dark mode */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main container: Use justify-between to push left and right groups apart */}
         <div className="flex justify-between items-center h-20">
@@ -161,7 +150,7 @@ export default function Navbar() {
                     <Image
                       key={logoSrc} // Add key to force re-render on src change if needed
                       src={logoSrc}
-                      alt="Technology Alliance Solutions Logo"
+                      alt="REV-ANEW Logo"
                       fill
                       sizes="(max-width: 768px) 11rem, 11rem"
                       style={{ objectFit: 'contain', objectPosition: 'left center' }}
@@ -175,7 +164,7 @@ export default function Navbar() {
                   <div className="relative h-full w-full">
                     <Image
                       src="/images/logo_transparent_version.png" // Default to light logo before mount
-                      alt="Technology Alliance Solutions Logo"
+                      alt="REV-ANEW Logo"
                       fill
                       sizes="(max-width: 768px) 11rem, 11rem"
                       style={{ objectFit: 'contain', objectPosition: 'left center' }}
@@ -215,14 +204,15 @@ export default function Navbar() {
                 >
                   {item.megaMenu ? (
                     <div className="flex items-center">
-                      <Link href={item.href} className="text-text-primary dark:text-dark-text hover:text-primary-blue dark:hover:text-primary-red px-3 py-2 text-sm font-semibold rounded-full transition-all duration-150 hover:bg-primary-light/50 hover:scale-105">
+                      <Link href={item.href} style={{ color: '#FBBF24' }} className="hover:text-primary-orange px-3 py-2 text-sm font-semibold rounded-full transition-all duration-150 hover:bg-primary-darkGray/80 hover:scale-105">
                         {item.name}
                       </Link>
                     </div>
                   ) : (
                     <Link
                       href={item.href}
-                      className="text-text-primary dark:text-dark-text hover:text-primary-blue dark:hover:text-primary-red px-3 py-2 text-sm font-semibold rounded-full transition-all duration-150 hover:bg-primary-light/50 hover:scale-105"
+                      style={{ color: '#FBBF24' }}
+                      className="hover:text-primary-orange px-3 py-2 text-sm font-semibold rounded-full transition-all duration-150 hover:bg-primary-darkGray/80 hover:scale-105"
                     >
                       {item.name}
                     </Link>
@@ -258,7 +248,7 @@ export default function Navbar() {
                                 <Link
                                   key={service.name}
                                   href={service.href}
-                                  className="block p-3 text-sm font-medium text-primary-navy dark:text-white hover:text-primary-blue dark:hover:text-primary-red hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors"
+                                  className="block p-3 text-sm font-medium text-primary-navy dark:text-white hover:text-primary-teal dark:hover:text-primary-orange hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors"
                                 >
                                   {service.name}
                                 </Link>
@@ -277,7 +267,7 @@ export default function Navbar() {
             {/* Get Started CTA Button */}
             <Link href="/contact" passHref>
               <AnimatedButton
-                className="bg-red-600 hover:bg-red-700 text-white border-transparent"
+                className="bg-primary-orange hover:bg-primary-orangeDark text-white border-transparent"
               >
                 Get Started
               </AnimatedButton>
@@ -290,7 +280,7 @@ export default function Navbar() {
             <FinalDarkModeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex items-center justify-center p-3 rounded-lg text-primary-navy dark:text-white hover:text-primary-blue dark:hover:text-primary-red hover:bg-primary-light/50 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2 transition-all duration-200 active:scale-95 min-w-[44px] min-h-[44px]" 
+              className="inline-flex items-center justify-center p-3 rounded-lg text-primary-orangeLight hover:text-primary-orange hover:bg-primary-darkGray/80 focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 transition-all duration-200 active:scale-95 min-w-[44px] min-h-[44px]" 
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
               <motion.div
@@ -340,9 +330,9 @@ export default function Navbar() {
                   {item.megaMenu ? (
                     <>
                       <div className="flex flex-col">
-                        <Link 
-                          href={item.href} 
-                          className="text-primary-navy dark:text-white hover:text-primary-blue dark:hover:text-primary-red block px-3 py-3 text-base font-medium"
+                        <Link
+                          href={item.href}
+                          className="text-primary-orangeLight hover:text-primary-orange block px-3 py-3 text-base font-medium"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {item.name}
@@ -379,7 +369,7 @@ export default function Navbar() {
                                 <Link
                                   key={service.name}
                                   href={service.href}
-                                  className="block px-3 py-2 text-sm font-medium text-primary-blue dark:text-primary-red rounded-md hover:bg-white dark:hover:bg-gray-700 transition-colors touch-manipulation min-h-[44px] flex items-center"
+                                  className="block px-3 py-2 text-sm font-medium text-primary-teal dark:text-primary-orange rounded-md hover:bg-white dark:hover:bg-gray-700 transition-colors touch-manipulation min-h-[44px] flex items-center"
                                   onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                   {service.name}
@@ -393,7 +383,7 @@ export default function Navbar() {
                   ) : (
                     <Link
                       href={item.href}
-                      className="text-primary-navy dark:text-white hover:text-primary-blue dark:hover:text-primary-red block px-4 py-4 text-base font-medium touch-manipulation rounded-lg hover:bg-primary-light/20 dark:hover:bg-gray-700 transition-colors min-h-[52px] flex items-center"
+                      className="text-primary-navy dark:text-white hover:text-primary-teal dark:hover:text-primary-orange block px-4 py-4 text-base font-medium touch-manipulation rounded-lg hover:bg-primary-light/20 dark:hover:bg-gray-700 transition-colors min-h-[52px] flex items-center"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}

@@ -16,7 +16,7 @@ interface CTASectionProps {
 
 export default function CTASection({
   title = "Ready to Transform Your Industry?",
-  description = "Partner with Technology Alliance Solutions to leverage cutting-edge CRM, ERP, and automation technologies tailored to your industry needs.",
+  description = "Partner with REV-ANEW to leverage cutting-edge CRM, ERP, and automation technologies tailored to your industry needs.",
   primaryButtonText = "Schedule a Consultation",
   primaryButtonLink = "/contact",
   secondaryButtonText = "View Our Services",

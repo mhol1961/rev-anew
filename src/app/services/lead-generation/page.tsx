@@ -286,7 +286,7 @@ export default function LeadGenerationPage() {
                   </li>
                 </ul>
                 <p className="text-primary-slate dark:text-gray-300 italic">
-                  "Technology Alliance Solutions' lead generation system transformed our sales pipeline. We're now getting consistent, high-quality leads that are properly qualified and ready for our sales team to engage with." - VP of Sales
+                  "REV-ANEW' lead generation system transformed our sales pipeline. We're now getting consistent, high-quality leads that are properly qualified and ready for our sales team to engage with." - VP of Sales
                 </p>
               </div>
             </div>

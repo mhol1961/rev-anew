@@ -29,7 +29,7 @@ export default function WhyChooseUs() {
           <div className="absolute inset-0 z-0">
             <Image
               src={`/images/photos/WhyChooseUs.png?v=${new Date().getTime()}`}
-              alt="Why Choose TAS"
+              alt="Why Choose REV-ANEW"
               fill
               className="object-contain object-left"
               priority
@@ -46,9 +46,9 @@ export default function WhyChooseUs() {
           <div className="relative h-full z-10 flex items-center">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col items-start justify-center h-full pt-24">
-                {/* Top heading with "TAS" in blue - larger size and more space */}
+                {/* Top heading with "REV-ANEW" in blue - larger size and more space */}
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 [text-shadow:_2px_2px_4px_rgb(0_0_0_/_70%)]">
-                  Why Choose <span className="text-primary-blue dark:text-primary-blue">TAS</span>?
+                  Why Choose <span className="text-primary-blue dark:text-primary-blue">REV-ANEW</span>?
                 </h1>
                 
                 {/* Line under main header */}
@@ -113,31 +113,31 @@ export default function WhyChooseUs() {
             </div>
 
             <h3 className="text-2xl font-bold text-primary-navy dark:text-white mt-8">
-              The Technology Alliance Solutions (TAS) Advantage: Partnership That Powers Performance
+              The REV-ANEW (REV-ANEW) Advantage: Partnership That Powers Performance
             </h3>
             <p className="text-gray-700 dark:text-gray-100 mb-4">
-              While every provider type serves a purpose, Technology Alliance Solutions (TAS) offers a compelling alternative, especially for businesses that want more than just an order-taker. TAS blends enterprise-level know-how with the kind of dedicated attention often missing from larger players.
+              While every provider type serves a purpose, REV-ANEW (REV-ANEW) offers a compelling alternative, especially for businesses that want more than just an order-taker. REV-ANEW blends enterprise-level know-how with the kind of dedicated attention often missing from larger players.
             </p>
 
             <div className="space-y-4 pl-4">
               <div>
                 <p className="font-bold text-primary-blue dark:text-primary-red">• Beyond Frameworks: A Truly Personalized Approach</p>
                 <p className="text-gray-700 dark:text-gray-100">
-                  Where giant firms might lean on standardized playbooks, TAS starts by listening. We know every business challenge is unique, even if the underlying technology is common. We dig deep to understand your specific goals, existing systems, and company culture before recommending a solution. It's not just about installing software; it's about achieving the business outcomes you need.
+                  Where giant firms might lean on standardized playbooks, REV-ANEW starts by listening. We know every business challenge is unique, even if the underlying technology is common. We dig deep to understand your specific goals, existing systems, and company culture before recommending a solution. It's not just about installing software; it's about achieving the business outcomes you need.
                 </p>
               </div>
 
               <div>
                 <p className="font-bold text-primary-blue dark:text-primary-red">• Seeing the Whole Picture: Integrated Solutions</p>
                 <p className="text-gray-700 dark:text-gray-100">
-                  Optimizing one system rarely transforms a business. Real gains come when CRM, marketing automation, email, and other tools work together smoothly. Unlike specialists focused on a single piece, TAS excels at designing and implementing these crucial integrations, ensuring data flows correctly and your teams have a unified view. We believe in building bridges between systems, not just silos.
+                  Optimizing one system rarely transforms a business. Real gains come when CRM, marketing automation, email, and other tools work together smoothly. Unlike specialists focused on a single piece, REV-ANEW excels at designing and implementing these crucial integrations, ensuring data flows correctly and your teams have a unified view. We believe in building bridges between systems, not just silos.
                 </p>
               </div>
 
               <div>
                 <p className="font-bold text-primary-blue dark:text-primary-red">• Real Partnership, Lasting Value:</p>
                 <p className="text-gray-700 dark:text-gray-100">
-                  TAS operates on the principle that technology projects are partnerships, not just transactions. You'll work directly with experienced consultants invested in your success [tsa.com]. This means clear communication, proactive troubleshooting, and the flexibility to adjust as your needs change [tdsusa.net]. We stick around to offer strategic guidance long after the initial setup, ensuring you continue to get the most from your investment—a level of dedicated support that larger, multi-layered firms often struggle to provide consistently across all clients.
+                  REV-ANEW operates on the principle that technology projects are partnerships, not just transactions. You'll work directly with experienced consultants invested in your success [tsa.com]. This means clear communication, proactive troubleshooting, and the flexibility to adjust as your needs change [tdsusa.net]. We stick around to offer strategic guidance long after the initial setup, ensuring you continue to get the most from your investment—a level of dedicated support that larger, multi-layered firms often struggle to provide consistently across all clients.
                 </p>
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function WhyChooseUs() {
               Making the Smart Choice
             </h3>
             <p className="text-gray-700 dark:text-gray-100">
-              Global giants offer scale, specialists bring focused depth, and budget providers compete on price. Technology Alliance Solutions delivers a powerful combination: the strategic vision to see the big picture, the technical skill to connect the dots flawlessly, and the dedicated service that feels like we're part of your team. For companies seeking tailored technology solutions, seamless integration, and a partner genuinely focused on driving measurable success, TAS offers a distinct and compelling advantage.
+              Global giants offer scale, specialists bring focused depth, and budget providers compete on price. REV-ANEW delivers a powerful combination: the strategic vision to see the big picture, the technical skill to connect the dots flawlessly, and the dedicated service that feels like we're part of your team. For companies seeking tailored technology solutions, seamless integration, and a partner genuinely focused on driving measurable success, REV-ANEW offers a distinct and compelling advantage.
             </p>
           </div>
 
@@ -154,9 +154,9 @@ export default function WhyChooseUs() {
             <div className="sticky top-28">
               <div className="bg-white dark:bg-primary-slate rounded-xl shadow-xl overflow-hidden mb-8">
                 <div className="relative h-64 w-full">
-                  <Image 
-                    src="/images/photos/TASCompCollab.png" 
-                    alt="TAS Collaboration" 
+                  <Image
+                    src="/images/photos/TwoLookingAtScreen.png"
+                    alt="REV-ANEW Collaboration" 
                     fill
                     style={{ objectFit: 'cover' }}
                     className="transition-opacity duration-500 ease-in-out"
@@ -164,7 +164,7 @@ export default function WhyChooseUs() {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-3">
-                    Technology Alliance Solutions
+                    REV-ANEW
                   </h3>
                   <p className="text-gray-700 dark:text-white/90 mb-4">
                     We partner with you to deliver tailored technology solutions that drive measurable business results.
@@ -197,7 +197,7 @@ export default function WhyChooseUs() {
                     Feature
                   </th>
                   <th scope="col" className="px-6 py-4 text-left text-sm font-bold text-primary-navy dark:text-white uppercase tracking-wider bg-primary-blue/10 dark:bg-primary-red/20 w-1/5">
-                    Technology Alliance Solutions (TAS)
+                    REV-ANEW (REV-ANEW)
                   </th>
                   <th scope="col" className="px-6 py-4 text-left text-sm font-bold text-primary-navy dark:text-white uppercase tracking-wider w-1/5">
                     Global Consulting Giant
@@ -402,7 +402,7 @@ export default function WhyChooseUs() {
         {/* CTA Section */}
         <div className="bg-gradient-to-r from-primary-blue to-primary-navy dark:from-primary-slate dark:to-primary-navy rounded-xl shadow-xl p-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to Experience the TAS Difference?
+            Ready to Experience the REV-ANEW Difference?
           </h2>
           <p className="text-white text-lg mb-8 max-w-3xl mx-auto">
             Contact us today to discuss how our tailored approach can transform your technology implementation and deliver measurable business results.

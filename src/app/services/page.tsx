@@ -190,7 +190,7 @@ const services = [
       'Scalable Architecture Design',
       'Ongoing Support & Maintenance'
     ],
-    image: '/images/photos/TASComparisonCollab.png',
+    image: '/images/photos/StandOutFRomCompetition.png',
     color: 'from-emerald-600 to-teal-500',
     link: '/services/custom-solutions'
   },
@@ -224,7 +224,7 @@ const services = [
       'Technology Vendor Evaluation',
       'Implementation Planning & Support'
     ],
-    image: '/images/photos/TASCompCollab.png',
+    image: '/images/photos/Table_with_laptops.png',
     color: 'from-violet-600 to-purple-500',
     link: '/services/technologies'
   }
@@ -337,7 +337,7 @@ export default function ServicesPage() {
                 viewport={{ once: true }}
                 className="text-base text-primary-blue font-semibold tracking-wide uppercase mb-3 inline-block px-4 py-1 bg-primary-blue/10 rounded-full"
               >
-                Why Choose Technology Alliance Solutions
+                Why Choose REV-ANEW
               </motion.span>
               <AnimatedText
                 text="Comprehensive Business Solutions"
@@ -361,7 +361,7 @@ export default function ServicesPage() {
                   <div className="relative h-80">
                     <Image
                       src="/images/photos/Two_People_looking_at_screen1.png"
-                      alt="Technology Alliance Solutions Services"
+                      alt="REV-ANEW Services"
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       priority
@@ -377,7 +377,7 @@ export default function ServicesPage() {
                   Full-Service Digital Solutions
                 </h3>
                   <p className="text-primary-slate dark:text-white/80 mb-8">
-                  At Technology Alliance Solutions, we understand that modern businesses need integrated solutions. That&apos;s why we offer a complete range of services that work together seamlessly to maximize your marketing efforts and drive tangible results.
+                  At REV-ANEW, we understand that modern businesses need integrated solutions. That&apos;s why we offer a complete range of services that work together seamlessly to maximize your marketing efforts and drive tangible results.
                 </p>
                 
                 <div className="grid sm:grid-cols-2 gap-4">

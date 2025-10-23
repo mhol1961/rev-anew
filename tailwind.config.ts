@@ -26,18 +26,22 @@ const config: Config = {
       },
       colors: {
         primary: {
-          navy: '#1a202c',      // Darker for better contrast (WCAG AA: 4.5:1)
-          blue: '#2563eb',      // Enhanced contrast blue
-          slate: '#475569',     // Better contrast slate
+          teal: '#10B981',      // Green-teal primary brand color
+          tealLight: '#34D399',  // Lighter green-teal
+          tealDark: '#059669',    // Darker green-teal
+          orange: '#F59E0B',    // Gold-orange secondary brand color
+          orangeLight: '#FBBF24', // Lighter gold
+          orangeDark: '#D97706',  // Darker gold-orange
+          navy: '#374151',      // Dark gray from logo
+          darkGray: '#374151',   // Navbar/background color
+          slate: '#475569',     // Slate gray
           light: '#f8fafc',     // Softer light background
           white: '#ffffff',
-          darkblue: '#1e40af',  // Enhanced dark blue for navbar
-          navdark: '#0D2253',   // Custom dark navbar color matching logo
-          red: '#dc2626',       // Better contrast red
-          accentblue: '#3b82f6', // Improved accent blue
+          navdark: '#374151',   // Navbar color matching logo background
+          red: '#dc2626',       // Accent red
           gray: {
             50: '#f9fafb',
-            100: '#f3f4f6', 
+            100: '#f3f4f6',
             200: '#e5e7eb',
             300: '#d1d5db',
             400: '#9ca3af',

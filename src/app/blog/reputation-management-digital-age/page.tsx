@@ -139,7 +139,7 @@ export default function BlogPost() {
       
       <p class="mb-4">The most successful organizations recognize that reputation is not just about damage control—it&apos;s about consistently delivering on brand promises and effectively communicating those successes. With the right tools and strategies, businesses can turn their online reputation into a powerful competitive differentiator that drives customer trust and business growth.</p>
       
-      <p class="mb-4">At Technology Alliance Solutions, we help businesses implement comprehensive reputation management systems that protect and enhance their brand image. Contact us to learn how we can help you take control of your online reputation.</p>
+      <p class="mb-4">At REV-ANEW, we help businesses implement comprehensive reputation management systems that protect and enhance their brand image. Contact us to learn how we can help you take control of your online reputation.</p>
     `
   };
 
@@ -235,7 +235,7 @@ export default function BlogPost() {
             <div className="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8">
               <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-2">About the Author</h3>
               <p className="text-primary-slate dark:text-white/80 mb-4">
-                {post.author} is the Director of Digital Strategy at Technology Alliance Solutions with specialized expertise in online reputation management and brand protection for businesses of all sizes.
+                {post.author} is the Director of Digital Strategy at REV-ANEW with specialized expertise in online reputation management and brand protection for businesses of all sizes.
               </p>
             </div>
             

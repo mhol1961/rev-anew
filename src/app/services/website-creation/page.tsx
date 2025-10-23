@@ -287,7 +287,7 @@ export default function WebsiteCreationPage() {
                   </li>
                 </ul>
                 <p className="text-primary-slate dark:text-gray-300 italic">
-                  "Technology Alliance Solutions delivered a website that far exceeded our expectations. Not only does it look amazing, but it's actually generating new business for us consistently. The SEO optimization and performance improvements have made a significant impact on our digital presence." - Marketing Manager
+                  "REV-ANEW delivered a website that far exceeded our expectations. Not only does it look amazing, but it's actually generating new business for us consistently. The SEO optimization and performance improvements have made a significant impact on our digital presence." - Marketing Manager
                 </p>
               </div>
             </div>

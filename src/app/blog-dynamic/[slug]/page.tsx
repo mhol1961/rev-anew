@@ -32,13 +32,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   
   if (!post) {
     return {
-      title: 'Blog Post Not Found | Technology Alliance Solutions',
+      title: 'Blog Post Not Found | REV-ANEW',
       description: 'The requested blog post could not be found.',
     };
   }
   
   return {
-    title: post.seo_title || `${post.title} | Technology Alliance Solutions`,
+    title: post.seo_title || `${post.title} | REV-ANEW`,
     description: post.seo_description || post.excerpt || post.content.replace(/<[^>]*>/g, '').substring(0, 160),
     keywords: post.seo_keywords || 'technology, CRM, automation, digital transformation',
     openGraph: {
@@ -75,7 +75,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     if (post.author?.first_name && post.author?.last_name) {
       return `${post.author.first_name} ${post.author.last_name}`;
     }
-    return 'Technology Alliance Solutions';
+    return 'REV-ANEW';
   };
 
   return (

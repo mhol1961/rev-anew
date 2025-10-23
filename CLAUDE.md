@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Architecture
 
-This is a Next.js 15 application using the App Router pattern with TypeScript and Tailwind CSS. The project is a business website for Technology Alliance Solutions (TAS), a technology consulting company.
+This is a Next.js 15 application using the App Router pattern with TypeScript and Tailwind CSS. The project is a business website for REV-ANEW, a reputation management and marketing automation company specializing in white-label GoHighLevel solutions.
 
 ### Core Technologies
 - **Framework**: Next.js 15.2.4 with App Router
@@ -25,11 +25,10 @@ This is a Next.js 15 application using the App Router pattern with TypeScript an
 
 #### `/src/app/` - App Router Pages
 All pages follow Next.js 13+ app directory structure with `page.tsx` files. Key pages include:
-- Business services (`/services/*`)
+- GoHighLevel services (`/services/*`)
 - Blog system (`/blog/*`)
 - Career listings (`/careers/*`)
 - Case studies (`/case-studies/*`)
-- Technology comparisons (`/services/technologies/*`)
 
 #### `/src/components/` - Reusable Components
 - **`layout/`**: Core layout components (Navbar, Footer, PageLayout)
@@ -69,7 +68,8 @@ Multiple dark mode implementations exist (likely due to development iteration):
 - Standard Next.js configuration
 
 #### `tailwind.config.ts`
-- Custom color palette with `primary` and `dark` color schemes
+- Custom color palette with teal (#14B8A6) and orange (#F59E0B) brand colors
+- Dark navy background (#374151) matching logo
 - Custom animations (pulse, float)
 - Form plugin integration
 - Custom font families (Roobert, Avenir)
@@ -85,11 +85,17 @@ Currently uses static content with TypeScript data files. **CMS integration is p
 When implementing CMS, consider maintaining the existing SEO metadata system and ensuring compatibility with the current component structure.
 
 ### Business Context
-Technology Alliance Solutions provides:
-- CRM implementation and integration
-- Marketing automation
-- Technology consulting
-- System optimization
-- Custom business solutions
+REV-ANEW provides white-label GoHighLevel solutions including:
+- Reputation Management & Review Generation
+- CRM & Pipeline Management
+- Marketing Automation
+- Funnel & Website Builder
+- SMS & Email Marketing
+- Lead Generation & Nurturing
+- Social Media Management
+- Workflow Automation
+- Analytics & Reporting
 
-The website emphasizes enterprise-level services and technology partnerships with major platforms like Salesforce, HubSpot, Microsoft Dynamics, etc.
+Tagline: "Revenue Reimagined."
+
+The website emphasizes reputation management, business growth tools, and white-label GoHighLevel platform capabilities for agencies and businesses.

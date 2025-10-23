@@ -145,7 +145,7 @@ export default function BlogPost() {
       
       <p class="mb-4">Measuring the ROI of marketing automation investments requires a comprehensive approach that considers efficiency gains, lead quality improvements, revenue impact, and customer lifetime value enhancements. By establishing clear metrics and tracking them consistently, you can demonstrate the true value of your marketing automation platform and identify opportunities to maximize your return.</p>
       
-      <p class="mb-4">At Technology Alliance Solutions, we help organizations implement and optimize marketing automation solutions that deliver measurable results. Our analytics experts can help you establish the right metrics framework and reporting processes to clearly demonstrate your ROI.</p>
+      <p class="mb-4">At REV-ANEW, we help organizations implement and optimize marketing automation solutions that deliver measurable results. Our analytics experts can help you establish the right metrics framework and reporting processes to clearly demonstrate your ROI.</p>
     `
   };
 
@@ -241,7 +241,7 @@ export default function BlogPost() {
             <div className="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8">
               <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-2">About the Author</h3>
               <p className="text-primary-slate dark:text-white/80 mb-4">
-                {post.author} is the Director of Marketing Analytics at Technology Alliance Solutions, specializing in marketing automation implementation and ROI optimization strategies.
+                {post.author} is the Director of Marketing Analytics at REV-ANEW, specializing in marketing automation implementation and ROI optimization strategies.
               </p>
             </div>
             

@@ -7,8 +7,8 @@ import AnimatedSection from '@/components/ui/AnimatedSection';
 import { getBlogPosts, getCategories, User } from '@/lib/supabase';
 
 export const metadata: Metadata = {
-  title: 'Blog - Technology Insights & Best Practices | Technology Alliance Solutions',
-  description: 'Stay updated with the latest technology trends, CRM insights, and digital transformation strategies from Technology Alliance Solutions experts.',
+  title: 'Blog - Technology Insights & Best Practices | REV-ANEW',
+  description: 'Stay updated with the latest technology trends, CRM insights, and digital transformation strategies from REV-ANEW experts.',
   keywords: 'technology blog, CRM insights, digital transformation, business automation, technology trends',
 };
 
@@ -32,7 +32,7 @@ export default async function BlogPage() {
     if (post.author?.first_name && post.author?.last_name) {
       return `${post.author.first_name} ${post.author.last_name}`;
     }
-    return 'Technology Alliance Solutions';
+    return 'REV-ANEW';
   };
 
   return (

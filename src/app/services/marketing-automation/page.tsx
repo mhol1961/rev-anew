@@ -311,7 +311,7 @@ export default function MarketingAutomationPage() {
                   </li>
                 </ul>
                 <p className="text-primary-slate dark:text-gray-300 italic">
-                  "The marketing automation solution implemented by TAS has transformed our lead generation and nurturing processes. We're now able to deliver personalized experiences at scale and see a clear ROI from our marketing efforts." - Marketing Director
+                  "The marketing automation solution implemented by REV-ANEW has transformed our lead generation and nurturing processes. We're now able to deliver personalized experiences at scale and see a clear ROI from our marketing efforts." - Marketing Director
                 </p>
               </div>
             </div>

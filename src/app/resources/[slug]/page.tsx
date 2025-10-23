@@ -33,7 +33,7 @@ const resourceData: Record<string, ResourceData> = {
   'social-media': {
     title: 'Follow Us Online',
     description: 'Connect with us on social media for the latest updates, tips, and industry news.',
-    content: `Stay connected with Technology Alliance Solutions across all major social media platforms:
+    content: `Stay connected with REV-ANEW across all major social media platforms:
     
     📘 LinkedIn: Follow us for professional insights, industry updates, and company news
     🐦 Twitter: Get quick tips, announcements, and join technology discussions  
@@ -46,7 +46,7 @@ const resourceData: Record<string, ResourceData> = {
   'partnerships': {
     title: 'Technology Partnerships',
     description: 'Learn about our technology partnerships and how they benefit your business solutions.',
-    content: `Technology Alliance Solutions maintains strategic partnerships with leading technology providers to deliver comprehensive, integrated solutions:
+    content: `REV-ANEW maintains strategic partnerships with leading technology providers to deliver comprehensive, integrated solutions:
     
     🚀 **Microsoft Partners**
     • Microsoft Dynamics 365 implementations
@@ -76,13 +76,13 @@ export async function generateMetadata({ params }: ResourcePageProps): Promise<M
   
   if (!resource) {
     return {
-      title: 'Resource Not Found | Technology Alliance Solutions',
+      title: 'Resource Not Found | REV-ANEW',
       description: 'The requested resource could not be found.',
     };
   }
   
   return {
-    title: `${resource.title} | Resources | Technology Alliance Solutions`,
+    title: `${resource.title} | Resources | REV-ANEW`,
     description: resource.description,
   };
 }
