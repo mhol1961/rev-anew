@@ -163,7 +163,7 @@ export default function Navbar() {
                 {!mounted && (
                   <div className="relative h-full w-full">
                     <Image
-                      src="/images/logo_transparent_version.png" // Default to light logo before mount
+                      src="/images/ra-logo.png" // Default to REV-ANEW logo before mount
                       alt="REV-ANEW Logo"
                       fill
                       sizes="(max-width: 768px) 11rem, 11rem"
