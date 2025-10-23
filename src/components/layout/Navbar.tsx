@@ -134,7 +134,7 @@ export default function Navbar() {
           : 'shadow-md'
       }`}
       style={{
-        backgroundColor: '#374151'
+        backgroundColor: '#252A30'
       }}
     >
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
