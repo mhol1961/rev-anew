@@ -264,7 +264,7 @@ export default function CrmSolutionsPage() {
                   </li>
                 </ul>
                 <p className="text-primary-slate dark:text-gray-300 italic">
-                  "TAS transformed our sales operations with their CRM expertise. We now have complete visibility into our pipeline and can make data-driven decisions that have significantly improved our results." - VP of Sales
+                  "REV-ANEW transformed our sales operations with their CRM expertise. We now have complete visibility into our pipeline and can make data-driven decisions that have significantly improved our results." - VP of Sales
                 </p>
               </div>
             </div>

@@ -123,7 +123,7 @@ export default function BlogPost() {
       
       <p class="mb-4">By implementing these sophisticated automation strategies, marketers can significantly increase engagement, conversion rates, and ultimately revenue from their email marketing efforts. The key is to start with a clear understanding of your customer journey and gradually build automation workflows that deliver the right message to the right person at the right time.</p>
       
-      <p class="mb-4">At Technology Alliance Solutions, we help businesses implement advanced email marketing automation strategies that drive measurable results. Contact us to learn how we can transform your email marketing program into a powerful revenue-generating engine.</p>
+      <p class="mb-4">At REV-ANEW, we help businesses implement advanced email marketing automation strategies that drive measurable results. Contact us to learn how we can transform your email marketing program into a powerful revenue-generating engine.</p>
     `
   };
 
@@ -219,7 +219,7 @@ export default function BlogPost() {
             <div className="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8">
               <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-2">About the Author</h3>
               <p className="text-primary-slate dark:text-white/80 mb-4">
-                {post.author} is the Director of Marketing Automation at Technology Alliance Solutions with extensive experience implementing sophisticated email marketing strategies for B2B and B2C organizations across multiple industries.
+                {post.author} is the Director of Marketing Automation at REV-ANEW with extensive experience implementing sophisticated email marketing strategies for B2B and B2C organizations across multiple industries.
               </p>
             </div>
             

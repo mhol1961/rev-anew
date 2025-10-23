@@ -116,7 +116,7 @@ export default function BlogPost() {
       
       <p class="mb-4">Successful CRM implementation in enterprise organizations requires careful planning, strong leadership, and a focus on user adoption. By following these best practices, you can maximize the value of your CRM investment and create a system that genuinely enhances your customer relationships and business operations.</p>
       
-      <p class="mb-4">At Technology Alliance Solutions, we specialize in helping enterprises implement and optimize CRM systems that drive tangible business results. Contact us to learn how we can support your CRM journey.</p>
+      <p class="mb-4">At REV-ANEW, we specialize in helping enterprises implement and optimize CRM systems that drive tangible business results. Contact us to learn how we can support your CRM journey.</p>
     `
   };
 
@@ -212,7 +212,7 @@ export default function BlogPost() {
             <div className="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8">
               <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-2">About the Author</h3>
               <p className="text-primary-slate dark:text-white/80 mb-4">
-                {post.author} is a senior CRM consultant at Technology Alliance Solutions with over 15 years of experience implementing enterprise CRM solutions across various industries.
+                {post.author} is a senior CRM consultant at REV-ANEW with over 15 years of experience implementing enterprise CRM solutions across various industries.
               </p>
             </div>
             

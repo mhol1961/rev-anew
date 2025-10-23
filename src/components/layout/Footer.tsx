@@ -2,8 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaLinkedin, FaFacebook, FaInstagram, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
+// Icons removed - no longer using social media or contact icons
 
 const Footer = () => {
   // Animation variants
@@ -23,137 +22,63 @@ const Footer = () => {
             {/* Company Info - Column 1 */}
             <div>
               <motion.div className="space-y-4" variants={itemVariants}>
-                <h3 className="text-base font-bold text-primary-blue">
-                  Technology Alliance Solutions, Inc.
+                <h3 className="text-base font-bold text-primary-teal">
+                  REV-ANEW
                 </h3>
-                <p className="text-sm text-gray-300 leading-relaxed">
-                  Trusted experts in CRM, ERP, marketing automation, and cloud solutions. Delivering enterprise technology and consulting services across platforms such as Microsoft, Salesforce, HubSpot, and Adobe.
+                <p className="text-sm text-gray-400 italic mb-2">
+                  Revenue Reimagined.
                 </p>
-                <div className="pt-2">
-                  <div className="flex items-start space-x-2 text-sm mb-2">
-                    <FaMapMarkerAlt className="text-primary-blue mt-1 flex-shrink-0" />
-                    <span className="text-gray-300">3355 Lenox Rd NE, Suite 1000, Atlanta, GA 30326</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm mb-2">
-                    <FaPhone className="text-primary-blue" />
-                    <span className="text-gray-300">(404) 205-8405</span>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <motion.a
-                    href="https://linkedin.com/company/technology-alliance-solutions"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary-blue hover:text-white transition-colors touch-manipulation"
-                    whileHover={{ scale: 1.2, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    aria-label="LinkedIn"
-                  >
-                    <FaLinkedin size={20} />
-                  </motion.a>
-                  <motion.a
-                    href="https://twitter.com/tech_alliance"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary-blue hover:text-white transition-colors touch-manipulation"
-                    whileHover={{ scale: 1.2, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    aria-label="X (formerly Twitter)"
-                  >
-                    <FaXTwitter size={20} />
-                  </motion.a>
-                  <motion.a
-                    href="https://facebook.com/technologyalliancesolutions"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary-blue hover:text-white transition-colors"
-                    whileHover={{ scale: 1.2, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    aria-label="Facebook"
-                  >
-                    <FaFacebook size={20} />
-                  </motion.a>
-                  <motion.a
-                    href="https://instagram.com/tech_alliance_solutions"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary-blue hover:text-white transition-colors"
-                    whileHover={{ scale: 1.2, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    aria-label="Instagram"
-                  >
-                    <FaInstagram size={20} />
-                  </motion.a>
-                </div>
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  White-label GoHighLevel solutions including reputation management, CRM, marketing automation, funnel building, and business growth tools to help you reimagine your revenue.
+                </p>
               </motion.div>
             </div>
 
             {/* Our Solutions - Column 2 */}
             <div>
               <motion.div className="space-y-4" variants={itemVariants}>
-                <h3 className="text-base font-bold text-primary-blue">Our Solutions</h3>
+                <h3 className="text-base font-bold text-primary-teal">Our Solutions</h3>
                 <ul className="space-y-2 text-sm">
-                  <li><Link href="/services/crm" className="text-gray-300 hover:text-primary-blue transition-colors">CRM</Link></li>
-                  <li><Link href="/services/erp" className="text-gray-300 hover:text-primary-blue transition-colors">ERP</Link></li>
-                  <li><Link href="/services/marketing-automation" className="text-gray-300 hover:text-primary-blue transition-colors">Marketing Automation</Link></li>
-                  <li><Link href="/services/power-platform" className="text-gray-300 hover:text-primary-blue transition-colors">Power Platform</Link></li>
-                  <li><Link href="/services/systems-integration" className="text-gray-300 hover:text-primary-blue transition-colors">Systems Integration</Link></li>
-                  <li><Link href="/services/cloud-architecture" className="text-gray-300 hover:text-primary-blue transition-colors">Cloud Architecture</Link></li>
-                  <li><Link href="/services/data-analytics" className="text-gray-300 hover:text-primary-blue transition-colors">Data & Analytics</Link></li>
-                  <li><Link href="/services/technology-consulting" className="text-gray-300 hover:text-primary-blue transition-colors">Technology Consulting & Advisory</Link></li>
-                  <li><Link href="/services/change-management" className="text-gray-300 hover:text-primary-blue transition-colors">Change Management & Adoption</Link></li>
-                  <li><Link href="/services/customer-experience" className="text-gray-300 hover:text-primary-blue transition-colors">CX Design</Link></li>
-                  <li><Link href="/services/governance-compliance" className="text-gray-300 hover:text-primary-blue transition-colors">Governance & Compliance</Link></li>
-                  <li><Link href="/services/managed-services" className="text-gray-300 hover:text-primary-blue transition-colors">Managed Services & Support</Link></li>
+                  <li><Link href="/services/crm" className="text-gray-300 hover:text-primary-teal transition-colors">CRM & Pipeline Management</Link></li>
+                  <li><Link href="/services/reputation-management" className="text-gray-300 hover:text-primary-teal transition-colors">Reputation Management</Link></li>
+                  <li><Link href="/services/marketing-automation" className="text-gray-300 hover:text-primary-teal transition-colors">Marketing Automation</Link></li>
+                  <li><Link href="/services/website-creation" className="text-gray-300 hover:text-primary-teal transition-colors">Funnel & Website Builder</Link></li>
+                  <li><Link href="/services/email-marketing" className="text-gray-300 hover:text-primary-teal transition-colors">SMS & Email Marketing</Link></li>
+                  <li><Link href="/services/lead-generation" className="text-gray-300 hover:text-primary-teal transition-colors">Lead Generation</Link></li>
+                  <li><Link href="/services/social-media-management" className="text-gray-300 hover:text-primary-teal transition-colors">Social Media Management</Link></li>
+                  <li><Link href="/services/integration" className="text-gray-300 hover:text-primary-teal transition-colors">Workflow Automation</Link></li>
+                  <li><Link href="/services/data-analytics" className="text-gray-300 hover:text-primary-teal transition-colors">Analytics & Reporting</Link></li>
                 </ul>
               </motion.div>
             </div>
 
-            {/* Technologies & Subscribe - Column 3 (spans 2 columns) */}
+            {/* Company & Subscribe - Column 3 (spans 2 columns) */}
             <div className="lg:col-span-2">
               <motion.div className="space-y-4" variants={itemVariants}>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  {/* Technologies */}
+                  {/* Company & Resources */}
                   <div>
-                    <h3 className="text-base font-bold text-primary-blue mb-4">Technologies</h3>
+                    <h3 className="text-base font-bold text-primary-teal mb-4">Company & Resources</h3>
                     <ul className="space-y-2 text-sm">
-                      <li className="text-white font-bold text-xs uppercase tracking-wider mt-3 mb-1 first:mt-0">CRM Platforms</li>
-                      <li><Link href="/services/technologies/microsoft-dynamics-365" className="text-gray-300 hover:text-primary-blue transition-colors">Microsoft Dynamics 365</Link></li>
-                      <li><Link href="/services/technologies/salesforce" className="text-gray-300 hover:text-primary-blue transition-colors">Salesforce</Link></li>
-                      <li><Link href="/services/technologies/hubspot" className="text-gray-300 hover:text-primary-blue transition-colors">HubSpot</Link></li>
-                      <li className="text-white font-bold text-xs uppercase tracking-wider mt-3 mb-1">Marketing Platforms</li>
-                      <li><Link href="/services/technologies/marketo" className="text-gray-300 hover:text-primary-blue transition-colors">Marketo Engage</Link></li>
-                      <li><Link href="/services/technologies/clickdimensions" className="text-gray-300 hover:text-primary-blue transition-colors">ClickDimensions</Link></li>
-                      <li><span className="text-gray-300">Dynamics 365 Customer Insights</span></li>
-                      <li className="text-white font-bold text-xs uppercase tracking-wider mt-3 mb-1">Integration Tools</li>
-                      <li><span className="text-gray-300">Power Platform</span></li>
-                      <li><span className="text-gray-300">Azure Logic Apps</span></li>
-                      <li><span className="text-gray-300">APIs</span></li>
-                      <li className="text-white font-bold text-xs uppercase tracking-wider mt-3 mb-1">Data & Analytics</li>
-                      <li><span className="text-gray-300">Power BI</span></li>
-                      <li><span className="text-gray-300">Fabric</span></li>
+                      <li><Link href="/" className="text-gray-300 hover:text-primary-teal transition-colors">Home</Link></li>
+                      <li><Link href="/about" className="text-gray-300 hover:text-primary-teal transition-colors">About Us</Link></li>
+                      <li><Link href="/services" className="text-gray-300 hover:text-primary-teal transition-colors">Services</Link></li>
+                      <li><Link href="/case-studies" className="text-gray-300 hover:text-primary-teal transition-colors">Case Studies</Link></li>
+                      <li><Link href="/blog" className="text-gray-300 hover:text-primary-teal transition-colors">Blog & Insights</Link></li>
+                      <li><Link href="/careers" className="text-gray-300 hover:text-primary-teal transition-colors">Careers</Link></li>
+                      <li><Link href="/contact" className="text-gray-300 hover:text-primary-teal transition-colors">Contact</Link></li>
                     </ul>
                   </div>
 
-                  {/* Company & Resources */}
-                  <div>
-                    <h3 className="text-base font-bold text-primary-blue mb-4">Company & Resources</h3>
-                    <ul className="space-y-2 text-sm">
-                      <li><Link href="/" className="text-gray-300 hover:text-primary-blue transition-colors">Home</Link></li>
-                      <li><Link href="/about" className="text-gray-300 hover:text-primary-blue transition-colors">About Us</Link></li>
-                      <li><Link href="/why-choose-us" className="text-gray-300 hover:text-primary-blue transition-colors">Why Choose Us</Link></li>
-                      <li><Link href="/case-studies" className="text-gray-300 hover:text-primary-blue transition-colors">Case Studies</Link></li>
-                      <li><Link href="/blog" className="text-gray-300 hover:text-primary-blue transition-colors">Blog & Articles</Link></li>
-                      <li><Link href="/contact" className="text-gray-300 hover:text-primary-blue transition-colors">Contact</Link></li>
-                    </ul>
-                  </div>
+                  {/* Empty column for spacing */}
+                  <div></div>
                 </div>
 
                 {/* Subscribe Section - Below Technologies and Company */}
                 <div className="mt-8 pt-8 border-t border-gray-800">
-                  <h3 className="text-base font-bold text-primary-blue mb-2">Subscribe</h3>
+                  <h3 className="text-base font-bold text-primary-teal mb-2">Subscribe</h3>
                   <p className="text-sm text-gray-300 mb-4">
-                    Subscribe to our newsletter for the latest insights on technology consulting, CRM, and digital transformation.
+                    Subscribe to our newsletter for the latest insights on reputation management, marketing automation, and business growth strategies.
                   </p>
                   <form className="flex flex-col sm:flex-row gap-3 max-w-xl">
                     <div className="flex-1">
@@ -168,7 +93,7 @@ const Footer = () => {
                         required
                       />
                       <p className="text-xs text-gray-400 mt-2">
-                        Get the latest updates on our solutions, success stories, and industry insights.
+                        Get the latest updates on reputation management, marketing automation, and revenue growth strategies.
                       </p>
                       <p className="text-xs text-gray-500 mt-1">
                         We respect your privacy; unsubscribe anytime.
@@ -195,16 +120,16 @@ const Footer = () => {
         <div className="bg-gray-950 dark:bg-black py-5 relative z-10">
           <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-400">
             <p>
-              © 2025 Technology Alliance Solutions, Inc. All rights reserved.
+              © 2025 REV-ANEW. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center sm:justify-start gap-x-6 gap-y-2 mt-4 sm:mt-0">
-              <Link href="/privacy" className="hover:text-primary-blue transition-colors">
+              <Link href="/privacy" className="hover:text-primary-teal transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="hover:text-primary-blue transition-colors">
+              <Link href="/terms" className="hover:text-primary-teal transition-colors">
                 Terms of Service
               </Link>
-              <Link href="/sitemap" className="hover:text-primary-blue transition-colors">
+              <Link href="/sitemap" className="hover:text-primary-teal transition-colors">
                 Sitemap
               </Link>
             </div>

@@ -20,12 +20,12 @@ export const viewport = {
 // Generate site-wide metadata
 export const metadata: Metadata = {
   ...generateMetadata(
-    'Expert Tech Integration & Consulting',
-    'Technology Alliance Solutions provides expert technology integration, CRM implementation, marketing automation, and consulting services for enterprise businesses.',
+    'Reputation Management & Marketing Automation',
+    'REV-ANEW provides white-label GoHighLevel solutions for reputation management, CRM, marketing automation, and business growth. Revenue Reimagined.',
     `${siteMetadata.siteUrl}${siteMetadata.logo}`,
     '/'
   ),
-  keywords: 'CRM implementation, technology integration, marketing automation, tech consulting, system optimization, enterprise solutions, business automation',
+  keywords: 'reputation management, review management, marketing automation, GoHighLevel, white-label CRM, funnel builder, lead generation, business growth tools, SMS marketing',
 };
 
 export default function RootLayout({
@@ -45,21 +45,6 @@ export default function RootLayout({
             name: siteMetadata.siteName,
             url: siteMetadata.siteUrl,
             logo: `${siteMetadata.siteUrl}${siteMetadata.logo}`,
-            sameAs: Object.values(siteMetadata.socialLinks),
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: siteMetadata.address.split(',')[0].trim(),
-              addressLocality: 'Atlanta',
-              addressRegion: 'GA',
-              postalCode: '30326',
-              addressCountry: 'US'
-            },
-            contactPoint: {
-              '@type': 'ContactPoint',
-              telephone: siteMetadata.phone,
-              contactType: 'customer service',
-              email: siteMetadata.email
-            },
             description: siteMetadata.description
           })}
         />

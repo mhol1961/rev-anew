@@ -5,20 +5,14 @@
  * Base metadata configuration for the site
  */
 export const siteMetadata = {
-  siteName: 'Technology Alliance Solutions',
-  siteUrl: 'https://technologyalliancesolutions.com',
-  logo: '/images/TAS_LOGO3.png',
-  phone: '(404) 205-8405',
-  address: '3355 Lenox Rd NE, Suite 1000, Atlanta, GA 30326',
-  email: 'info@technologyalliancesolutions.com',
-  description: 'Technology Alliance Solutions provides expert technology integration, CRM implementation, marketing automation, and consulting services for enterprise businesses.',
-  author: 'Technology Alliance Solutions',
+  siteName: 'REV-ANEW',
+  siteUrl: 'https://rev-anew.com',
+  logo: '/images/ra-logo.png',
+  tagline: 'Revenue Reimagined.',
+  description: 'REV-ANEW provides white-label GoHighLevel solutions including reputation management, CRM, marketing automation, funnel building, and business growth tools to help you reimagine your revenue.',
+  author: 'REV-ANEW',
   socialLinks: {
-    linkedin: 'https://linkedin.com/company/technology-alliance-solutions',
-    twitter: 'https://twitter.com/tech_alliance',
-    facebook: 'https://facebook.com/technologyalliancesolutions',
-    instagram: 'https://instagram.com/tech_alliance_solutions',
-    youtube: 'https://youtube.com/c/technologyalliancesolutions'
+    // Social links removed per client request
   }
 };
 
@@ -62,8 +56,7 @@ export function generateMetadata(
       card: 'summary_large_image',
       title: fullTitle,
       description: desc,
-      images: [image],
-      creator: '@tech_alliance'
+      images: [image]
     },
     
     // Canonical URL

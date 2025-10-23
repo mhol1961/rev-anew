@@ -314,7 +314,7 @@ export default function PartnershipsPage() {
               <div className="mb-6 md:mb-0">
                 <h2 className="text-2xl font-bold">Become a Partner</h2>
                 <p className="mt-2 text-blue-100">
-                  Join our partner network and grow your business with Technology Alliance Solutions.
+                  Join our partner network and grow your business with REV-ANEW.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">

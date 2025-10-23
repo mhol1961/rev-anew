@@ -316,7 +316,7 @@ export default function SystemsIntegrationPage() {
                   </li>
                 </ul>
                 <p className="text-primary-slate dark:text-gray-300 italic">
-                  "The integration solution provided by TAS has transformed our operations. We now have a single view of inventory, orders, and customers across all channels, which has significantly improved our efficiency and customer experience." - CIO
+                  "The integration solution provided by REV-ANEW has transformed our operations. We now have a single view of inventory, orders, and customers across all channels, which has significantly improved our efficiency and customer experience." - CIO
                 </p>
               </div>
             </div>

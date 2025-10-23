@@ -294,7 +294,7 @@ export default function SeoServicesPage() {
                   </li>
                 </ul>
                 <p className="text-primary-slate dark:text-gray-300 italic">
-                  "The SEO results from Technology Alliance Solutions have been remarkable. We now have a consistent flow of qualified leads coming through our website every day, and our business has grown by 37% year-over-year as a direct result of their work." - Operations Director
+                  "The SEO results from REV-ANEW have been remarkable. We now have a consistent flow of qualified leads coming through our website every day, and our business has grown by 37% year-over-year as a direct result of their work." - Operations Director
                 </p>
               </div>
             </div>

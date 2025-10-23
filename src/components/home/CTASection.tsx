@@ -19,8 +19,8 @@ export default function CTASection({ cmsContent }: CTASectionProps) {
     : 'Ready to Transform Your Business?';
 
   const subtext = cmsContent
-    ? getFieldValue(cmsContent, 'subtext') || 'Partner with TAS to unlock the full potential of your CRM, ERP, marketing automation, and cloud platforms. As Certified Partners with Microsoft, Salesforce, HubSpot, Adobe, and ClickDimensions, our team combines deep technical expertise with proven consulting experience to modernize systems, connect data, and deliver measurable business outcomes across ecosystems.'
-    : 'Partner with TAS to unlock the full potential of your CRM, ERP, marketing automation, and cloud platforms. As Certified Partners with Microsoft, Salesforce, HubSpot, Adobe, and ClickDimensions, our team combines deep technical expertise with proven consulting experience to modernize systems, connect data, and deliver measurable business outcomes across ecosystems.';
+    ? getFieldValue(cmsContent, 'subtext') || 'Partner with REV-ANEW to unlock the full potential of your CRM, ERP, marketing automation, and cloud platforms. As Certified Partners with Microsoft, Salesforce, HubSpot, Adobe, and ClickDimensions, our team combines deep technical expertise with proven consulting experience to modernize systems, connect data, and deliver measurable business outcomes across ecosystems.'
+    : 'Partner with REV-ANEW to unlock the full potential of your CRM, ERP, marketing automation, and cloud platforms. As Certified Partners with Microsoft, Salesforce, HubSpot, Adobe, and ClickDimensions, our team combines deep technical expertise with proven consulting experience to modernize systems, connect data, and deliver measurable business outcomes across ecosystems.';
 
   const buttonPrimaryText = cmsContent
     ? getFieldValue(cmsContent, 'button_primary_text') || 'Request a Consultation'

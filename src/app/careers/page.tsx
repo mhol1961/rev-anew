@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { getJobPostings } from '@/lib/supabase';
 
 export const metadata: Metadata = {
-  title: 'Careers - Join Our Team | Technology Alliance Solutions',
+  title: 'Careers - Join Our Team | REV-ANEW',
   description: 'Join our team of technology experts. Explore career opportunities in CRM implementation, marketing automation, system integration, and more.',
   keywords: 'careers, jobs, technology careers, CRM jobs, marketing automation careers, system integration jobs',
 };
@@ -65,12 +65,12 @@ export default async function CareersPage() {
           </div>
         </AnimatedSection>
 
-        {/* Why Work at TAS Section - Enhanced */}
+        {/* Why Work at REV-ANEW Section - Enhanced */}
         <AnimatedSection className="section-padding bg-primary-light/50 dark:bg-dark-card">
           <div className="max-w-7xl mx-auto container-padding">
             <div className="content-header">
               <h2 className="heading-2 text-center mb-4">
-                Why Work at Technology Alliance Solutions?
+                Why Work at REV-ANEW?
               </h2>
               <p className="body-large text-center max-w-3xl mx-auto">
                 Join a team of technology experts who are passionate about transforming businesses through innovative solutions. We offer more than just a job - we offer a career path that grows with you.

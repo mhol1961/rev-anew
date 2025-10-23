@@ -252,7 +252,7 @@ export default function SocialMediaManagementPage() {
                   </li>
                 </ul>
                 <p className="text-primary-slate dark:text-gray-300 italic">
-                  "The team at Technology Alliance Solutions transformed our social media presence. Their strategic approach and consistent content creation has significantly increased our online visibility and directly contributed to our sales growth." - Marketing Director
+                  "The team at REV-ANEW transformed our social media presence. Their strategic approach and consistent content creation has significantly increased our online visibility and directly contributed to our sales growth." - Marketing Director
                 </p>
               </div>
             </div>

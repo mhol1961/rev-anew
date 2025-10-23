@@ -280,7 +280,7 @@ export default function ReputationManagementPage() {
                   </li>
                 </ul>
                 <p className="text-primary-slate dark:text-gray-300 italic">
-                  "Technology Alliance Solutions transformed how we manage our online reputation. We now have a consistent presence across all review platforms, and our improved ratings have directly translated to more customers." - Director of Operations
+                  "REV-ANEW transformed how we manage our online reputation. We now have a consistent presence across all review platforms, and our improved ratings have directly translated to more customers." - Director of Operations
                 </p>
               </div>
             </div>

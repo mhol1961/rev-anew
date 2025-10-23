@@ -223,7 +223,7 @@ const knowledgeBaseContent: KnowledgeBaseContent[] = [
     content: `
       <h2>General Questions</h2>
       
-      <h2>Q: What services does Technology Alliance Solutions provide?</h2>
+      <h2>Q: What services does REV-ANEW provide?</h2>
       <p>We provide comprehensive technology solutions including CRM implementation, marketing automation, system integration, data management, and custom software development. Our services are designed to help businesses streamline operations and drive growth through technology.</p>
       
       <h2>Q: How long does a typical CRM implementation take?</h2>
@@ -267,7 +267,7 @@ const knowledgeBaseContent: KnowledgeBaseContent[] = [
       
       <h2>Getting Started</h2>
       
-      <h2>Q: How do we begin working with Technology Alliance Solutions?</h2>
+      <h2>Q: How do we begin working with REV-ANEW?</h2>
       <p>Start with a free consultation call where we discuss your needs, challenges, and goals. We'll then provide a proposal outlining our recommended approach, timeline, and investment.</p>
       
       <h2>Q: What information do you need from us?</h2>
@@ -1152,13 +1152,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   
   if (!item) {
     return {
-      title: 'Knowledge Base Item Not Found | Technology Alliance Solutions',
+      title: 'Knowledge Base Item Not Found | REV-ANEW',
       description: 'The requested knowledge base item could not be found.',
     };
   }
   
   return {
-    title: `${item.title} | Knowledge Base | Technology Alliance Solutions`,
+    title: `${item.title} | Knowledge Base | REV-ANEW`,
     description: `${item.title} - ${item.category} ${item.type}. Difficulty: ${item.difficulty}. Reading time: ${item.readTime}.`,
     keywords: item.tags.join(', '),
   };

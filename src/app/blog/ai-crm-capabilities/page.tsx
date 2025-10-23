@@ -151,7 +151,7 @@ export default function BlogPost() {
       
       <p class="mb-4">The integration of advanced AI capabilities into CRM systems represents a fundamental shift in how customer relationships are managed. Organizations that successfully implement these technologies are seeing significant competitive advantages through enhanced customer experiences, more efficient operations, and deeper customer insights.</p>
       
-      <p class="mb-4">At Technology Alliance Solutions, we help organizations navigate the complex landscape of AI-powered CRM capabilities. Our expertise spans technology selection, implementation, customization, and optimization to ensure you achieve maximum value from these transformative technologies. Contact us to learn how we can help you leverage AI to enhance your customer relationships.</p>
+      <p class="mb-4">At REV-ANEW, we help organizations navigate the complex landscape of AI-powered CRM capabilities. Our expertise spans technology selection, implementation, customization, and optimization to ensure you achieve maximum value from these transformative technologies. Contact us to learn how we can help you leverage AI to enhance your customer relationships.</p>
     `
   };
 
@@ -247,7 +247,7 @@ export default function BlogPost() {
             <div className="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8">
               <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-2">About the Author</h3>
               <p className="text-primary-slate dark:text-white/80 mb-4">
-                {post.author} is a senior CRM consultant at Technology Alliance Solutions with extensive experience implementing AI-powered CRM solutions for enterprise organizations across various industries.
+                {post.author} is a senior CRM consultant at REV-ANEW with extensive experience implementing AI-powered CRM solutions for enterprise organizations across various industries.
               </p>
             </div>
             

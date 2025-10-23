@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 
 // Metadata for the page
 export const metadata: Metadata = {
-  title: 'Sitemap | Technology Alliance Solutions',
-  description: 'Explore all pages on the Technology Alliance Solutions website with our comprehensive sitemap.'
+  title: 'Sitemap | REV-ANEW',
+  description: 'Explore all pages on the REV-ANEW website with our comprehensive sitemap.'
 };
 
 export default function SitemapLayout({

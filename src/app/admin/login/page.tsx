@@ -36,8 +36,8 @@ export default function LoginPage() {
         <div>
           <div className="flex justify-center">
             <Image
-              src="/images/TAS_LOGO3.png"
-              alt="Technology Alliance Solutions"
+              src="/images/ra-logo.png"
+              alt="REV-ANEW"
               width={200}
               height={80}
               className="h-20 w-auto"

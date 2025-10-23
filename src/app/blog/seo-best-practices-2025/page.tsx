@@ -123,7 +123,7 @@ export default function BlogPost() {
       
       <p class="mb-4">By implementing these best practices, businesses can improve their organic visibility, drive qualified traffic, and ultimately achieve sustainable growth through search engines. Remember that SEO is a long-term investment—consistency and adaptation to evolving search trends are key to lasting success.</p>
       
-      <p class="mb-4">At Technology Alliance Solutions, we help businesses implement cutting-edge SEO strategies that drive measurable results. Contact us to learn how we can elevate your search presence and accelerate your business growth.</p>
+      <p class="mb-4">At REV-ANEW, we help businesses implement cutting-edge SEO strategies that drive measurable results. Contact us to learn how we can elevate your search presence and accelerate your business growth.</p>
     `
   };
 
@@ -219,7 +219,7 @@ export default function BlogPost() {
             <div className="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8">
               <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-2">About the Author</h3>
               <p className="text-primary-slate dark:text-white/80 mb-4">
-                {post.author} is the Head of SEO at Technology Alliance Solutions with over a decade of experience in digital marketing and search engine optimization across various industries.
+                {post.author} is the Head of SEO at REV-ANEW with over a decade of experience in digital marketing and search engine optimization across various industries.
               </p>
             </div>
             

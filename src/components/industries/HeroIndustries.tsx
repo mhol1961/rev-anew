@@ -1,27 +1,41 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 
 export default function HeroIndustries() {
   return (
     <section className="relative h-[500px] sm:h-[600px] lg:h-[700px] flex items-center overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-image-industry-page.png"
-          alt="Industries hero background"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
+      {/* Modern gradient background with inline styles */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background: 'linear-gradient(135deg, #374151 0%, #10B981 50%, #374151 100%)'
+        }}
+      >
+        {/* Layered gradients for depth */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(45deg, rgba(245, 158, 11, 0.2) 0%, transparent 50%, rgba(52, 211, 153, 0.3) 100%)'
+          }}
+        ></div>
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(225deg, transparent 0%, rgba(55, 65, 81, 0.4) 50%, rgba(16, 185, 129, 0.2) 100%)'
+          }}
+        ></div>
       </div>
 
-      {/* Gradient overlay - from-[#0b2e6e]/70 via-[#0b2e6e]/40 to-transparent */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0b2e6e]/70 via-[#0b2e6e]/40 to-transparent z-10"></div>
+      {/* Enhanced overlay for text contrast */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{
+          background: 'linear-gradient(90deg, rgba(55, 65, 81, 0.8) 0%, rgba(55, 65, 81, 0.5) 50%, transparent 100%)'
+        }}
+      ></div>
 
       {/* Content */}
       <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-8 lg:px-12 xl:px-16">
@@ -53,7 +67,7 @@ export default function HeroIndustries() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#0b2e6e] font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl group"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-teal text-white font-semibold rounded-lg hover:bg-primary-tealDark transition-all duration-300 shadow-lg hover:shadow-xl group"
             >
               Schedule a Consultation
               <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -61,7 +75,7 @@ export default function HeroIndustries() {
 
             <Link
               href="/services"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white/10 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-orange text-white font-semibold rounded-lg hover:bg-primary-orangeDark transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Explore Our Services
             </Link>

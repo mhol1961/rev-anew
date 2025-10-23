@@ -38,7 +38,7 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4 text-primary-navy dark:text-white">1. Introduction</h2>
             <p className="mb-4">
-              Technology Alliance Solutions, INC. (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) respects your privacy and is committed to protecting it through our compliance with this policy.
+              REV-ANEW, INC. (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) respects your privacy and is committed to protecting it through our compliance with this policy.
             </p>
             <p className="mb-4">
               This Privacy Policy describes the types of information we may collect from you or that you may provide when you visit our website at <Link href="/" className="text-primary-blue hover:underline">technologyalliancesolutions.com</Link> and our practices for collecting, using, maintaining, protecting, and disclosing that information.
@@ -91,7 +91,7 @@ const PrivacyPolicy = () => {
               <li className="mb-2">For any other purpose disclosed by us when you provide the information.</li>
               <li className="mb-2">With your consent.</li>
               <li className="mb-2">To comply with any court order, law, or legal process, including to respond to any government or regulatory request.</li>
-              <li className="mb-2">If we believe disclosure is necessary to protect the rights, property, or safety of Technology Alliance Solutions, our clients, or others.</li>
+              <li className="mb-2">If we believe disclosure is necessary to protect the rights, property, or safety of REV-ANEW, our clients, or others.</li>
             </ul>
           </section>
 
@@ -137,7 +137,7 @@ const PrivacyPolicy = () => {
               If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:
             </p>
             <div className="bg-primary-light dark:bg-primary-navy/50 p-6 rounded-lg">
-              <p className="mb-1"><strong>Technology Alliance Solutions, INC.</strong></p>
+              <p className="mb-1"><strong>REV-ANEW, INC.</strong></p>
               <p className="mb-1">3355 Lenox Rd NE, Suite 1000</p>
               <p className="mb-1">Atlanta, GA 30326</p>
               <p className="mb-1">Phone: (404) 205-8405</p>

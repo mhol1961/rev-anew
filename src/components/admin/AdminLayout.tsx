@@ -152,7 +152,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       {/* Sidebar */}
       <div className={`fixed left-0 top-20 bottom-0 z-40 w-64 bg-white dark:bg-gray-800 shadow-lg transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 lg:translate-x-0 lg:static lg:top-0 lg:h-full`}>
         <div className="flex items-center justify-center h-14 bg-primary-blue">
-          <span className="text-white text-lg font-bold">TAS Admin</span>
+          <span className="text-white text-lg font-bold">REV-ANEW Admin</span>
         </div>
 
         <nav className="mt-4">

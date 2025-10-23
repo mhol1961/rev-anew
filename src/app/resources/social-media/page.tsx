@@ -42,7 +42,7 @@ export default function SocialMediaPage() {
     {
       id: '3',
       name: 'Facebook',
-      handle: 'Technology Alliance Solutions',
+      handle: 'REV-ANEW',
       url: 'https://facebook.com/techalliancesolutions',
       icon: '👍',
       description: 'Community engagement, event announcements, and behind-the-scenes content.',
@@ -102,7 +102,7 @@ export default function SocialMediaPage() {
             <div className="max-w-3xl">
               <h1 className="text-4xl font-bold">Follow Us Online</h1>
               <p className="mt-4 text-lg text-blue-100">
-                Connect with Technology Alliance Solutions across social media platforms for the latest updates, insights, and industry news.
+                Connect with REV-ANEW across social media platforms for the latest updates, insights, and industry news.
               </p>
             </div>
           </div>

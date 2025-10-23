@@ -18,13 +18,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   
   if (!article) {
     return {
-      title: 'Article Not Found | Technology Alliance Solutions',
+      title: 'Article Not Found | REV-ANEW',
       description: 'The requested article could not be found.',
     };
   }
   
   return {
-    title: article.seo_title || `${article.title} | Support Articles | Technology Alliance Solutions`,
+    title: article.seo_title || `${article.title} | Support Articles | REV-ANEW`,
     description: article.seo_description || `${article.title} - ${article.category} article. Reading time: ${article.read_time || '8 min read'}.`,
     keywords: article.seo_keywords || (Array.isArray(article.tags) ? article.tags.join(', ') : ''),
   };
