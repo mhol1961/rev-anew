@@ -154,7 +154,7 @@ export default function Navbar() {
           {/* Left Group: Logo Only */}
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 py-2">
-              <div className="relative h-14 w-40 logo-container"> {/* Reduced logo size to prevent wrapping */}
+              <div className="relative h-16 w-44 logo-container"> {/* Increased size to match white logo better */}
                 {/* Conditionally render logo based on dark mode state, only after mounting */}
                 {mounted && (
                   <div className="relative h-full w-full">
@@ -163,7 +163,7 @@ export default function Navbar() {
                       src={logoSrc}
                       alt="Technology Alliance Solutions Logo"
                       fill
-                      sizes="(max-width: 768px) 10rem, 10rem"
+                      sizes="(max-width: 768px) 11rem, 11rem"
                       style={{ objectFit: 'contain', objectPosition: 'left center' }}
                       className="logo-enhance"
                       priority
@@ -177,7 +177,7 @@ export default function Navbar() {
                       src="/images/logo_transparent_version.png" // Default to light logo before mount
                       alt="Technology Alliance Solutions Logo"
                       fill
-                      sizes="(max-width: 768px) 10rem, 10rem"
+                      sizes="(max-width: 768px) 11rem, 11rem"
                       style={{ objectFit: 'contain', objectPosition: 'left center' }}
                       priority
                     />

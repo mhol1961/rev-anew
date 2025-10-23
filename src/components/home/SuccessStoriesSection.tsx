@@ -15,37 +15,37 @@ interface SuccessStoriesSectionProps {
 
 const successStories = [
   {
-    client: 'City of Atlanta',
+    client: 'Major U.S. Municipality',
     challenge: 'Needed to modernize CRM and case management systems to improve citizen services, transparency, and cross-department collaboration.',
     solution: 'TAS designed and implemented Dynamics 365 Customer Service with Power Platform components, including secure public portals, real-time Power BI dashboards, and Azure-based integrations.',
     outcome: 'Enabled faster, more responsive citizen engagement, improved internal collaboration, and reduced reliance on third-party analytics vendors.'
   },
   {
-    client: 'Hodess Cleanrooms',
+    client: 'National Construction & Engineering Firm',
     challenge: 'Required stabilization of Power BI reporting environment and preparation for transition from Sage 300 to CMiC ERP.',
     solution: 'TAS conducted a comprehensive Power BI audit, identified system dependencies, and created a long-term modernization and ERP readiness plan.',
     outcome: 'Delivered a roadmap and governance framework that stabilized reporting, improved data quality, and positioned the client for a smooth ERP migration.'
   },
   {
-    client: 'Ernst & Young (EY)',
+    client: 'Global Professional Services Organization',
     challenge: 'Sought to unify sales and marketing operations through Dynamics 365 and accelerate adoption of Microsoft Fabric for advanced analytics.',
     solution: 'TAS served as Subject Matter Experts, providing leadership to align Dynamics 365 Sales and Marketing with Fabric integration.',
-    outcome: 'Enabled real-time marketing execution, unified reporting, and a scalable CRM and analytics framework supporting EY\'s global initiatives.'
+    outcome: 'Enabled real-time marketing execution, unified reporting, and a scalable CRM and analytics framework supporting the organization\'s global initiatives.'
   },
   {
-    client: 'Southcoast Health',
+    client: 'Regional Healthcare Network',
     challenge: 'Needed to transform CRM and marketing automation to support patient engagement, referral management, and provider outreach.',
     solution: 'TAS implemented Dynamics 365 Sales and Marketing with Customer Insights – Journeys, developed a consent center, and aligned systems with predictive analytics goals.',
     outcome: 'Enhanced patient engagement, ensured HIPAA-compliant communications, and provided marketing and clinical teams with tools to improve outreach and care coordination.'
   },
   {
-    client: 'CohnReznick',
+    client: 'National Accounting & Advisory Firm',
     challenge: 'Required better alignment between Dynamics 365 and Marketo to strengthen marketing operations, campaign analytics, and sales enablement.',
     solution: 'TAS optimized system governance, developed custom integrations, and enhanced reporting through Marketo-D365 synchronization and Power BI dashboards.',
     outcome: 'Improved campaign execution, enhanced data quality, and provided marketing and sales teams with greater visibility into performance and attribution.'
   },
   {
-    client: 'StarTech.com',
+    client: 'Global Technology Manufacturer',
     challenge: 'Wanted to strengthen global sales, marketing, and customer service using Dynamics 365 and Marketo.',
     solution: 'TAS acted as Subject Matter Experts across multiple workstreams, leading a transition to real-time marketing, implementing a consent center, and aligning CRM with service workflows.',
     outcome: 'Achieved more personalized marketing, improved compliance, and delivered scalable CRM and customer service solutions across global teams.'
